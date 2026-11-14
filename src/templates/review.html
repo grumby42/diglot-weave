@@ -1,0 +1,144 @@
+<title>__TITLE__</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="__BUILD__">
+<meta name="shipped-utc" content="__UTC__">
+<style>
+/* Layout: one column; a box ladder (Leitner boxes) above a single review card. */
+:root{--sky:#e6edf3;--paper:#f6f9fb;--ink:#1b2838;--muted:#566779;--line:#c6d3df;--es:#a32a63;--es-soft:#f6dfe9;--ok:#1f6a7a;--bad:#a33a2a;
+--read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#111a25;--paper:#182432;--ink:#e7edf3;--muted:#9db0c2;--line:#32455a;--es:#f492bd;--es-soft:#43243a;--ok:#74c6d6;--bad:#f0937f;color-scheme:dark}}
+:root[data-theme="dark"]{--sky:#111a25;--paper:#182432;--ink:#e7edf3;--muted:#9db0c2;--line:#32455a;--es:#f492bd;--es-soft:#43243a;--ok:#74c6d6;--bad:#f0937f;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.wrap{max-width:40rem;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0}
+p{margin:0}.sub{color:var(--muted);margin-top:4px;max-width:62ch}
+.boxes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 6px;text-align:center;font-variant-numeric:tabular-nums}
+.box b{display:block;font-size:1.25rem}.box span{font-size:.75rem;color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:14px;min-height:12rem;align-content:start}
+.word{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.word strong{font-family:var(--read);font-weight:400;font-size:1.75rem;color:var(--es);overflow-wrap:anywhere}
+.hidden-word strong{filter:blur(8px)}
+.guide{color:var(--muted);font-size:.9375rem}
+.src{color:var(--muted);font-size:.8125rem}
+.opts{display:grid;gap:8px}
+button{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 12px;min-height:40px;cursor:pointer;text-align:left}
+button:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.primary{background:var(--es);border-color:var(--es);color:var(--paper);text-align:center}
+.right{border-color:var(--ok);background:var(--ok);color:var(--paper)}
+.wrong{border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.play{width:44px;height:44px;border-radius:50%;padding:0;display:grid;place-items:center;text-align:center}
+.play svg{width:16px;height:16px;fill:currentColor}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg button[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+details{border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:600}
+.list{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;text-align:left;color:var(--muted);font-weight:600}
+th,td{padding:5px 10px 5px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--es);font-family:var(--read)}
+.empty{color:var(--muted)}
+#status{min-height:1.2em;font-size:.875rem;color:var(--bad)}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}footer a{color:inherit}
+</style>
+<div class="wrap">
+  <header>
+    <h1 id="h1"></h1>
+    <p class="sub" id="sub"></p>
+  </header>
+  <div class="boxes" id="boxes" aria-label="Review boxes"></div>
+  <div class="row seg" role="group" id="modes"></div>
+  <p id="status" role="status"></p>
+  <section class="card" id="card" aria-live="polite"></section>
+  <details id="all"><summary id="all-sum"></summary><div class="list"><table><thead><tr id="all-head"></tr></thead><tbody id="all-body"></tbody></table></div>
+    <div class="row" style="margin-top:12px"><button id="reset"></button><span id="reset-confirm" hidden><button id="reset-yes"></button> <button id="reset-no"></button></span></div>
+  </details>
+  <footer><p><a href="index.html" id="back"></a> · <a href="../index.html" id="home"></a></p><p id="stamp"></p></footer>
+</div>
+<script>
+const CFG=__CFG__;
+const BUILD="__BUILD__",SHIPPED="__UTC__";
+const U=CFG.ui,$=id=>document.getElementById(id);
+const DAY=864e5,INTERVAL=[0,1,3,7,21].map(d=>d*DAY);
+const KEY="dw-deck-v1";
+const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}};
+const save=d=>{try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){$("status").textContent=U.noStore}};
+const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2l11 6-11 6z"/></svg>';
+let mode="read",queue=[],current=null,shown=null;
+// Voices
+const hasTTS="speechSynthesis" in window;let voice=null;
+function pick(){if(!hasTTS)return;const v=speechSynthesis.getVoices();for(const t of CFG.voices){const f=v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));if(f){voice=f;return}}}
+if(hasTTS){pick();speechSynthesis.addEventListener("voiceschanged",pick)}
+function say(text){if(!hasTTS){$("status").textContent=U.noTTS;return}pick();speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=voice?voice.lang:CFG.fallback;if(voice)u.voice=voice;u.rate=.85;speechSynthesis.speak(u)}
+function mine(){return Object.entries(load()).filter(([,c])=>c.lang===CFG.lang)}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function drawBoxes(){
+  const cards=mine(),now=Date.now();$("boxes").textContent="";
+  U.boxes.forEach((label,i)=>{const n=cards.filter(([,c])=>c.box===i).length;const d=document.createElement("div");d.className="box";d.innerHTML="<b></b><span></span>";d.querySelector("b").textContent=n;d.querySelector("span").textContent=label;$("boxes").append(d)});
+  const body=$("all-body");body.textContent="";
+  cards.sort((a,b)=>a[1].box-b[1].box||a[1].k.localeCompare(b[1].k)).forEach(([,c])=>{const r=body.insertRow();[c.k,c.m,U.boxes[c.box],c.src].forEach(x=>{r.insertCell().textContent=x})});
+  $("all-sum").textContent=U.all+" ("+cards.length+")";
+  return cards.filter(([,c])=>c.due<=now).length;
+}
+function start(){
+  const now=Date.now();queue=shuffle(mine().filter(([,c])=>c.due<=now).map(([id])=>id));next();
+}
+function next(){
+  const card=$("card");card.textContent="";
+  const due=drawBoxes();
+  if(!queue.length){
+    const p=document.createElement("p");p.className="empty";
+    const total=mine().length;
+    p.textContent=total?(due?U.ready.replace("{n}",due):U.done):U.emptyDeck;
+    card.append(p);
+    if(due){const b=document.createElement("button");b.className="primary";b.id="start";b.textContent=U.start;b.onclick=start;card.append(b)}
+    return;
+  }
+  const d=load(),id=queue.shift(),c=d[id];if(!c){next();return}current=id;shown=id;
+  const w=document.createElement("div");w.className="word"+(mode==="listen"?" hidden-word":"");
+  const pl=document.createElement("button");pl.className="play";pl.setAttribute("aria-label",U.play);pl.innerHTML=ICON;pl.onclick=()=>say(c.k);
+  const s=document.createElement("strong");s.textContent=c.k;w.append(pl,s);
+  const g=document.createElement("p");g.className="guide";g.textContent=c.p;if(mode==="listen")g.hidden=true;
+  const src=document.createElement("p");src.className="src";src.textContent=U.from+" "+c.src;
+  card.append(w,g);
+  if(mode==="listen")say(c.k);
+  const others=[...new Set(mine().map(([,x])=>x.m).filter(m=>m!==c.m))];
+  const ops=document.createElement("div");ops.className="opts";
+  if(others.length>=2){
+    shuffle([c.m,...shuffle(others).slice(0,2)]).forEach(m=>{const b=document.createElement("button");b.textContent=m;
+      b.onclick=()=>grade(m===c.m,b,ops,c);ops.append(b)});
+  }else{
+    const reveal=document.createElement("button");reveal.textContent=U.show;
+    reveal.onclick=()=>{reveal.remove();const m=document.createElement("p");m.textContent=c.m;ops.prepend(m);
+      const y=document.createElement("button");y.textContent=U.knew;y.onclick=()=>grade(true,y,ops,c);
+      const n=document.createElement("button");n.textContent=U.missed;n.onclick=()=>grade(false,n,ops,c);ops.append(y,n)};
+    ops.append(reveal);
+  }
+  card.append(ops,src);
+}
+function grade(ok,btn,ops,c){
+  shown=null;
+  ops.querySelectorAll("button").forEach(b=>{b.disabled=true;if(b.textContent===c.m)b.classList.add("right")});
+  btn.classList.add(ok?"right":"wrong");
+  const w=document.querySelector(".hidden-word");if(w)w.classList.remove("hidden-word");
+  const g=document.querySelector(".guide");if(g)g.hidden=false;
+  say(c.k);
+  const d=load(),x=d[current];
+  if(x){if(ok){x.box=Math.min(4,x.box+1);x.due=Date.now()+INTERVAL[x.box]}else{x.box=0;x.due=Date.now();queue.push(current)}save(d)}
+  const nb=document.createElement("button");nb.className="primary";nb.id="next";nb.textContent=queue.length?U.next:U.finish;nb.onclick=next;
+  $("card").append(nb);nb.focus();
+}
+// Static text
+document.title=U.title;$("h1").textContent=U.title;$("sub").textContent=U.sub;
+$("all-head").innerHTML="";U.cols.forEach(t=>{const th=document.createElement("th");th.textContent=t;$("all-head").append(th)});
+$("back").textContent=U.back;$("home").textContent=U.home;$("stamp").textContent=U.stamp.replace("{b}",BUILD).replace("{u}",SHIPPED);
+[["read",U.modeRead],["listen",U.modeListen]].forEach(([m,t])=>{const b=document.createElement("button");b.id="mode-"+m;b.textContent=t;b.setAttribute("aria-pressed",m===mode);
+  b.onclick=()=>{mode=m;document.querySelectorAll("#modes button").forEach(x=>x.setAttribute("aria-pressed",x.id==="mode-"+mode));if(shown){queue.unshift(shown);shown=null;next()}};$("modes").append(b)});
+$("reset").textContent=U.reset;$("reset-yes").textContent=U.resetYes;$("reset-no").textContent=U.resetNo;
+$("reset").onclick=()=>{$("reset-confirm").hidden=false};$("reset-no").onclick=()=>{$("reset-confirm").hidden=true};
+$("reset-yes").onclick=()=>{const d=load();Object.keys(d).forEach(k=>{if(d[k].lang===CFG.lang)delete d[k]});save(d);$("reset-confirm").hidden=true;queue=[];next()};
+next();
+</script>

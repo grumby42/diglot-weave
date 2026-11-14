@@ -18,7 +18,8 @@ swap('<h1>El viento y el sol</h1>',`<h1>${pack.title}</h1>`);
 swap("Two friends grounded by wind retell Aesop's fable. The page starts in English and ends in Spanish.",pack.sub);
 swap("Fable retold for this page from Aesop (public domain). Spanish follows Latin American pronunciation. Audio uses your device's speech voices.",pack.footer+" La pronunciación sigue el inglés de Estados Unidos. El audio usa las voces de tu dispositivo.");
 swap('Build <span id="b"></span> · shipped <span id="u"></span>','Versión <span id="b"></span> · publicada <span id="u"></span>');
-swap('<a href="index.html">All pages</a> · <a href="../index.html">Home</a>','<a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a>');
+swap('<a href="index.html">All pages</a> · <a href="../index.html">Home</a> · <a href="review.html">Review (<span id="due">0</span> due)</a>','<a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a> · <a href="review.html">Repaso (<span id="due">0</span> pendientes)</a>');
+swap('const DECK_LANG="es";','const DECK_LANG="en";');
 // Interface
 swap('aria-label="Stages, by share of Spanish"','aria-label="Etapas, según la proporción de inglés"');
 swap('aria-label="Pronunciation guides"><b>Guides</b>','aria-label="Guías de pronunciación"><b>Guías</b>');

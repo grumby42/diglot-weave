@@ -9,7 +9,7 @@ ui:[
 ['aria-label="Speech speed"><b>Speed</b><button id="r-slow" data-r="0.72">Slow</button>','aria-label="Velocidad de voz"><b>Velocidad</b><button id="r-slow" data-r="0.72">Lenta</button>'],
 ['aria-label="Self-test"><b>Test me</b><button id="t-off" data-t="off">Show all</button><button id="t-p" data-t="p">Hide sounds</button><button id="t-m" data-t="m">Hide meanings</button>','aria-label="Practicar"><b>Practicar</b><button id="t-off" data-t="off">Mostrar todo</button><button id="t-p" data-t="p">Ocultar pronunciación</button><button id="t-m" data-t="m">Ocultar significado</button>'],
 ['Build <span id="b"></span> · shipped <span id="u"></span>','Versión <span id="b"></span> · publicada <span id="u"></span>'],
-['<a href="index.html">All pages</a> · <a href="../index.html">Home</a>','<a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a>'],
+['<a href="index.html">All pages</a> · <a href="../index.html">Home</a> · <a href="review.html">Review (<span id="due">0</span> due)</a>','<a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a> · <a href="review.html">Repaso (<span id="due">0</span> pendientes)</a>'],
 ['"This browser has no speech voices, so audio is unavailable."','"Este navegador no tiene voces, así que no hay audio."'],
 [`"No English voice found. Add one in your device's text-to-speech settings."`,`"No se encontró una voz en inglés. Agrega una en la configuración de texto a voz de tu dispositivo."`],
 ['"No matches. Try fewer letters, or search in English."','"Sin resultados. Prueba con menos letras o busca en español."']

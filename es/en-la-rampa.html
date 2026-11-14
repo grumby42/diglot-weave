@@ -3,8 +3,8 @@
 <title>En la rampa</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1601Z">
-<meta name="shipped-utc" content="2026-11-14T16:01:05Z">
+<meta name="build-id" content="WEAV-20261114-1745Z">
+<meta name="shipped-utc" content="2026-11-14T17:45:26Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -130,14 +130,14 @@ footer p{margin:0}
   <div class="nav"><button id="prev">Previous stage</button><button id="next">Next stage</button></div>
   <footer>
     <p>Original dialogue written for this pack. Radio lines are simplified for language practice and are not operational phraseology. Spanish follows Latin American pronunciation. Audio uses your device's speech voices.</p>
-    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a></p>
+    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a> · <a href="review.html">Review (<span id="due">0</span> due)</a></p>
     <p>Build <span id="b"></span> · shipped <span id="u"></span></p>
   </footer>
 </div>
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1601Z",SHIPPED="2026-11-14T16:01:05Z";
+const BUILD="WEAV-20261114-1745Z",SHIPPED="2026-11-14T17:45:26Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -523,6 +523,15 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},se
 let cur=Math.min(Math.max(+store.get("aeropuerto-stage")||0,0),PAGES.length-1),guide=store.get("guide")||"fade",rate=+(store.get("rate")||0.72),luciaEn=store.get("flow")||"es";
 const $=id=>document.getElementById(id);
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const DECK_LANG="es";
+const DECK_KEY="dw-deck-v1";
+function deckLoad(){try{return JSON.parse(localStorage.getItem(DECK_KEY))||{}}catch(e){return {}}}
+function deckSave(d){try{localStorage.setItem(DECK_KEY,JSON.stringify(d))}catch(e){}}
+function deckDue(){const el=document.getElementById("due");if(!el)return;const now=Date.now();el.textContent=Object.values(deckLoad()).filter(c=>c.lang===DECK_LANG&&c.due<=now).length}
+function deckAdd(k,p,m,how){if(!k||!m)return;const d=deckLoad(),id=DECK_LANG+":"+k,now=Date.now();
+  let c=d[id];if(!c)c=d[id]={k,lang:DECK_LANG,p,m,box:0,due:now,src:document.title};
+  if(how==="wrong"){c.box=0;c.due=now}
+  deckSave(d);deckDue()}
 let ears=!!store.get("ears");
 let shadowing=0;
 const calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -591,6 +600,7 @@ function segments(toks,who){
   return out;
 }
 function showWord(t,el){
+  if(LEX[t.key])deckAdd(t.key,LEX[t.key].p,LEX[t.key].m,"tap");
   document.querySelectorAll(".w.on").forEach(e=>e.classList.remove("on"));
   el.classList.add("on");
   const e=LEX[t.key],box=$("sheet").firstElementChild;
@@ -652,7 +662,7 @@ function render(){
     const ch=document.createElement("div");ch.className="chips";
     ahead.forEach(k=>{const c=document.createElement("button");c.className="chip";
       const b=document.createElement("b");b.textContent=k;const sp=document.createElement("span");sp.textContent=LEX[k].p+" · "+LEX[k].m;
-      c.append(b,sp);c.onclick=()=>say([{es:true,x:k,who:"L"}]);ch.append(c)});
+      c.append(b,sp);c.onclick=()=>{say([{es:true,x:k,who:"L"}]);deckAdd(k,LEX[k].p,LEX[k].m,"tap")};ch.append(c)});
     wa.append(ch);P.append(head,n,wa,acts,ls);
   }else P.append(head,n,acts,ls);
   (p.q||[]).forEach((q,qi)=>{
@@ -690,7 +700,7 @@ function render(){
       const w=document.createElement("button");w.className="w";w.textContent=k;w.onclick=()=>say([{es:true,x:k,who:"L"}]);
       const ops=document.createElement("div");ops.className="opts";
       shuffle(opts).forEach(m=>{const b=document.createElement("button");b.className="opt";b.textContent=m;
-        b.onclick=()=>{const ok=m===right;b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+m);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===right)x.classList.add("right")});say([{es:true,x:k,who:"L"}])};ops.append(b)});
+        b.onclick=()=>{const ok=m===right;deckAdd(k,LEX[k].p,LEX[k].m,ok?"right":"wrong");b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+m);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===right)x.classList.add("right")});say([{es:true,x:k,who:"L"}])};ops.append(b)});
       row.append(w,ops);d.append(row);
     });
     P.append(d);
@@ -715,6 +725,7 @@ $("prev").onclick=()=>go(cur-1);$("next").onclick=()=>go(cur+1);
 document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{guide=b.dataset.g;store.set("guide",guide);render()});
 document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("rate",rate);render()});
 document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{luciaEn=b.dataset.l;store.set("flow",luciaEn);render()});
+deckDue();
 $("b").textContent=BUILD;$("u").textContent=SHIPPED;
 render();
 </script>

@@ -46,6 +46,7 @@ swap('u.lang=s.es?(esVoice?esVoice.lang:"es-MX"):"en-US";','u.lang=s.es?(esVoice
 swap('const t=p.slice(1,-1).match(/\\p{L}+|[^\\p{L}]+/gu);',"const t=p.slice(1,-1).match(/\\p{L}+(?:['’-]\\p{L}+)*|[^\\p{L}]+/gu);");
 // Names and labels
 swap('who.textContent=l.w==="S"?"Sam":"Lucía"','who.textContent=l.w==="S"?"Sam":"Camille"');
+swap('const DECK_LANG="es";','const DECK_LANG="fr";');
 s=s.split('Spanish').join('French');
 s=s.split('store.get("stage")').join(`store.get("${pack.key}-stage")`);
 s=s.split('store.set("stage"').join(`store.set("${pack.key}-stage"`);

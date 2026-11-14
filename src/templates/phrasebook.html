@@ -70,7 +70,7 @@ footer p{margin:0}
   <main id="main" style="display:grid;gap:28px"></main>
   <footer>
     <p>Latin American pronunciation. Respellings are a bridge to the real sounds, so listen as well. Audio uses your device's speech voices.</p>
-    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a></p>
+    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a> · <a href="review.html">Review (<span id="due">0</span> due)</a></p>
     <p>Build <span id="b"></span> · shipped <span id="u"></span></p>
   </footer>
 </div>
@@ -441,6 +441,15 @@ window.basicoAudit={sections:LANG.sections.map(s=>s.id+":"+s.items.length),bad:L
 
 const $=id=>document.getElementById(id);
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const DECK_LANG=LANG.code;
+const DECK_KEY="dw-deck-v1";
+function deckLoad(){try{return JSON.parse(localStorage.getItem(DECK_KEY))||{}}catch(e){return {}}}
+function deckSave(d){try{localStorage.setItem(DECK_KEY,JSON.stringify(d))}catch(e){}}
+function deckDue(){const el=document.getElementById("due");if(!el)return;const now=Date.now();el.textContent=Object.values(deckLoad()).filter(c=>c.lang===DECK_LANG&&c.due<=now).length}
+function deckAdd(k,p,m,how){if(!k||!m)return;const d=deckLoad(),id=DECK_LANG+":"+k,now=Date.now();
+  let c=d[id];if(!c)c=d[id]={k,lang:DECK_LANG,p,m,box:0,due:now,src:document.title};
+  if(how==="wrong"){c.box=0;c.due=now}
+  deckSave(d);deckDue()}
 let rate=+(store.get("basico-rate")||0.72),test=store.get("basico-test")||"off";
 const hasTTS="speechSynthesis" in window;let voice=null;
 function pick(){if(!hasTTS)return;const v=speechSynthesis.getVoices();for(const t of LANG.voices){const f=v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));if(f){voice=f;return}}}
@@ -466,7 +475,7 @@ function render(){
       c.innerHTML='<span class="w"></span><span class="p"></span><span class="m"></span>'+(i.n?'<span class="n"></span>':"");
       c.querySelector(".w").textContent=i.w;c.querySelector(".p").textContent=i.p;c.querySelector(".m").textContent=i.m;
       if(i.n)c.querySelector(".n").textContent=i.n;
-      c.onclick=()=>{document.querySelectorAll(".card.on").forEach(e=>e.classList.remove("on"));c.classList.add("on","reveal");say(i.w)};
+      c.onclick=()=>{document.querySelectorAll(".card.on").forEach(e=>e.classList.remove("on"));c.classList.add("on","reveal");say(i.w);deckAdd(i.w,i.p,i.m,"tap")};
       g.append(c);
     });
     sec.append(h,p,g);M.append(sec);
@@ -479,6 +488,7 @@ LANG.sections.forEach(s=>{const a=document.createElement("a");a.href="#"+s.id;a.
 $("q").addEventListener("input",render);
 document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("basico-rate",rate);render()});
 document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{test=b.dataset.t;store.set("basico-test",test);render()});
+deckDue();
 $("b").textContent=BUILD;$("u").textContent=SHIPPED;
 render();
 </script>

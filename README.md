@@ -26,6 +26,7 @@ Every page is a single self-contained HTML file. Pages work offline once loaded,
 - **Words ahead:** any stage that brings in four or more new words opens with a preview of them, with sound and meaning. It opens automatically at the bigger steps up in the target language.
 - **Your turn:** the last stage ends with English prompts. Say the line in the target language out loud, then reveal and hear the model answer.
 - **How to study this page:** a short method at the top of every dialogue.
+- **Review:** every word you tap or miss goes into a review deck. Each folder has a review page that quizzes you on due words at growing intervals (same day, then 1, 3, 7 and 21 days), by reading or by listening. The deck is saved in your browser and shared across all pages of the site.
 - **Audio:** tap a word, a line, or a whole stage. **Smooth** (the default) reads each line in one target-language voice, so mixed sentences flow like real code-switching: the target words are exact and the reader's language has an accent. **Exact** switches voices at every language change, which gives native sound for both languages but short pauses. Speakers are told apart by pitch and, where available, a second voice. The audio uses the device's built-in text-to-speech, so quality depends on the voices installed.
 - **New words:** each stage lists the words it introduces, with the guide and meaning.
 - **Learner errors:** occasionally a speaker makes a typical mistake, shown struck through and corrected in the next line.
@@ -92,8 +93,7 @@ Content fact checks
 
 1. Native-speaker review of all Spanish and French content.
 2. Rewrite the all-target-language final stages so most of their words have already appeared earlier on the page.
-3. A core list of about 150 high-frequency words recycled across at least three packs each, checked at build time.
-4. Spaced review across packs (needs a single shared page or an export/import progress code).
+3. Recycle more vocabulary across packs. `src/build/vocab-report.js` measures it (see `src/vocab-report.md`): at the moment 84% of Spanish words and phrases appear in only one pack. Spaced review covers the words you meet; rewriting packs to reuse a core list is the content fix.
 7. More French dialogues, and more English-for-Spanish-speakers packs (a security engineer's change review next).
 
 ## Building from source
