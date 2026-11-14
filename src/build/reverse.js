@@ -27,9 +27,9 @@ swap('data-g="all">All</button>','data-g="all">Todas</button>');
 swap('data-g="none">Off</button>','data-g="none">Ninguna</button>');
 swap('aria-label="Speech speed"><b>Speed</b>','aria-label="Velocidad de voz"><b>Velocidad</b>');
 swap('data-r="0.72">Slow</button>','data-r="0.72">Lenta</button>');
-swap(`aria-label="Lucía's English"><b>Lucía's English</b>`,`aria-label="El español de Sam"><b>El español de Sam</b>`);
-swap('data-l="es">Accented</button>','data-l="es">Con acento</button>');
-swap('data-l="en">Clear</button>','data-l="en">Claro</button>');
+swap('aria-label="Voices"><b>Voices</b>','aria-label="Voces"><b>Voces</b>');
+swap('title="Each line in one voice, so it flows. The Spanish is exact and the English has an accent.">Smooth</button>','title="Cada línea con una sola voz, para que fluya. El inglés suena exacto y el español con acento.">Fluida</button>');
+swap('title="Switches voices at every language change: native sound for both languages, with short pauses.">Exact</button>','title="Cambia de voz en cada cambio de idioma: sonido nativo en los dos idiomas, con pausas cortas.">Exacta</button>');
 swap('<button id="prev">Previous stage</button><button id="next">Next stage</button>','<button id="prev">Etapa anterior</button><button id="next">Siguiente etapa</button>');
 swap('Tap any colored word to hear it and see what it means.','Toca cualquier palabra en color para oírla y ver qué significa.');
 swap('"This browser has no speech voices, so audio is unavailable. The written guides still work."','"Este navegador no tiene voces, así que no hay audio. Las guías escritas sí funcionan."');
@@ -73,13 +73,13 @@ swap('.who.S{color:var(--sam)} .who.L{color:var(--lucia)}','.who.S{color:var(--l
 // English words keep apostrophes and hyphens (let's, I'll, ninety-eight)
 swap('const t=p.slice(1,-1).match(/\\p{L}+|[^\\p{L}]+/gu);',"const t=p.slice(1,-1).match(/\\p{L}+(?:['’-]\\p{L}+)*|[^\\p{L}]+/gu);");
 // Sam's Spanish defaults to a clear Spanish voice for this audience, with its own saved setting
-swap('luciaEn=store.get("lucia")||"en"','luciaEn=store.get("rev-sam")||"en"');
+swap('luciaEn=store.get("flow")||"es"','luciaEn=store.get("rev-flow")||"es"');
 swap('lf.textContent="Listen first"','lf.textContent="Primero escucha"');
 swap('sm.textContent="Check yourself ("','sm.textContent="Ponte a prueba ("');
 all('(ok?"Correct: ":"Not quite: ")','(ok?"Correcto: ":"Casi: ")');
 swap('xm.setAttribute("aria-label","incorrect")','xm.setAttribute("aria-label","incorrecto")');
 swap('say1.setAttribute("aria-label","Play the question")','say1.setAttribute("aria-label","Reproducir la pregunta")');
-swap('store.set("lucia",luciaEn)','store.set("rev-sam",luciaEn)');
+swap('store.set("flow",luciaEn)','store.set("rev-flow",luciaEn)');
 // Pack content
 swap('`.split("\\n").forEach',"\n"+pack.lex+'`.split("\\n").forEach');
 s=s.replace(/const PAGES=\[[\s\S]*?\n\];\n\nconst SOUND/,()=>'const PAGES='+JSON.stringify(pack.pages)+';\n\nconst SOUND');

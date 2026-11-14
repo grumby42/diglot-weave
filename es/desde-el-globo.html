@@ -3,8 +3,8 @@
 <title>Desde el globo</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-0139Z">
-<meta name="shipped-utc" content="2026-11-14T01:39:15Z">
+<meta name="build-id" content="WEAV-20261114-0152Z">
+<meta name="shipped-utc" content="2026-11-14T01:52:02Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -98,8 +98,8 @@ footer p{margin:0}
       <button id="g-fade" data-g="fade">Fading</button><button id="g-all" data-g="all">All</button><button id="g-none" data-g="none">Off</button></span>
     <span class="seg" role="group" aria-label="Speech speed"><b>Speed</b>
       <button id="r-slow" data-r="0.72">Slow</button><button id="r-norm" data-r="1">Normal</button></span>
-    <span class="seg" role="group" aria-label="Lucía's English"><b>Lucía's English</b>
-      <button id="l-es" data-l="es">Accented</button><button id="l-en" data-l="en">Clear</button></span>
+    <span class="seg" role="group" aria-label="Voices"><b>Voices</b>
+      <button id="l-es" data-l="es" title="Each line in one voice, so it flows. The Spanish is exact and the English has an accent.">Smooth</button><button id="l-en" data-l="en" title="Switches voices at every language change: native sound for both languages, with short pauses.">Exact</button></span>
   </div>
   <p id="status" role="status"></p>
   <article class="page" id="page"></article>
@@ -113,7 +113,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-0139Z",SHIPPED="2026-11-14T01:39:15Z";
+const BUILD="WEAV-20261114-0152Z",SHIPPED="2026-11-14T01:52:02Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -522,7 +522,7 @@ PAGES.forEach(p=>{
 window.weaveAudit={missing,pct:PAGES.map(p=>p.pct),known:PAGES.map(p=>p.known),unused:Object.keys(LEX).filter(k=>!seen[k])};
 
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-let cur=Math.min(Math.max(+store.get("desde-stage")||0,0),PAGES.length-1),guide=store.get("guide")||"fade",rate=+(store.get("rate")||0.72),luciaEn=store.get("lucia")||"en";
+let cur=Math.min(Math.max(+store.get("desde-stage")||0,0),PAGES.length-1),guide=store.get("guide")||"fade",rate=+(store.get("rate")||0.72),luciaEn=store.get("flow")||"es";
 const $=id=>document.getElementById(id);
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 let ears=!!store.get("ears");
@@ -559,7 +559,7 @@ function segments(toks,who){
   const out=[];
   toks.forEach(t=>{
     if(t.k==="bad")return;
-    const es=t.k==="es"||t.k==="p"||(who==="L"&&luciaEn==="es");
+    const es=t.k==="es"||t.k==="p"||luciaEn==="es";
     const last=out[out.length-1];
     if(last&&last.es===es)last.x+=t.x;else out.push({es,x:t.x,who});
   });
@@ -668,7 +668,7 @@ function go(i){cur=i;store.set("desde-stage",i);if(hasTTS)speechSynthesis.cancel
 $("prev").onclick=()=>go(cur-1);$("next").onclick=()=>go(cur+1);
 document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{guide=b.dataset.g;store.set("guide",guide);render()});
 document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("rate",rate);render()});
-document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{luciaEn=b.dataset.l;store.set("lucia",luciaEn);render()});
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{luciaEn=b.dataset.l;store.set("flow",luciaEn);render()});
 $("b").textContent=BUILD;$("u").textContent=SHIPPED;
 render();
 </script>

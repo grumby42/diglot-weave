@@ -22,7 +22,7 @@ Every page is a single self-contained HTML file. Pages work offline once loaded,
 - **Pronunciation guides:** shown for a word's first two uses, then at the start of each of the next stages where it appears. Readers can switch them to always on or off.
 - **Check yourself:** a short quiz at the end of each stage, built from that stage's new words. The fable also has comprehension questions.
 - **Listen first:** blurs the text until you've heard it.
-- **Audio:** tap a word, a line, or a whole stage. Each speaker has a consistent voice. The audio uses the device's built-in text-to-speech, so quality depends on the voices installed.
+- **Audio:** tap a word, a line, or a whole stage. **Smooth** (the default) reads each line in one target-language voice, so mixed sentences flow like real code-switching: the target words are exact and the reader's language has an accent. **Exact** switches voices at every language change, which gives native sound for both languages but short pauses. Speakers are told apart by pitch and, where available, a second voice. The audio uses the device's built-in text-to-speech, so quality depends on the voices installed.
 - **New words:** each stage lists the words it introduces, with the guide and meaning.
 - **Learner errors:** occasionally a speaker makes a typical mistake, shown struck through and corrected in the next line.
 
