@@ -47,11 +47,11 @@ from the soc|fram dhe SOK|del SOC
 the soc|dhe SOK|el SOC|SOC se dice como una sola palabra
 when did it start|WEN did it START|¿cuándo empezó?
 at two in the morning|et TUU in dhe MOR-ning|a las dos de la mañana
-what's the impact|wots dhii IM-pekt|¿cuál es el impacto?
+what's the impact|wats dhii IM-pekt|¿cuál es el impacto?
 three servers are affected|THRII SER-verz ar e-FEK-ted|hay tres servidores afectados
 who's affected|juuz e-FEK-ted|¿a quién afecta?
 the finance team|dhe FAI-nens TIIM|el equipo de finanzas
-what did you do|WOT did iu DUU|¿qué hicieron?
+what did you do|WAT did iu DUU|¿qué hicieron?
 we isolated the hosts|wii AI-se-lei-ted dhe JOUSTS|aislamos los equipos
 we reset the passwords|wii rii-SET dhe PES-werdz|restablecimos las contraseñas
 and the sessions|end dhe SE-shenz|¿y las sesiones?

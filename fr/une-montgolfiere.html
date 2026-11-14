@@ -3,8 +3,8 @@
 <title>Une montgolfière</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1748Z">
-<meta name="shipped-utc" content="2026-11-14T17:48:29Z">
+<meta name="build-id" content="WEAV-20261114-1750Z">
+<meta name="shipped-utc" content="2026-11-14T17:50:17Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of French on that page. */
 :root{
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1748Z",SHIPPED="2026-11-14T17:48:29Z";
+const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:17Z";
 const LEX={};
 `la nacelle|lah nah-SEL|the basket
 nacelle|nah-SEL|basket
@@ -147,12 +147,12 @@ le ventilateur|luh vahn-tee-lah-TUHR|the fan
 l'équipe au sol|lay-kee-poh SOL|the ground crew
 on gonfle|ohn GOHNFL|we inflate
 oui|WEE|yes
-l'air entre|lair AHNTR|the air goes in
+l'air entre|lai-RAHNTR|the air goes in
 attention|ah-tahn-SYOHN|careful, watch out
 ne marchez pas sur l'enveloppe|nuh mar-shay pah sewr lahn-vuh-LOP|don't walk on the envelope (vous)
 reculez|ruh-kew-LAY|step back (vous)
 l'air chaud monte|lair shoh MOHNT|hot air rises
-le ballon se lève|luh bah-lohn suh LEV|the balloon stands up
+le ballon se redresse|luh bah-lohn suh ruh-DRESS|the balloon stands up
 bonjour|bohn-ZHOOR|hello, good morning
 je suis votre pilote|zhuh swee vohtr pee-LOT|I'm your pilot
 montez par ici|mohn-tay pah-ree-SEE|climb in this way (vous)
@@ -169,11 +169,11 @@ dans le sens du vol|dahn luh sahns dew VOL|in the direction of flight
 ne sortez pas|nuh sor-tay PAH|don't get out (vous)
 de la nacelle|duh lah nah-SEL|of the basket
 je te vois|zhuh tuh VWAH|I see you
-tu es à quelle altitude|tew eh ah kel ahl-tee-TEWD|what altitude are you at
+tu es à quelle altitude|tew eh ah keh-lahl-tee-TEWD|what altitude are you at
 mille pieds|meel PYAY|a thousand feet
-le vent est calme|luh vahn eh KALM|the wind is calm
+le vent est calme|luh vahn eh KAHLM|the wind is calm
 où vas-tu atterrir|oo vah-tew ah-teh-REER|where are you going to land
-je vais atterrir|zhuh vay ah-teh-REER|I'm going to land
+je vais atterrir|zhuh veh ah-teh-REER|I'm going to land|Balloon pilots also say se poser: je vais me poser
 dans le champ|dahn luh SHAHN|in the field
 derrière l'église|deh-ryair lay-GLEEZ|behind the church
 d'accord|dah-KOR|okay
@@ -194,7 +194,7 @@ l'air chaud|lair SHOH|the hot air
 non|NOHN|no`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Tell people not to walk on the envelope.","Ne marchez pas sur l'enveloppe !"],["Ask your passengers to hold on to the handles.","Tenez-vous aux poignées."],["Tell the crew you're going to land in the field.","Je vais atterrir dans le champ."]];
-const PAGES=[{"t":"The equipment","n":"The gear you unload from the trailer, one word at a time.","l":[["S","Calm morning, Camille. Finally we fly."],["L","First, the basket. In French it's {la nacelle}. And the burner is {le brûleur}."],["S","{La nacelle}, {le brûleur}. And the big fabric part?"],["L","{L'enveloppe}. The same word as in English, said the French way."],["S","{L'enveloppe}. And the fan?"],["L","{Le ventilateur}. And the people who do the real work: {l'équipe au sol}."],["S","The ground crew. {L'équipe au sol}. That's you."]]},{"t":"Inflation","n":"Short calls you say out loud as the balloon comes up.","q":[["Qu'est-ce qui monte ?","L'air chaud","La nacelle"]],"l":[["L","Cold inflation first. We say {on gonfle}: we inflate."],["S","{On gonfle}. And the fan pushes the air in?"],["L","{Oui}. {L'air entre}. Careful, somebody's walking on the fabric!"],["S","How do I tell them to stop?"],["L","{Attention} ! {Ne marchez pas sur l'enveloppe} !"],["S","{Ne marchez pas sur l'enveloppe} ! And when I light the burner?"],["L","Everyone back: {reculez} ! Then {l'air chaud monte} and {le ballon se lève}."]]},{"t":"The briefing","n":"Formal vous for passengers. These are the lines they hear.","l":[["S","{Bonjour}, {je suis votre pilote}. {Montez par ici}, {s'il vous plaît}."],["L","{Parfait}. With passengers, always {vous}."],["S","{Tenez-vous aux poignées}. {Ne touchez pas le brûleur}."],["L","{Très bien}. And for the landing?"],["S","{Pour l'atterrissage}, {pliez les genoux}, and face... how do I say the direction of flight?"],["L","{Regardez} {dans le sens du vol}."],["S","{Regardez} {dans le sens du vol}. {Ne sortez pas} {de la nacelle} until I tell you."]]},{"t":"On the radio","n":"Mostly French. Pilot and crew work out where to land.","l":[["L","{Je te vois}, I see you. {Tu es à quelle altitude} ?"],["S","{Mille pieds}. {Le vent est calme}."],["L","{Où vas-tu atterrir} ?"],["S","{Je vais atterrir} {dans le champ} {derrière l'église}."],["L","{D'accord}. {L'équipe arrive}: the crew is on the way."]]},{"t":"Landing","n":"All French, from the final approach to the toast.","q":[["Tout le monde va bien ?","Oui","Non"]],"l":[["S","{Attention}, {pour l'atterrissage}, {pliez les genoux} !"],["S","{On a atterri} ! {Tout le monde va bien} ?"],["L","{Oui}. {Et maintenant}, {le baptême de l'air}."],["S","{Avec du champagne} ?"],["L","{Bien sûr}. {C'est la tradition}."],["S","{Merci à l'équipe au sol}."],["L","{De rien}, {pilote}. {À demain}."]]}];
+const PAGES=[{"t":"The equipment","n":"The gear you unload from the trailer, one word at a time.","l":[["S","Calm morning, Camille. Finally we fly."],["L","First, the basket. In French it's {la nacelle}. And the burner is {le brûleur}."],["S","{La nacelle}, {le brûleur}. And the big fabric part?"],["L","{L'enveloppe}. Almost the same word as in English, said the French way."],["S","{L'enveloppe}. And the fan?"],["L","{Le ventilateur}. And the people who do the real work: {l'équipe au sol}."],["S","The ground crew. {L'équipe au sol}. That's you."]]},{"t":"Inflation","n":"Short calls you say out loud as the balloon comes up.","q":[["Qu'est-ce qui monte ?","L'air chaud","La nacelle"]],"l":[["L","Cold inflation first. We say {on gonfle}: we inflate."],["S","{On gonfle}. And the fan pushes the air in?"],["L","{Oui}. {L'air entre}. Careful, somebody's walking on the fabric!"],["S","How do I tell them to stop?"],["L","{Attention} ! {Ne marchez pas sur l'enveloppe} !"],["S","{Ne marchez pas sur l'enveloppe} ! And when I light the burner?"],["L","Everyone back: {reculez} ! Then {l'air chaud monte} and {le ballon se redresse}."]]},{"t":"The briefing","n":"Formal vous for passengers. These are the lines they hear.","l":[["S","{Bonjour}, {je suis votre pilote}. {Montez par ici}, {s'il vous plaît}."],["L","{Parfait}. With passengers, always {vous}."],["S","{Tenez-vous aux poignées}. {Ne touchez pas le brûleur}."],["L","{Très bien}. And for the landing?"],["S","{Pour l'atterrissage}, {pliez les genoux}, and face... how do I say the direction of flight?"],["L","{Regardez} {dans le sens du vol}."],["S","{Regardez} {dans le sens du vol}. {Ne sortez pas} {de la nacelle} until I tell you."]]},{"t":"On the radio","n":"Mostly French. Pilot and crew work out where to land.","l":[["L","{Je te vois}, I see you. {Tu es à quelle altitude} ?"],["S","{Mille pieds}. {Le vent est calme}."],["L","{Où vas-tu atterrir} ?"],["S","{Je vais atterrir} {dans le champ} {derrière l'église}."],["L","{D'accord}. {L'équipe arrive}: the crew is on the way."]]},{"t":"Landing","n":"All French, from the final approach to the toast.","q":[["Tout le monde va bien ?","Oui","Non"]],"l":[["S","{Attention}, {pour l'atterrissage}, {pliez les genoux} !"],["S","{On a atterri} ! {Tout le monde va bien} ?"],["L","{Oui}. {Et maintenant}, {le baptême de l'air}."],["S","{Avec du champagne} ?"],["L","{Bien sûr}. {C'est la tradition}."],["S","{Merci à l'équipe au sol}."],["L","{De rien}, {pilote}. {À demain}."]]}];
 
 const SOUND=[["on, om","nasal oh","bon: hum through your nose; don't finish the n"],["an, en, am, em","nasal ah","vent, temps"],["in, ain, un","nasal a","vin, pain; most speakers say un the same way"],["u","ew","tu: say ee with rounded lips"],["eu, œu","uh","deux, cœur: like fur without the r"],["ou","oo","vous, tout"],["oi","wah","moi, froid"],["eau, au","oh","manteau, chaud"],["é, -er, -ez","ay","café, enlever, parlez"],["è, ê, -et, -est","eh","très, peut-être, est"],["r","in the throat","a soft gargle, never the English r"],["j, soft g","zh","je, rouge: the s in measure"],["ch","sh","chaud, manteau"],["gn","ny","gagner: the ny in canyon"],["h","silent","homme is OM"],["final consonants","usually silent","but c, r, f, l often sound: avec, bonjour, neuf"],["liaison","linked","un homme sounds like uh-NOM: the n slides into the next word"]];
 

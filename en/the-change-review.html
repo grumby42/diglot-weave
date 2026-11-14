@@ -3,8 +3,8 @@
 <title>The Change Review</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1748Z">
-<meta name="shipped-utc" content="2026-11-14T17:48:29Z">
+<meta name="build-id" content="WEAV-20261114-1750Z">
+<meta name="shipped-utc" content="2026-11-14T17:50:17Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -129,7 +129,7 @@ footer p{margin:0}
   <article class="page" id="page"></article>
   <div class="nav"><button id="prev">Etapa anterior</button><button id="next">Siguiente etapa</button></div>
   <footer>
-    <p>Diálogo original escrito para esta página. Al presentar un cambio, el cliente quiere saber qué, por qué, cuándo, el riesgo y cómo revertirlo. La pronunciación sigue el inglés de Estados Unidos. El audio usa las voces de tu dispositivo.</p>
+    <p>Diálogo original escrito para esta página. Al presentar un cambio, el cliente quiere saber qué se cambia, por qué, cuándo, qué riesgo hay y cómo revertirlo. La pronunciación sigue el inglés de Estados Unidos. El audio usa las voces de tu dispositivo.</p>
     <p><a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a> · <a href="review.html">Repaso (<span id="due">0</span> pendientes)</a></p>
     <p>Versión <span id="b"></span> · publicada <span id="u"></span></p>
   </footer>
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Toca cualquier palabra en color para oírla y ver qué significa.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1748Z",SHIPPED="2026-11-14T17:48:29Z";
+const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:17Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -266,7 +266,7 @@ it|it|lo, eso
 is|iz|es, está
 we|wii|nosotros
 yes|ies|sí
-what|wot|qué
+what|wat|qué
 do|du|(auxiliar de pregunta)
 has|jez|tiene
 the change|dhe CHEINDY|el cambio
@@ -290,21 +290,22 @@ actually|EK-chu-e-li|en realidad|No significa «actualmente»
 currently|KER-ent-li|actualmente
 the firewall|dhe FAI-er-wol|el firewall
 the server|dhe SER-ver|el servidor
-what's the risk|wots dhe RISK|¿cuál es el riesgo?
+what's the risk|wats dhe RISK|¿cuál es el riesgo?
 the risk is low|dhe RISK iz LOU|el riesgo es bajo
 and if something breaks|end if SAM-thing BREIKS|¿y si algo falla?
 if something breaks|if SAM-thing BREIKS|si algo falla
 we'll roll back|wiil roul BEK|vamos a revertir el cambio
 we have a rollback plan|wii JEV e ROUL-bek PLEN|tenemos un plan de reversión
-how long is the downtime|JAU long iz dhe DAUN-taim|¿cuánto tiempo dura la interrupción?
-about fifteen minutes|e-BAUT fif-TIIN MI-nits|unos quince minutos
+how long is the downtime|jau LONG iz dhe DAUN-taim|¿cuánto tiempo dura la interrupción?
+about fifteen minutes|e-BAUT FIF-tiin MI-nits|unos quince minutos
 about an hour|e-BAUT en AU-er|alrededor de una hora
 is the change approved|iz dhe CHEINDY e-PRUUVD|¿el cambio está aprobado?
 it was approved on monday|it woz e-PRUUVD on MAN-dei|lo aprobaron el lunes
 okay|ou-KEI|de acuerdo
 great|greit|excelente
 the window is saturday|dhe WIN-dou iz SE-ter-dei|la ventana es el sábado|La t de Saturday suena casi como una r suave
-from ten to midnight|fram TEN tu MID-nait|de diez a medianoche
+from ten at night|fram TEN et NAIT|desde las diez de la noche
+until midnight|en-til MID-nait|hasta la medianoche
 sounds good|saundz GUD|me parece bien
 we'll send a confirmation|wiil SEND e kon-fer-MEI-shen|les enviaremos una confirmación
 when it's done|wen its DAN|cuando termine
@@ -313,7 +314,7 @@ great work|greit WERK|buen trabajo
 thank you for your time|THENK iu for ior TAIM|gracias por su tiempo`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Di que quieres explicarle el cambio al cliente.","I'd like to walk you through the change."],["Di que el riesgo es bajo.","The risk is low."],["Di que, si algo falla, van a revertir el cambio.","If something breaks, we'll roll back."]];
-const PAGES=[{"t":"Las palabras","n":"Sam enseña las palabras de un cambio antes de la reunión.","l":[["L","Mañana presentas un cambio al cliente. Primero, las palabras. El cambio es {the change}."],["S","{The change}. ¿Y la solicitud de cambio?"],["L","{Change request}. Y la ventana de mantenimiento, {maintenance window}."],["S","{Maintenance window}. ¿Y el plan para deshacer el cambio?"],["L","{Rollback plan}. Revertir es {roll back}."],["S","¿Y el riesgo? ¿Y el tiempo fuera de servicio?"],["L","{Risk} y {downtime}. Y si el cliente dice que sí, el cambio está {approved}."]]},{"t":"Abrir la reunión","n":"Una frase para presentar el cambio con buen tono.","l":[["L","Yo soy el cliente. Empieza tú."],["S","{Good morning}. ¿Cómo digo «me gustaría explicarle el cambio»?"],["L","{I'd like to} {walk you through} {the change}."],["S","{Good morning}. {I'd like to} {walk you through} {the change}."],["L","Perfecto. Ahora di qué vas a hacer y por qué."]]},{"t":"Qué y por qué","n":"El cambio y la razón. Ojo con un falso amigo.","q":[["What do we need to patch?","The firewall","The server"]],"l":[["S","{We need to} {patch the firewall}. Porque {there's} {a critical vulnerability}."],["L","Bien. Corto y claro."],["S","¿Y cómo digo «actualmente el firewall tiene una vulnerabilidad»? ¿<<Actually>>...?"],["L","Cuidado: {actually} significa «en realidad». «Actualmente» es {currently}."],["S","{Currently}, {the firewall} {has} {a critical vulnerability}."]]},{"t":"El riesgo","n":"Casi todo en inglés. El riesgo y cómo revertirlo.","l":[["L","{What's the risk?}"],["S","{The risk is low}."],["L","{And if something breaks?}"],["S","{If something breaks}, {we'll roll back}. {We have a rollback plan}."],["L","Muy bien. Siempre menciona el plan."]]},{"t":"Las preguntas","n":"Todo en inglés. El cliente pregunta por el tiempo y la aprobación.","q":[["How long is the downtime?","About fifteen minutes","About an hour"]],"l":[["L","{How long is the downtime?}"],["S","{About fifteen minutes}."],["L","{Is the change approved?}"],["S","{Yes}. {It was approved on Monday}."],["L","{Okay}. {Great}."]]},{"t":"El cierre","n":"Todo en inglés. Cuándo, y qué pasa después.","l":[["S","{The window is Saturday}, {from ten to midnight}."],["L","{Sounds good}."],["S","{We'll send a confirmation} {when it's done}."],["L","{Thank you}. {Great work}."],["S","{Thank you for your time}."]]}];
+const PAGES=[{"t":"Las palabras","n":"Sam enseña las palabras de un cambio antes de la reunión.","l":[["L","Mañana presentas un cambio al cliente. Primero, las palabras. El cambio es {the change}."],["S","{The change}. ¿Y la solicitud de cambio?"],["L","{Change request}. Y la ventana de mantenimiento, {maintenance window}."],["S","{Maintenance window}. ¿Y el plan para deshacer el cambio?"],["L","{Rollback plan}. Revertir es {roll back}."],["S","¿Y el riesgo? ¿Y el tiempo fuera de servicio?"],["L","{Risk} y {downtime}. Y si el cliente dice que sí, el cambio está {approved}."]]},{"t":"Abrir la reunión","n":"Una frase para presentar el cambio con buen tono.","l":[["L","Yo soy el cliente. Empieza tú."],["S","{Good morning}. ¿Cómo digo «me gustaría explicarle el cambio»?"],["L","{I'd like to} {walk you through} {the change}."],["S","{Good morning}. {I'd like to} {walk you through} {the change}."],["L","Perfecto. Ahora di qué vas a hacer y por qué."]]},{"t":"Qué y por qué","n":"El cambio y la razón. Ojo con un falso amigo.","q":[["What do we need to patch?","The firewall","The server"]],"l":[["S","{We need to} {patch the firewall}. Porque {there's} {a critical vulnerability}."],["L","Bien. Corto y claro."],["S","¿Y cómo digo «actualmente el firewall tiene una vulnerabilidad»? ¿<<Actually>>...?"],["L","Cuidado: {actually} significa «en realidad». «Actualmente» es {currently}."],["S","{Currently}, {the firewall} {has} {a critical vulnerability}."]]},{"t":"El riesgo","n":"Casi todo en inglés. El riesgo y cómo revertirlo.","l":[["L","{What's the risk?}"],["S","{The risk is low}."],["L","{And if something breaks?}"],["S","{If something breaks}, {we'll roll back}. {We have a rollback plan}."],["L","Muy bien. Siempre menciona el plan."]]},{"t":"Las preguntas","n":"Todo en inglés. El cliente pregunta por el tiempo y la aprobación.","q":[["How long is the downtime?","About fifteen minutes","About an hour"]],"l":[["L","{How long is the downtime?}"],["S","{About fifteen minutes}."],["L","{Is the change approved?}"],["S","{Yes}. {It was approved on Monday}."],["L","{Okay}. {Great}."]]},{"t":"El cierre","n":"Todo en inglés. Cuándo, y qué pasa después.","l":[["S","{The window is Saturday}, {from ten at night} {until midnight}."],["L","{Sounds good}."],["S","{We'll send a confirmation} {when it's done}."],["L","{Thank you}. {Great work}."],["S","{Thank you for your time}."]]}];
 
 const SOUND=[["th (think)","th sin voz","Lengua entre los dientes y sopla. think = THINK, no «tink» ni «sink»."],["th (this)","th con voz","Como una d muy suave con la lengua entre los dientes. this = DHIS."],["i corta (ship)","i","Más corta y relajada que la i española. ship (barco) no es sheep (oveja)."],["ee (sheep)","ii","Una i larga y tensa. Se escribe ii en esta guía."],["v","v","Labio de abajo contra los dientes de arriba. very no es berry."],["h","j","Como una j suave, solo aire. hello = je-LOU."],["j, g (job, general)","dy","Como dy rápido. job = DYOB, no «yob»."],["sh","sh","Como cuando pides silencio. she = SHII."],["z","z","Una s que zumba. zero = ZII-rou."],["vocal débil (about)","e","Una e muy relajada y corta en sílabas sin fuerza. about = e-BAUT."],["r","r","La lengua no toca nada y no vibra. Nunca es la rr española."],["s- inicial","s","Sin e delante. school = SKUUL, no «eskul»."],["-ed final","t, d","Casi siempre sin vocal extra. worked = WERKT, no «work-ed». Después de t o d sí suma sílaba: started = STAR-ted."],["ei, ou, ai","ei, ou, ai","Diptongos: day = DEI, go = GOU, my = MAI."],["a (cat, thanks, have)","e abierta","Más abierta que la e española, entre e y a. thanks = THENKS. Esta guía la escribe e, igual que la e de bed, así que escucha el audio."],["o (not, job, problem)","o","En Estados Unidos suena más cerca de la a española: not suena casi «nat». Esta guía escribe o; escucha el audio."],["t entre vocales (meeting, data)","r suave","En Estados Unidos suena como la r de «pero». La guía escribe t: meeting suena casi «MII-ring»."],["g en esta guía","siempre fuerte","gue y gui como en «guerra» y «guitarra»: get = guet, give = guiv."]];
 

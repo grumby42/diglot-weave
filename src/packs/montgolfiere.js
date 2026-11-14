@@ -11,12 +11,12 @@ le ventilateur|luh vahn-tee-lah-TUHR|the fan
 l'équipe au sol|lay-kee-poh SOL|the ground crew
 on gonfle|ohn GOHNFL|we inflate
 oui|WEE|yes
-l'air entre|lair AHNTR|the air goes in
+l'air entre|lai-RAHNTR|the air goes in
 attention|ah-tahn-SYOHN|careful, watch out
 ne marchez pas sur l'enveloppe|nuh mar-shay pah sewr lahn-vuh-LOP|don't walk on the envelope (vous)
 reculez|ruh-kew-LAY|step back (vous)
 l'air chaud monte|lair shoh MOHNT|hot air rises
-le ballon se lève|luh bah-lohn suh LEV|the balloon stands up
+le ballon se redresse|luh bah-lohn suh ruh-DRESS|the balloon stands up
 bonjour|bohn-ZHOOR|hello, good morning
 je suis votre pilote|zhuh swee vohtr pee-LOT|I'm your pilot
 montez par ici|mohn-tay pah-ree-SEE|climb in this way (vous)
@@ -33,11 +33,11 @@ dans le sens du vol|dahn luh sahns dew VOL|in the direction of flight
 ne sortez pas|nuh sor-tay PAH|don't get out (vous)
 de la nacelle|duh lah nah-SEL|of the basket
 je te vois|zhuh tuh VWAH|I see you
-tu es à quelle altitude|tew eh ah kel ahl-tee-TEWD|what altitude are you at
+tu es à quelle altitude|tew eh ah keh-lahl-tee-TEWD|what altitude are you at
 mille pieds|meel PYAY|a thousand feet
-le vent est calme|luh vahn eh KALM|the wind is calm
+le vent est calme|luh vahn eh KAHLM|the wind is calm
 où vas-tu atterrir|oo vah-tew ah-teh-REER|where are you going to land
-je vais atterrir|zhuh vay ah-teh-REER|I'm going to land
+je vais atterrir|zhuh veh ah-teh-REER|I'm going to land|Balloon pilots also say se poser: je vais me poser
 dans le champ|dahn luh SHAHN|in the field
 derrière l'église|deh-ryair lay-GLEEZ|behind the church
 d'accord|dah-KOR|okay
@@ -61,7 +61,7 @@ pages:[
 ["S","Calm morning, Camille. Finally we fly."],
 ["L","First, the basket. In French it's {la nacelle}. And the burner is {le brûleur}."],
 ["S","{La nacelle}, {le brûleur}. And the big fabric part?"],
-["L","{L'enveloppe}. The same word as in English, said the French way."],
+["L","{L'enveloppe}. Almost the same word as in English, said the French way."],
 ["S","{L'enveloppe}. And the fan?"],
 ["L","{Le ventilateur}. And the people who do the real work: {l'équipe au sol}."],
 ["S","The ground crew. {L'équipe au sol}. That's you."]]},
@@ -72,7 +72,7 @@ pages:[
 ["S","How do I tell them to stop?"],
 ["L","{Attention} ! {Ne marchez pas sur l'enveloppe} !"],
 ["S","{Ne marchez pas sur l'enveloppe} ! And when I light the burner?"],
-["L","Everyone back: {reculez} ! Then {l'air chaud monte} and {le ballon se lève}."]]},
+["L","Everyone back: {reculez} ! Then {l'air chaud monte} and {le ballon se redresse}."]]},
 {t:"The briefing",n:"Formal vous for passengers. These are the lines they hear.",l:[
 ["S","{Bonjour}, {je suis votre pilote}. {Montez par ici}, {s'il vous plaît}."],
 ["L","{Parfait}. With passengers, always {vous}."],

@@ -171,7 +171,7 @@ high-priority|jai prai-O-ri-ti|de alta prioridad
 wasting|WEIS-ting|perdiendo
 them|dhem|ellos, los
 is wasting|iz WEIS-ting|está perdiendo
-what|wot|qué
+what|wat|qué
 client's|KLAI-ents|del cliente
 when|wen|cuándo
 next|nekst|próximo`,

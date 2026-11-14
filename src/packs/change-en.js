@@ -2,7 +2,7 @@
 module.exports={key:"change-en",file:"the-change-review",title:"The Change Review",
 use:[["Di que quieres explicarle el cambio al cliente.","I'd like to walk you through the change."],["Di que el riesgo es bajo.","The risk is low."],["Di que, si algo falla, van a revertir el cambio.","If something breaks, we'll roll back."]],
 sub:"Lucía, ingeniera de seguridad, presenta un cambio a un cliente en inglés. Sam la ayuda. La página empieza en español y termina en inglés.",
-footer:"Diálogo original escrito para esta página. Al presentar un cambio, el cliente quiere saber qué, por qué, cuándo, el riesgo y cómo revertirlo.",
+footer:"Diálogo original escrito para esta página. Al presentar un cambio, el cliente quiere saber qué se cambia, por qué, cuándo, qué riesgo hay y cómo revertirlo.",
 lex:`the|dhe|el, la, los, las
 a|e|un, una
 and|end|y
@@ -10,7 +10,7 @@ it|it|lo, eso
 is|iz|es, está
 we|wii|nosotros
 yes|ies|sí
-what|wot|qué
+what|wat|qué
 do|du|(auxiliar de pregunta)
 has|jez|tiene
 the change|dhe CHEINDY|el cambio
@@ -34,21 +34,22 @@ actually|EK-chu-e-li|en realidad|No significa «actualmente»
 currently|KER-ent-li|actualmente
 the firewall|dhe FAI-er-wol|el firewall
 the server|dhe SER-ver|el servidor
-what's the risk|wots dhe RISK|¿cuál es el riesgo?
+what's the risk|wats dhe RISK|¿cuál es el riesgo?
 the risk is low|dhe RISK iz LOU|el riesgo es bajo
 and if something breaks|end if SAM-thing BREIKS|¿y si algo falla?
 if something breaks|if SAM-thing BREIKS|si algo falla
 we'll roll back|wiil roul BEK|vamos a revertir el cambio
 we have a rollback plan|wii JEV e ROUL-bek PLEN|tenemos un plan de reversión
-how long is the downtime|JAU long iz dhe DAUN-taim|¿cuánto tiempo dura la interrupción?
-about fifteen minutes|e-BAUT fif-TIIN MI-nits|unos quince minutos
+how long is the downtime|jau LONG iz dhe DAUN-taim|¿cuánto tiempo dura la interrupción?
+about fifteen minutes|e-BAUT FIF-tiin MI-nits|unos quince minutos
 about an hour|e-BAUT en AU-er|alrededor de una hora
 is the change approved|iz dhe CHEINDY e-PRUUVD|¿el cambio está aprobado?
 it was approved on monday|it woz e-PRUUVD on MAN-dei|lo aprobaron el lunes
 okay|ou-KEI|de acuerdo
 great|greit|excelente
 the window is saturday|dhe WIN-dou iz SE-ter-dei|la ventana es el sábado|La t de Saturday suena casi como una r suave
-from ten to midnight|fram TEN tu MID-nait|de diez a medianoche
+from ten at night|fram TEN et NAIT|desde las diez de la noche
+until midnight|en-til MID-nait|hasta la medianoche
 sounds good|saundz GUD|me parece bien
 we'll send a confirmation|wiil SEND e kon-fer-MEI-shen|les enviaremos una confirmación
 when it's done|wen its DAN|cuando termine
@@ -89,7 +90,7 @@ pages:[
 ["S","{Yes}. {It was approved on Monday}."],
 ["L","{Okay}. {Great}."]]},
 {t:"El cierre",n:"Todo en inglés. Cuándo, y qué pasa después.",l:[
-["S","{The window is Saturday}, {from ten to midnight}."],
+["S","{The window is Saturday}, {from ten at night} {until midnight}."],
 ["L","{Sounds good}."],
 ["S","{We'll send a confirmation} {when it's done}."],
 ["L","{Thank you}. {Great work}."],

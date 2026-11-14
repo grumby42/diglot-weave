@@ -94,7 +94,7 @@ I understand your concern.|ai an-der-STEND ior ken-SERN|Entiendo su preocupació
 You're right. We missed the SLA.|iur RAIT. wii MIST dhi es el EI|Tiene razón. No cumplimos el SLA.
 That's outside the scope of the contract.|dhets aut-SAID dhe SKOUP ov dhe KON-trekt|Eso está fuera del alcance del contrato.
 I can prepare a proposal.|ai ken pri-PER e pro-POU-zal|Puedo preparar una propuesta.
-What does success look like for you?|wot daz sek-SES luk laik for IU|¿Qué sería un buen resultado para usted?
+What does success look like for you?|wat daz sek-SES luk laik for IU|¿Qué sería un buen resultado para usted?
 Who else should be in this meeting?|JUU els shud bii in dhis MII-ting|¿Quién más debería estar en esta reunión?
 You'll have an update by end of day.|iul jev en AP-deit bai END ov DEI|Tendrá una actualización antes de que termine el día.`},
 {id:"suavizar",t:"Suavizar",es:"Softeners",i:"El inglés de Estados Unidos con clientes es directo pero amable. Estas frases suavizan una mala noticia, un no o una corrección.",rows:`I'm afraid…|aim e-FREID|Me temo que…|Antes de una mala noticia
@@ -107,7 +107,7 @@ I see your point, but…|ai SII ior POINT bat|Entiendo su punto, pero…
 That's a fair question.|dhets e FER KWES-chon|Es una pregunta válida.`},
 {id:"incidente",t:"Llamada de incidente",es:"Incident call",i:"Frases para una llamada urgente con el cliente: impacto, tiempos y próximos pasos.",rows:`Can everyone hear me?|ken EV-ri-wan JIR mii|¿Todos me escuchan?
 You're on mute.|iur on MIUT|Tiene el micrófono silenciado.
-What's the impact?|wots dhi IM-pekt|¿Cuál es el impacto?
+What's the impact?|wats dhi IM-pekt|¿Cuál es el impacto?
 When did it start?|WEN did it START|¿Cuándo empezó?
 Who's affected?|juuz e-FEK-ted|¿A quién afecta?
 We've contained the threat.|wiiv kon-TEIND dhe THRET|Contuvimos la amenaza.
