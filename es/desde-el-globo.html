@@ -3,8 +3,8 @@
 <title>Desde el globo</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:07Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:31Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:07Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:31Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 azul|ah-SOOL|blue
 rojo|RROH-hoh|red
 amarillo|ah-mah-REE-yoh|yellow
@@ -503,7 +504,7 @@ oscuro|ohs-KOO-roh|dark
 muy indiana|MWEE een-DYAH-nah|very Indiana`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Say the sky is blue.","El cielo es azul."],["Ask what that is.","¿Qué es eso?"],["Say there are many ducks on the lake.","Hay muchos patos en el lago."]];
-const PAGES=[{"t":"Colors","n":"The first thing you notice from the basket.","l":[["L","Look at the sky, Sam. Spanish for blue is {azul}."],["S","{El cielo azul}. And the clouds?"],["L","One cloud is {una nube}. These {nubes} are {blancas}, white."],["S","Our balloon is red and yellow. {Rojo y amarillo}."],["L","And everything below is {verde}. Green."],["S","{Verde}. Indiana in June."]]},{"t":"Counting","q":[["¿Cuántas vacas hay?","Diez","Ocho","Cinco"]],"n":"Numbers one to ten, with a question that uses them.","l":[["L","How many balloons can you see? {¿Cuántos globos?}"],["S","{Uno, dos, tres, cuatro, cinco}. Five."],["L","Keep going. There are more behind us."],["S","{Seis, siete, ocho}. Eight {globos}."],["L","And what color is that one? {¿De qué color?}"],["S","{Azul y blanco}."],["L","{Muy bien}. Now the cows. {¿Cuántas vacas hay?}"],["S","{Nueve, diez}. Ten {vacas}."]]},{"t":"The ground below","n":"Landscape words, and the question you use most.","l":[["L","{Mira abajo}. Look down. That is {el río}."],["S","{El río}, with {árboles} on both sides."],["L","Trees, {sí}. And all those squares are {campos}. Fields of {maíz} and {soya}."],["S","{Maíz y soya. Muy Indiana}."],["S","{¿Qué es eso? ¿Verde oscuro?}"],["L","{Sí. Es un bosque}. A forest."],["S","How do I ask how to say something?"],["L","{¿Cómo se dice?} Then the English word."]]},{"t":"Animals","n":"Spotting animals, mostly in Spanish now.","l":[["S","{Mira allá. Un caballo cerca de la granja}."],["L","{Sí. Y un perro}. Can you hear him?"],["S","{El perro ladra}. At us, probably."],["L","{Mira, cerca del bosque}. Two {venados}."],["S","{¡Dos venados!} And on {el lago}?"],["L","{Patos}. Ducks. {Muchos patos}."],["S","{¿Y eso? ¿Es un águila?}"],["L","{Creo que sí. ¡Qué bonito!}"]]},{"t":"Altitude","q":[["¿Dónde aterrizamos?","En el campo verde","En el lago","En el bosque"]],"n":"All Spanish. Big numbers and a joke about Indiana.","l":[["S","{Estamos a quinientos pies}."],["L","{Subimos a mil pies}."],["S","{¿Hay montañas aquí?}"],["L","{No. Indiana es muy plana, como una mesa}."],["S","{Tienes razón. Solo un cerro allá}."],["L","{Ahora bajamos. ¿Dónde aterrizamos?}"],["S","{En el campo verde, cerca de la casa roja}."],["L","{Perfecto}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["L","Yesterday the wind kept us on the ground, remember? So I told you the fable instead."],["S","I remember. Today it's our turn. I want to name everything I see from up there."],["L","Then keep your eyes open and your notebook handy. Colors, animals, rivers, the works."],["S","{Hoy} the {viento} is calm, Lucía. {Mañana} too."],["L","{Perfecto}. Then {hoy} we fly. {Mira}, the {sol} is coming up."],["S","{Café} first? {Tengo frío}."],["L","{Sí}, {café}. And {después}, the {globo}."],["S","{Muy bien}. {Vamos a} see Indiana from the sky."],["L","Bring {agua} {también}. It's dry up there."]]},{"t":"Colors","n":"The first thing you notice from the basket.","l":[["L","Look at the sky, Sam. Spanish for blue is {azul}."],["S","{El cielo azul}. And the clouds?"],["L","One cloud is {una nube}. These {nubes} are {blancas}, white."],["S","Our balloon is red and yellow. {Rojo y amarillo}."],["L","And everything below is {verde}. Green."],["S","{Verde}. Indiana in June."]]},{"t":"Counting","q":[["¿Cuántas vacas hay?","Diez","Ocho","Cinco"]],"n":"Numbers one to ten, with a question that uses them.","l":[["L","How many balloons can you see? {¿Cuántos globos?}"],["S","{Uno, dos, tres, cuatro, cinco}. Five."],["L","Keep going. There are more behind us."],["S","{Seis, siete, ocho}. Eight {globos}."],["L","And what color is that one? {¿De qué color?}"],["S","{Azul y blanco}."],["L","{Muy bien}. Now the cows. {¿Cuántas vacas hay?}"],["S","{Nueve, diez}. Ten {vacas}."]]},{"t":"The ground below","n":"Landscape words, and the question you use most.","l":[["L","{Mira abajo}. Look down. That is {el río}."],["S","{El río}, with {árboles} on both sides."],["L","Trees, {sí}. And all those squares are {campos}. Fields of {maíz} and {soya}."],["S","{Maíz y soya. Muy Indiana}."],["S","{¿Qué es eso? ¿Verde oscuro?}"],["L","{Sí. Es un bosque}. A forest."],["S","How do I ask how to say something?"],["L","{¿Cómo se dice?} Then the English word."]]},{"t":"Animals","n":"Spotting animals, mostly in Spanish now.","l":[["S","{Mira allá. Un caballo cerca de la granja}."],["L","{Sí. Y un perro}. Can you hear him?"],["S","{El perro ladra}. At us, probably."],["L","{Mira, cerca del bosque}. Two {venados}."],["S","{¡Dos venados!} And on {el lago}?"],["L","{Patos}. Ducks. {Muchos patos}."],["S","{¿Y eso? ¿Es un águila?}"],["L","{Creo que sí. ¡Qué bonito!}"]]},{"t":"Altitude","q":[["¿Dónde aterrizamos?","En el campo verde","En el lago","En el bosque"]],"n":"All Spanish. Big numbers and a joke about Indiana.","l":[["S","{Estamos a quinientos pies}."],["L","{Subimos a mil pies}."],["S","{¿Hay montañas aquí?}"],["L","{No. Indiana es muy plana, como una mesa}."],["S","{Tienes razón. Solo un cerro allá}."],["L","{Ahora bajamos. ¿Dónde aterrizamos?}"],["S","{En el campo verde, cerca de la casa roja}."],["L","{Perfecto}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

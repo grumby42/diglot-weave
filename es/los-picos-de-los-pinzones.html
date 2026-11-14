@@ -3,8 +3,8 @@
 <title>Los picos de los pinzones</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:10Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:33Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:10Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:33Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 islas|EES-lahs|islands
 galápagos|gah-LAH-pah-gohs|Galápagos; from galápago, a Spanish word for a tortoise or turtle (still in use)
 ecuador|eh-kwah-DOHR|Ecuador
@@ -477,7 +478,7 @@ cuántos|KWAHN-tohs|how many
 muchos años|MOO-chohs AH-nyohs|many years`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Say the finches have different beaks.","Los pinzones tienen picos diferentes."],["Say there's a drought and it doesn't rain.","Hay una sequía. No llueve."],["Say species change little by little.","Las especies cambian poco a poco."]];
-const PAGES=[{"t":"The islands","n":"Place names and the animals that made them famous.","l":[["L","Today, {las islas Galápagos}. They belong to {Ecuador}."],["S","The tortoise islands."],["L","{Exacto}. {Galápagos} comes from an old Spanish word for {tortugas}. {Tortugas gigantes}."],["S","And {Darwin} went there."],["L","In 1835. But the famous birds are small. {Pinzones}. Finches."],["S","{Pinzones}. Darwin's finches."]]},{"t":"Different beaks","q":[["¿Para qué es un pico grueso?","Para romper semillas duras","Para comer insectos"]],"n":"Describing shapes and what they are for.","l":[["L","The finches have {picos diferentes}. Different beaks on {cada isla}."],["S","{Picos}. Why different?"],["L","Food. A {pico grueso}, thick, is {para romper semillas duras}."],["S","For cracking hard seeds. And a thin one?"],["L","{Un pico delgado} is for {insectos}."],["S","{El pinzón con pico delgado come insectos}."],["L","{¡Perfecto!}"]]},{"t":"The drought","n":"A real experiment, about half in Spanish.","l":[["L","Two {científicos}, Peter and Rosemary Grant, {midieron} the beaks on one small island."],["S","{Midieron}. They measured. {¿Cuántos años?}"],["L","{Muchos años}. In 1977, {una sequía}. {No llueve}."],["S","{Una sequía}. So, {pocas semillas}."],["L","{Y las semillas blandas} run out. Only {semillas duras} are left."],["S","So the birds with {picos gruesos} eat. {Sobreviven}."],["L","{Y muchos pinzones con picos pequeños mueren}."]]},{"t":"Natural selection","q":[["¿Quién decide?","El ambiente","Los pinzones","Darwin"]],"n":"Mostly Spanish. The idea that ties it together.","l":[["S","{¿Y los hijos?}"],["L","{Los hijos heredan los picos de los padres}."],["S","{Entonces, en la nueva generación, los picos son más grandes}."],["L","{Exacto. Es selección natural}. Natural selection, the big idea in Darwin's book."],["S","{¿Nadie lo planea?}"],["L","{Nadie. El ambiente decide}. The environment decides."],["S","{Y en muchas generaciones, las especies cambian poco a poco}."]]},{"t":"Like pilots","n":"All Spanish.","l":[["L","{Darwin no lo vio en vivo}."],["S","{Pero los científicos sí lo vieron}."],["L","{Sí, hace casi cincuenta años}."],["S","{Como los pilotos. Sobreviven los que se adaptan}."],["L","{Qué buena idea}."],["S","{Gracias. Mañana, otra historia}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["S","No more meetings {hoy}, {por favor}. Teach me something about animals."],["L","{Bien}. Islands, birds and a {muy} famous scientist."],["S","Darwin? {Creo} I know a little."],["L","{Un poco} is a good start. {Mira}: small birds, big idea."],["L","{Ahora}, pay attention to the beaks. {Todo} is in the beaks."]]},{"t":"The islands","n":"Place names and the animals that made them famous.","l":[["L","Today, {las islas Galápagos}. They belong to {Ecuador}."],["S","The tortoise islands."],["L","{Exacto}. {Galápagos} comes from an old Spanish word for {tortugas}. {Tortugas gigantes}."],["S","And {Darwin} went there."],["L","In 1835. But the famous birds are small. {Pinzones}. Finches."],["S","{Pinzones}. Darwin's finches."]]},{"t":"Different beaks","q":[["¿Para qué es un pico grueso?","Para romper semillas duras","Para comer insectos"]],"n":"Describing shapes and what they are for.","l":[["L","The finches have {picos diferentes}. Different beaks on {cada isla}."],["S","{Picos}. Why different?"],["L","Food. A {pico grueso}, thick, is {para romper semillas duras}."],["S","For cracking hard seeds. And a thin one?"],["L","{Un pico delgado} is for {insectos}."],["S","{El pinzón con pico delgado come insectos}."],["L","{¡Perfecto!}"]]},{"t":"The drought","n":"A real experiment, about half in Spanish.","l":[["L","Two {científicos}, Peter and Rosemary Grant, {midieron} the beaks on one small island."],["S","{Midieron}. They measured. {¿Cuántos años?}"],["L","{Muchos años}. In 1977, {una sequía}. {No llueve}."],["S","{Una sequía}. So, {pocas semillas}."],["L","{Y las semillas blandas} run out. Only {semillas duras} are left."],["S","So the birds with {picos gruesos} eat. {Sobreviven}."],["L","{Y muchos pinzones con picos pequeños mueren}."]]},{"t":"Natural selection","q":[["¿Quién decide?","El ambiente","Los pinzones","Darwin"]],"n":"Mostly Spanish. The idea that ties it together.","l":[["S","{¿Y los hijos?}"],["L","{Los hijos heredan los picos de los padres}."],["S","{Entonces, en la nueva generación, los picos son más grandes}."],["L","{Exacto. Es selección natural}. Natural selection, the big idea in Darwin's book."],["S","{¿Nadie lo planea?}"],["L","{Nadie. El ambiente decide}. The environment decides."],["S","{Y en muchas generaciones, las especies cambian poco a poco}."]]},{"t":"Like pilots","n":"All Spanish.","l":[["L","{Darwin no lo vio en vivo}."],["S","{Pero los científicos sí lo vieron}."],["L","{Sí, hace casi cincuenta años}."],["S","{Como los pilotos. Sobreviven los que se adaptan}."],["L","{Qué buena idea}."],["S","{Gracias. Mañana, otra historia}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

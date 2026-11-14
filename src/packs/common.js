@@ -60,4 +60,5 @@ tienen|TYEH-nehn|they have
 cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
-les|lehs|to them, to you (plural)`;
+les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine`;

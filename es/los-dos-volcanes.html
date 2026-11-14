@@ -3,8 +3,8 @@
 <title>Los dos volcanes</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:09Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:33Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:09Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:33Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 leyenda|leh-YEHN-dah|legend
 volcanes|bohl-KAH-nehs|volcanoes
 volcán|bohl-KAHN|volcano
@@ -470,7 +471,7 @@ la ciudad de méxico|lah syoo-DAHD deh MEH-hee-koh|Mexico City
 ciudad|syoo-DAHD|city`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Say that Popo goes to war.","Popo va a la guerra."],["Say that Izta dies of sadness.","Izta muere de tristeza."],["Say you can see them together from Mexico City.","Se ven juntos desde la Ciudad de México."]];
-const PAGES=[{"t":"Two mountains","n":"Names first. The legend explains them.","l":[["L","{Una leyenda}, Sam. A legend from Mexico, about two {volcanes}."],["S","{Volcanes}. Volcanoes. Which ones?"],["L","{Popocatépetl}. In Nahuatl, the smoking mountain. People say {Popo}."],["S","{Popo}. And the other?"],["L","{Iztaccíhuatl}, the white woman. {Izta}. From the side she looks like {una mujer dormida}."],["S","A sleeping woman. And {Popo} still {humea}?"],["L","{Sí}. He still smokes. The story says why."]]},{"t":"The promise","n":"Characters, a father and a deal.","l":[["L","Long ago {Popo} was {un guerrero}. A warrior."],["S","And {Izta} was a {princesa}?"],["L","{Sí}. And {se aman}. They love each other."],["S","Let me guess. Her {padre} has a condition."],["L","{Exacto}. There is a {guerra}. He tells {Popo}, {si vuelves, te casas con ella}."],["S","If you come back, you marry her. So {Popo va a la guerra}."]]},{"t":"The lie","q":[["¿Qué dice el hombre celoso?","Que Popo murió","Que Popo vuelve"]],"n":"The turn in the story, about half in Spanish.","l":[["L","{Pero hay otro hombre}. He is {celoso}."],["S","Jealous. Of course."],["L","{El hombre celoso} tells {Izta} a {mentira}. {Dice que Popo murió}."],["S","{¿Popo murió?} No!"],["L","{No, pero Izta} believes it. {Muere de tristeza}."],["S","She dies of sadness. {Qué triste}."]]},{"t":"The return","n":"Mostly Spanish. The ending everyone knows.","l":[["L","{Popo vuelve vivo}. He finds her."],["S","{¿Y entonces?}"],["L","{La lleva a las montañas. La acuesta}."],["S","{¿Y Popo?}"],["L","{Se arrodilla con una antorcha}. He kneels beside her."],["S","{Y la nieve los cubre}."]]},{"t":"Today","q":[["¿Qué hace Popo todavía?","Humea","Muere"]],"n":"All Spanish.","l":[["L","{Se convierten en volcanes}."],["S","{Izta es la mujer dormida}."],["L","{Y Popo todavía humea. La cuida con su antorcha}."],["S","{¿Se ven desde la Ciudad de México?}"],["L","{Sí. Se ven juntos}."],["S","{¿Es verdad?}"],["L","{No sé. Es una leyenda. Pero qué bonita}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["S","That flamingo story stuck with me. I keep thinking about the snakes at the party."],["L","Then you'll like this one. It's from Mexico, near where my aunt lives, and everybody there knows it."],["L","{Otra} {historia}, Sam? This one is about two mountains."],["S","{Sí}. {Hoy} I have time."],["L","It's sad, {pero} beautiful. Someday you'll see the {sol} rise behind them."],["S","{Tal vez}. Someday."],["L","{Tal vez}. {Entonces}, listen."],["S","{Tengo frío}. Is it a long story?"],["L","{Un poco}. Get a blanket {también}. {Vamos a} begin."]]},{"t":"Two mountains","n":"Names first. The legend explains them.","l":[["L","{Una leyenda}, Sam. A legend from Mexico, about two {volcanes}."],["S","{Volcanes}. Volcanoes. Which ones?"],["L","{Popocatépetl}. In Nahuatl, the smoking mountain. People say {Popo}."],["S","{Popo}. And the other?"],["L","{Iztaccíhuatl}, the white woman. {Izta}. From the side she looks like {una mujer dormida}."],["S","A sleeping woman. And {Popo} still {humea}?"],["L","{Sí}. He still smokes. The story says why."]]},{"t":"The promise","n":"Characters, a father and a deal.","l":[["L","Long ago {Popo} was {un guerrero}. A warrior."],["S","And {Izta} was a {princesa}?"],["L","{Sí}. And {se aman}. They love each other."],["S","Let me guess. Her {padre} has a condition."],["L","{Exacto}. There is a {guerra}. He tells {Popo}, {si vuelves, te casas con ella}."],["S","If you come back, you marry her. So {Popo va a la guerra}."]]},{"t":"The lie","q":[["¿Qué dice el hombre celoso?","Que Popo murió","Que Popo vuelve"]],"n":"The turn in the story, about half in Spanish.","l":[["L","{Pero hay otro hombre}. He is {celoso}."],["S","Jealous. Of course."],["L","{El hombre celoso} tells {Izta} a {mentira}. {Dice que Popo murió}."],["S","{¿Popo murió?} No!"],["L","{No, pero Izta} believes it. {Muere de tristeza}."],["S","She dies of sadness. {Qué triste}."]]},{"t":"The return","n":"Mostly Spanish. The ending everyone knows.","l":[["L","{Popo vuelve vivo}. He finds her."],["S","{¿Y entonces?}"],["L","{La lleva a las montañas. La acuesta}."],["S","{¿Y Popo?}"],["L","{Se arrodilla con una antorcha}. He kneels beside her."],["S","{Y la nieve los cubre}."]]},{"t":"Today","q":[["¿Qué hace Popo todavía?","Humea","Muere"]],"n":"All Spanish.","l":[["L","{Se convierten en volcanes}."],["S","{Izta es la mujer dormida}."],["L","{Y Popo todavía humea. La cuida con su antorcha}."],["S","{¿Se ven desde la Ciudad de México?}"],["L","{Sí. Se ven juntos}."],["S","{¿Es verdad?}"],["L","{No sé. Es una leyenda. Pero qué bonita}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

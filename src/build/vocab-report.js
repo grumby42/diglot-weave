@@ -25,6 +25,10 @@ const ROUTE=['viento-y-sol','desde-el-globo','hablemos-de-globos','a-la-mesa','e
    `- Core words seen 8 or more times in total: ${core.filter(([,v])=>v.n>=8).length}`,'',
    '| Word | Packs | Total uses |','|---|---|---|',
    ...core.map(([w,v])=>`| ${w} | ${v.packs.length} | ${v.n} |`)];
+  const CORE=require(path.join(ROOT,'src','packs','core.js'));
+  const weak=CORE.filter(w=>!words[w]||words[w].packs.length<3||words[w].n<8);
+  lines.splice(9,0,`- Core list (src/packs/core.js): ${CORE.length} words; meeting the target of 3+ packs and 8+ uses: ${CORE.length-weak.length}`,
+    weak.length?`- Below target: ${weak.map(w=>w+' ('+(words[w]?words[w].packs.length+' packs, '+words[w].n+' uses':'unused')+')').join(', ')}`:'- Every core word meets the target.','');
   fs.writeFileSync(path.join(ROOT,'src','vocab-report.md'),lines.join('\n')+'\n');
   console.log(lines.slice(0,9).join('\n'));
   // Per-pack: share of each pack's words already met in earlier packs on the route

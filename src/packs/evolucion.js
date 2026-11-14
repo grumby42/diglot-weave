@@ -68,6 +68,7 @@ idea|ee-DEH-ah|idea
 cuántos|KWAHN-tohs|how many
 muchos años|MOO-chohs AH-nyohs|many years`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "No more meetings {hoy}, {por favor}. Teach me something about animals."], ["L", "{Bien}. Islands, birds and a {muy} famous scientist."], ["S", "Darwin? {Creo} I know a little."], ["L", "{Un poco} is a good start. {Mira}: small birds, big idea."],["L", "{Ahora}, pay attention to the beaks. {Todo} is in the beaks."]]},
 {t:"The islands",n:"Place names and the animals that made them famous.",l:[
 ["L","Today, {las islas Galápagos}. They belong to {Ecuador}."],
 ["S","The tortoise islands."],

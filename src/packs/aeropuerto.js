@@ -56,6 +56,7 @@ dijiste|dee-HEES-teh|you said
 encontrar|ehn-kohn-TRAHR|to find
 para|PAH-rah|for, in order to`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["L", "You're working the ramp at the airport this week, right? Lots of bags and lots of noise."],["S", "Right. And half the crew speaks Spanish."],["S", "Long night at the bar, {pero} {hoy} it's the airport."], ["L", "{Café}? You look tired."], ["S", "{Sí}, {por favor}. {Mucho} {café}."], ["L", "{Mira}: three flights before lunch. {Cuidado} out there."], ["S", "{Siempre}. Especially near the engines."],["L", "{¿Dónde} is your vest? Wear it {siempre} on the ramp."],["S", "In the {camioneta}. I'll get it {ahora}."]]},
 {t:"The airport",n:"Places and things you already handle every shift.",l:[
 ["S","Long shift, Lucía. Three flights before lunch."],
 ["L","A flight is {un vuelo}. And the plane is {el avión}."],

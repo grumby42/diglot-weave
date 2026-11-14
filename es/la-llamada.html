@@ -3,8 +3,8 @@
 <title>La llamada</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:12Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:36Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:12Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:36Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 llamada|yah-MAH-dah|call
 la llamada|lah yah-MAH-dah|the call
 estación|ehs-tah-SYOHN|station
@@ -481,7 +482,7 @@ la pregunta|lah preh-GOON-tah|the question
 más importante|MAHS eem-pohr-TAHN-teh|most important`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Tell someone you're firefighters and you're going to help.","Somos bomberos. Vamos a ayudarle."],["Ask if anyone is inside.","¿Hay alguien adentro?"],["Warn that a grease fire never gets water.","¡Nunca con agua!"]];
-const PAGES=[{"t":"The gear","n":"Station words while the crew checks equipment.","l":[["L","Quiet night at {la estación}. Let's check gear in Spanish."],["S","Okay. {El casco}. Helmet."],["L","{El equipo de respiración}. Your SCBA."],["S","{La manguera} is the hose. And {el hidrante}?"],["L","Hydrant. And {el extintor}, extinguisher."],["S","One more. Fire itself is {fuego}, but a house fire?"],["L","{Un incendio}. {Fuego} is the flames. {Incendio} is the event."]]},{"t":"The call","q":[["¿Cuántas personas viven aquí?","Cuatro","Tres"]],"n":"Arrival, and the first question that matters.","l":[["L","The tones drop. {La llamada}: {incendio en la cocina}."],["S","A kitchen fire. On scene, a woman is outside in {el humo}."],["L","First words: {somos bomberos, vamos a ayudarle}."],["S","{Señora, ¿hay alguien adentro?}"],["L","She says, {¡mi hijo! ¡Mi hijo está adentro!}"],["S","{¿Cuántas personas viven aquí?}"],["L","{Cuatro}. And she can see {tres} out on the lawn."]]},{"t":"On scene","n":"Commands, mostly in Spanish.","l":[["S","{¡Salgan de la casa! ¡Aléjese, señora!}"],["L","She tries to go back. {¡No regrese!}"],["S","{¿Huele a gas?}"],["L","{No. Es aceite. Una sartén}."],["S","A grease fire. {¿Con agua?}"],["L","{¡Nunca con agua!} Her husband {puso la tapa}. Smart."]]},{"t":"Found","q":[["¿El hijo estaba dormido?","No. Estaba con audífonos","Sí"]],"n":"Mostly Spanish, in the past tense.","l":[["S","{¿Y el hijo?}"],["L","{Encontramos al hijo en su cuarto}. We found him in his room."],["S","{¿Estaba dormido?}"],["L","{No. Estaba con audífonos}. Headphones on. {No oyó la alarma}."],["S","{¿Y salió bien?}"],["L","{Sí. Todos están bien. Nadie herido}."]]},{"t":"At the station","n":"All Spanish. The lesson the crew tells new people.","l":[["S","{Gracias a Dios}."],["L","{Por eso contamos siempre}."],["S","{¿Cuántas personas viven aquí?}"],["L","{La pregunta más importante}."],["S","{Preguntamos cada vez}."],["L","{Cada vez}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["L","No flying for you {hoy}. {Hoy} you're at the fire station."],["S","{Sí}. Quiet so far. {Café}?"],["L","{Gracias}. {Pero} when the tones drop, {todo} changes."],["S","{Entonces} let's check the gear {ahora}."],["L","{Exacto}. And {cuidado}: some of these words are new."],["L","{¿Dónde} is your helmet? Put it on the truck {ahora}, {porque} the calls come fast."]]},{"t":"The gear","n":"Station words while the crew checks equipment.","l":[["L","Quiet night at {la estación}. Let's check gear in Spanish."],["S","Okay. {El casco}. Helmet."],["L","{El equipo de respiración}. Your SCBA."],["S","{La manguera} is the hose. And {el hidrante}?"],["L","Hydrant. And {el extintor}, extinguisher."],["S","One more. Fire itself is {fuego}, but a house fire?"],["L","{Un incendio}. {Fuego} is the flames. {Incendio} is the event."]]},{"t":"The call","q":[["¿Cuántas personas viven aquí?","Cuatro","Tres"]],"n":"Arrival, and the first question that matters.","l":[["L","The tones drop. {La llamada}: {incendio en la cocina}."],["S","A kitchen fire. On scene, a woman is outside in {el humo}."],["L","First words: {somos bomberos, vamos a ayudarle}."],["S","{Señora, ¿hay alguien adentro?}"],["L","She says, {¡mi hijo! ¡Mi hijo está adentro!}"],["S","{¿Cuántas personas viven aquí?}"],["L","{Cuatro}. And she can see {tres} out on the lawn."]]},{"t":"On scene","n":"Commands, mostly in Spanish.","l":[["S","{¡Salgan de la casa! ¡Aléjese, señora!}"],["L","She tries to go back. {¡No regrese!}"],["S","{¿Huele a gas?}"],["L","{No. Es aceite. Una sartén}."],["S","A grease fire. {¿Con agua?}"],["L","{¡Nunca con agua!} Her husband {puso la tapa}. Smart."]]},{"t":"Found","q":[["¿El hijo estaba dormido?","No. Estaba con audífonos","Sí"]],"n":"Mostly Spanish, in the past tense.","l":[["S","{¿Y el hijo?}"],["L","{Encontramos al hijo en su cuarto}. We found him in his room."],["S","{¿Estaba dormido?}"],["L","{No. Estaba con audífonos}. Headphones on. {No oyó la alarma}."],["S","{¿Y salió bien?}"],["L","{Sí. Todos están bien. Nadie herido}."]]},{"t":"At the station","n":"All Spanish. The lesson the crew tells new people.","l":[["S","{Gracias a Dios}."],["L","{Por eso contamos siempre}."],["S","{¿Cuántas personas viven aquí?}"],["L","{La pregunta más importante}."],["S","{Preguntamos cada vez}."],["L","{Cada vez}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

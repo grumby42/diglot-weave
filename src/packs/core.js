@@ -1,0 +1,3 @@
+// Core Spanish vocabulary: high-frequency words every pack can use (all defined in the shared lexicon).
+// src/build/vocab-report.js checks that each appears in at least 3 packs and at least 8 times in total.
+module.exports=["hoy","mañana","ahora","después","sí","no","gracias","por favor","de nada","muy","bien","mucho","más","también","pero","porque","todo","tengo frío","café","agua","cuidado","mira","viento","sol","globo","camioneta","equipo","piloto","perfecto","exacto","otra vez","otra","qué","dónde","hay","está","vamos a","despacio","siempre","un poco","historia","buenos días","tal vez","entonces","creo","primero"];

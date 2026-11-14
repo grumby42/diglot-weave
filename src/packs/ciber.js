@@ -69,6 +69,7 @@ una|OO-nah|a, one (feminine)
 están|ehs-TAHN|are
 sabemos|sah-BEH-mohs|we know`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["L", "Back at the security desk this week? No balloons, no bags, just screens."],["S", "Just screens. And an inbox full of alerts."],["S", "{Buenos días}, Lucía. Monday again."], ["L", "{Buenos días}. {Café}? Somebody already clicked something."], ["S", "{Otra vez}? {Pero} it's only nine."], ["L", "{Sí}. {Todo} starts with one click. {Vamos a} work."],["S", "{Creo} it's phishing {otra vez}, {porque} it always is."]]},
 {t:"Monday morning",n:"The nouns of a bad day.",l:[
 ["L","Monday morning, Sam. Somebody clicked something. An attack is {un ataque}."],
 ["S","{Un ataque}. And the password?"],

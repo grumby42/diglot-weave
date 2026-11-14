@@ -76,6 +76,7 @@ di|DEE|I gave (from dar); di otra vuelta, I went around again
 hacer|ah-SEHR|to do, to make
 una|OO-nah|a`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "No night shift {hoy}. {Hoy} I fly the plane instead of unloading it."], ["L", "{Perfecto}. Is the {viento} strong?"], ["S", "{Un poco}. Gusty. {Mira} the windsock."], ["L", "{Cuidado}, {piloto}. Read the checklist {despacio}."], ["S", "{Siempre}."],["S", "I checked the weather twice already, and I'll check it {otra vez} before we taxi."],["L", "Good habit. {Cuidado} up there, {piloto}."]]},
 {t:"Preflight",n:"Paperwork and fuel, in short pieces.",l:[
 ["L","Before we fly, {la lista de verificación}. The checklist."],
 ["S","{La lista de verificación}. And {el plan de vuelo}?"],

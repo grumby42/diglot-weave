@@ -65,6 +65,7 @@ hasta mañana|AHS-tah mah-NYAH-nah|see you tomorrow
 puedo|PWEH-doh|I can
 algo|AHL-goh|something`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "I picked up a shift at a friend's place downtown. Busy Friday crowd."],["L", "Then you'll need the bar words, and fast. Let's go through them before you leave."],["L", "Breakfast was {perfecto}. {Pero} tonight you work, {¿no?}"], ["S", "{Sí}. A bar shift. Drinks, not {café}."], ["L", "Go {despacio} at first. And {siempre} say {por favor} and {gracias}."], ["S", "{Por favor}, {gracias}, {de nada}. Those I know."], ["L", "{Exacto}. {Entonces}, behind the bar."],["S", "{Tal vez} I'll learn {un poco} tonight."]]},
 {t:"Behind the bar",n:"The nouns you reach for all night.",l:[
 ["S","Busy night, Lucía. First customer wants a beer."],
 ["L","{Una cerveza}. And wine is {vino}. Water is {agua}."],

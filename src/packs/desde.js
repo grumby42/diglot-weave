@@ -94,6 +94,7 @@ aterrizamos|ah-teh-rree-SAH-mohs|do we land
 oscuro|ohs-KOO-roh|dark
 muy indiana|MWEE een-DYAH-nah|very Indiana`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["L", "Yesterday the wind kept us on the ground, remember? So I told you the fable instead."],["S", "I remember. Today it's our turn. I want to name everything I see from up there."],["L", "Then keep your eyes open and your notebook handy. Colors, animals, rivers, the works."],["S", "{Hoy} the {viento} is calm, Lucía. {Mañana} too."], ["L", "{Perfecto}. Then {hoy} we fly. {Mira}, the {sol} is coming up."], ["S", "{Café} first? {Tengo frío}."], ["L", "{Sí}, {café}. And {después}, the {globo}."], ["S", "{Muy bien}. {Vamos a} see Indiana from the sky."],["L", "Bring {agua} {también}. It's dry up there."]]},
 {t:"Colors",n:"The first thing you notice from the basket.",l:[
 ["L","Look at the sky, Sam. Spanish for blue is {azul}."],
 ["S","{El cielo azul}. And the clouds?"],

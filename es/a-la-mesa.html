@@ -3,8 +3,8 @@
 <title>A la mesa</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:08Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:31Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:08Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:31Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 tengo hambre|TEHN-goh AHM-breh|I'm hungry (literally "I have hunger")
 hambre|AHM-breh|hunger
 desayuno|deh-sah-YOO-noh|breakfast
@@ -467,7 +468,7 @@ piloncillo|pee-lohn-SEE-yoh|cone of unrefined cane sugar|Used to sweeten café d
 y|EE|and`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Order two egg tacos politely.","Quisiera dos tacos de huevo, por favor."],["Ask if the green salsa is spicy.","¿La salsa verde pica?"],["Say you're allergic to peanuts (said by a man).","Soy alérgico a los cacahuates."]];
-const PAGES=[{"t":"The food","n":"What is on the table at a launch-field breakfast.","l":[["S","Flight's over, Lucía, and I'm starving. How do I say that?"],["L","{Tengo hambre}. You have hunger, like {tengo frío}."],["S","{Tengo hambre}. What's for breakfast?"],["L","{El desayuno} today is {tacos}. Egg is {huevo}. Beans are {frijoles}."],["S","{Huevo y frijoles}. And cheese?"],["L","{Queso}. And {salsa}, of course."],["S","Is there chicken? Beef?"],["L","{Pollo} is chicken. {Carne} is meat, usually beef."]]},{"t":"Ordering","n":"Polite ordering, and a choice the cook will ask you.","l":[["S","How do I order without sounding rude?"],["L","{Quisiera}. I would like. Softer than {quiero}."],["S","{Quisiera dos tacos de huevo, por favor}."],["L","{Muy bien}. Now the cook asks, {¿de maíz o de harina?}"],["S","Corn or flour tortillas?"],["L","{Exacto. ¿Cuál prefieres?}"],["S","{Prefiero de maíz}."],["L","{¿Algo más?}"],["S","Anything else? {Nada más, gracias}."]]},{"t":"The salsa question","q":[["¿Qué salsa pica mucho?","La roja","La verde"]],"n":"Spice level and allergies. The second one is not optional.","l":[["S","{¿La salsa verde pica?}"],["L","{Un poquito}. {La roja} {pica mucho}."],["S","{¿Pica?} Spicy?"],["L","{Sí}. And the word for spicy food is {picante}."],["S","Okay. {Alergias}. I need this one for {pasajeros}."],["L","{Soy alérgico a los cacahuates}. A woman says {alérgica}."],["S","{¿Tiene cacahuates? ¿Y nueces?}"],["L","{¡Muy bien!} Ask it every time."]]},{"t":"Tasting","n":"Mostly Spanish. Coffee, compliments and the check.","l":[["L","{¿Café de olla? Tiene canela y piloncillo}."],["S","Cinnamon and brown sugar? {Sí, por favor}."],["L","{¿Y el taco? ¿Está rico?}"],["S","{¡Qué rico! La salsa sabe a humo}."],["L","{Exacto}. Smoked chiles. {¿Otro taco?}"],["S","{Ya no, gracias. Estoy lleno}."]]},{"t":"Paying","q":[["¿Para quién son los tacos para llevar?","Para el equipo de tierra","Para los pasajeros"]],"n":"All Spanish.","l":[["S","{¿Cuánto es?}"],["L","{Son veinte dólares}."],["S","{¿Me da dos tacos más para llevar?}"],["L","{¿Para llevar? ¿No estás lleno?}"],["S","{Son para el equipo de tierra}."],["L","{Me encanta}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["S","My hands are still shaking from the cold up there."],["L","That's why we eat right after every flight. Sit down, I'll order for both of us the first time."],["S","Deal. Next time I order in Spanish."],["S","That was a {muy} good flight, Lucía. {Gracias}, {equipo}!"],["L","{De nada}. And {ahora}? Breakfast."],["S","{Sí}. {Café} first, {por favor}."],["L","{Café}, {agua}, and something hot. {Tengo frío}."],["S","Me {también}. I mean, {yo también}."],["L","{Ahora} we eat, {porque} you flew {muy} well."]]},{"t":"The food","n":"What is on the table at a launch-field breakfast.","l":[["S","Flight's over, Lucía, and I'm starving. How do I say that?"],["L","{Tengo hambre}. You have hunger, like {tengo frío}."],["S","{Tengo hambre}. What's for breakfast?"],["L","{El desayuno} today is {tacos}. Egg is {huevo}. Beans are {frijoles}."],["S","{Huevo y frijoles}. And cheese?"],["L","{Queso}. And {salsa}, of course."],["S","Is there chicken? Beef?"],["L","{Pollo} is chicken. {Carne} is meat, usually beef."]]},{"t":"Ordering","n":"Polite ordering, and a choice the cook will ask you.","l":[["S","How do I order without sounding rude?"],["L","{Quisiera}. I would like. Softer than {quiero}."],["S","{Quisiera dos tacos de huevo, por favor}."],["L","{Muy bien}. Now the cook asks, {¿de maíz o de harina?}"],["S","Corn or flour tortillas?"],["L","{Exacto. ¿Cuál prefieres?}"],["S","{Prefiero de maíz}."],["L","{¿Algo más?}"],["S","Anything else? {Nada más, gracias}."]]},{"t":"The salsa question","q":[["¿Qué salsa pica mucho?","La roja","La verde"]],"n":"Spice level and allergies. The second one is not optional.","l":[["S","{¿La salsa verde pica?}"],["L","{Un poquito}. {La roja} {pica mucho}."],["S","{¿Pica?} Spicy?"],["L","{Sí}. And the word for spicy food is {picante}."],["S","Okay. {Alergias}. I need this one for {pasajeros}."],["L","{Soy alérgico a los cacahuates}. A woman says {alérgica}."],["S","{¿Tiene cacahuates? ¿Y nueces?}"],["L","{¡Muy bien!} Ask it every time."]]},{"t":"Tasting","n":"Mostly Spanish. Coffee, compliments and the check.","l":[["L","{¿Café de olla? Tiene canela y piloncillo}."],["S","Cinnamon and brown sugar? {Sí, por favor}."],["L","{¿Y el taco? ¿Está rico?}"],["S","{¡Qué rico! La salsa sabe a humo}."],["L","{Exacto}. Smoked chiles. {¿Otro taco?}"],["S","{Ya no, gracias. Estoy lleno}."]]},{"t":"Paying","q":[["¿Para quién son los tacos para llevar?","Para el equipo de tierra","Para los pasajeros"]],"n":"All Spanish.","l":[["S","{¿Cuánto es?}"],["L","{Son veinte dólares}."],["S","{¿Me da dos tacos más para llevar?}"],["L","{¿Para llevar? ¿No estás lleno?}"],["S","{Son para el equipo de tierra}."],["L","{Me encanta}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

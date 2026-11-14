@@ -77,6 +77,7 @@ vamos|BAH-mohs|let's go
 la|lah|the
 luz|LOOS|light`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "They moved me to the cargo side for a few nights. Different planes, same noise."],["L", "Cargo is all containers and pallets. You'll pick it up quickly."],["L", "{Hoy} it's the night shift, Sam. Lots of cargo."], ["S", "Work {otra vez}? {Pero} I just worked the ramp."], ["L", "{Sí}. {Tengo frío} already, and it's only ten."], ["S", "{Café} {después}?"], ["L", "{Después}. When {todo} is unloaded."],["L", "Bring {agua} and a jacket. {Después} you'll thank me."],["S", "{Gracias}, Lucía."],["L", "{De nada}."]]},
 {t:"Before it lands",n:"The equipment, named while the crew waits.",l:[
 ["L","{El turno de noche}, Sam. The plane lands in ten minutes."],
 ["S","Tell me the words before it gets loud."],

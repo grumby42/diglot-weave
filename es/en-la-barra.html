@@ -3,8 +3,8 @@
 <title>En la barra</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:05Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:28Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:05Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:28Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 cerveza|sehr-BEH-sah|beer
 una|OO-nah|a, one (feminine)
 vino|BEE-noh|wine
@@ -474,7 +475,7 @@ puedo|PWEH-doh|I can
 algo|AHL-goh|something`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Greet a customer in the evening and ask what you can serve them.","Buenas noches. ¿Qué le sirvo?"],["Ask if they want it with or without ice.","¿Con hielo o sin hielo?"],["Politely tell a guest you can't serve them any more.","Lo siento, no le puedo servir más."]];
-const PAGES=[{"t":"Behind the bar","n":"The nouns you reach for all night.","l":[["S","Busy night, Lucía. First customer wants a beer."],["L","{Una cerveza}. And wine is {vino}. Water is {agua}."],["S","{Cerveza, vino, agua}. What about ice?"],["L","{Hielo}. The H is silent."],["S","{Hielo}. And a glass?"],["L","{Un vaso}. A wine glass is {una copa}."],["S","{Una copa de vino}. What do I call the bar itself?"],["L","{La barra}. Roll that double R. And the check is {la cuenta}."]]},{"t":"Taking the order","n":"Polite forms for strangers: le and usted.","l":[["S","How do I greet someone?"],["L","{Buenas noches. ¿Qué le sirvo?} What can I serve you?"],["S","{¿Qué le sirvo?}"],["L","{Perfecto}. They say, {quiero una cerveza, por favor}. Or {me da un tequila}."],["S","{¿Me da?}"],["L","Give me. Very normal at a bar."],["S","And with or without ice?"],["L","{¿Con hielo o sin hielo?} {Sin} means without."],["S","{¿Con hielo o sin hielo?}"]]},{"t":"The margarita","q":[["¿Qué va primero en la coctelera?","Hielo","Sal","Limón"]],"n":"Commands for her, I-forms for him, one recipe.","l":[["L","{Pon hielo en la coctelera}. Put ice in the shaker."],["S","{Pongo hielo en la coctelera}."],["L","{Agrega el tequila y el jugo de limón}."],["S","{Agrego el licor de naranja}. Is that next?"],["L","{Sí. Ahora, agita}."],["S","{Agito}. How long?"],["L","{Agita bien}. Then {sirve en una copa con sal}."],["S","{Sirvo en una copa con sal}."]]},{"t":"The hard moments","n":"Checking ID and cutting someone off, politely.","l":[["S","{Buenas noches. ¿Me muestra su identificación, por favor?}"],["L","{Claro. Aquí está}."],["S","{Gracias}. Now how do I cut someone off nicely?"],["L","{Lo siento, no le puedo servir más}."],["S","{Lo siento, no le puedo servir más}."],["L","{Muy bien}. And then offer {agua. ¿Le llamo un taxi?}"],["S","{¿Le llamo un taxi?}"]]},{"t":"Small talk","n":"All Spanish. A guest asks for a suggestion.","l":[["L","{Buenas noches. ¿Qué me recomienda?}"],["S","{¿Le gusta algo dulce o seco?}"],["L","{Seco, con limón}."],["S","{Entonces, un mezcal con limón. ¿De dónde es usted?}"],["L","{Soy de León. ¿Y usted?}"],["S","{Soy de Indiana. Soy piloto de globos}."],["L","{¡Qué interesante!}"]]},{"t":"Closing out","q":[["¿De cuánto es la cuenta?","Veinte dólares","Mil dólares"]],"n":"All Spanish. The check, the tip and the door.","l":[["L","{La cuenta, por favor}."],["S","{Son veinte dólares}."],["L","{¿Aceptan tarjeta?}"],["S","{Sí, claro}."],["L","{Aquí está la propina}."],["S","{Muchas gracias. Buenas noches}."],["L","{¿Cerramos a las dos?}"],["S","{Sí. Hasta mañana}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["S","I picked up a shift at a friend's place downtown. Busy Friday crowd."],["L","Then you'll need the bar words, and fast. Let's go through them before you leave."],["L","Breakfast was {perfecto}. {Pero} tonight you work, {¿no?}"],["S","{Sí}. A bar shift. Drinks, not {café}."],["L","Go {despacio} at first. And {siempre} say {por favor} and {gracias}."],["S","{Por favor}, {gracias}, {de nada}. Those I know."],["L","{Exacto}. {Entonces}, behind the bar."],["S","{Tal vez} I'll learn {un poco} tonight."]]},{"t":"Behind the bar","n":"The nouns you reach for all night.","l":[["S","Busy night, Lucía. First customer wants a beer."],["L","{Una cerveza}. And wine is {vino}. Water is {agua}."],["S","{Cerveza, vino, agua}. What about ice?"],["L","{Hielo}. The H is silent."],["S","{Hielo}. And a glass?"],["L","{Un vaso}. A wine glass is {una copa}."],["S","{Una copa de vino}. What do I call the bar itself?"],["L","{La barra}. Roll that double R. And the check is {la cuenta}."]]},{"t":"Taking the order","n":"Polite forms for strangers: le and usted.","l":[["S","How do I greet someone?"],["L","{Buenas noches. ¿Qué le sirvo?} What can I serve you?"],["S","{¿Qué le sirvo?}"],["L","{Perfecto}. They say, {quiero una cerveza, por favor}. Or {me da un tequila}."],["S","{¿Me da?}"],["L","Give me. Very normal at a bar."],["S","And with or without ice?"],["L","{¿Con hielo o sin hielo?} {Sin} means without."],["S","{¿Con hielo o sin hielo?}"]]},{"t":"The margarita","q":[["¿Qué va primero en la coctelera?","Hielo","Sal","Limón"]],"n":"Commands for her, I-forms for him, one recipe.","l":[["L","{Pon hielo en la coctelera}. Put ice in the shaker."],["S","{Pongo hielo en la coctelera}."],["L","{Agrega el tequila y el jugo de limón}."],["S","{Agrego el licor de naranja}. Is that next?"],["L","{Sí. Ahora, agita}."],["S","{Agito}. How long?"],["L","{Agita bien}. Then {sirve en una copa con sal}."],["S","{Sirvo en una copa con sal}."]]},{"t":"The hard moments","n":"Checking ID and cutting someone off, politely.","l":[["S","{Buenas noches. ¿Me muestra su identificación, por favor?}"],["L","{Claro. Aquí está}."],["S","{Gracias}. Now how do I cut someone off nicely?"],["L","{Lo siento, no le puedo servir más}."],["S","{Lo siento, no le puedo servir más}."],["L","{Muy bien}. And then offer {agua. ¿Le llamo un taxi?}"],["S","{¿Le llamo un taxi?}"]]},{"t":"Small talk","n":"All Spanish. A guest asks for a suggestion.","l":[["L","{Buenas noches. ¿Qué me recomienda?}"],["S","{¿Le gusta algo dulce o seco?}"],["L","{Seco, con limón}."],["S","{Entonces, un mezcal con limón. ¿De dónde es usted?}"],["L","{Soy de León. ¿Y usted?}"],["S","{Soy de Indiana. Soy piloto de globos}."],["L","{¡Qué interesante!}"]]},{"t":"Closing out","q":[["¿De cuánto es la cuenta?","Veinte dólares","Mil dólares"]],"n":"All Spanish. The check, the tip and the door.","l":[["L","{La cuenta, por favor}."],["S","{Son veinte dólares}."],["L","{¿Aceptan tarjeta?}"],["S","{Sí, claro}."],["L","{Aquí está la propina}."],["S","{Muchas gracias. Buenas noches}."],["L","{¿Cerramos a las dos?}"],["S","{Sí. Hasta mañana}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

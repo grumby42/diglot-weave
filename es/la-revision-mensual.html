@@ -3,8 +3,8 @@
 <title>La revisión mensual</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:13Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:36Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:13Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:36Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 revisión|rreh-bee-SYOHN|review
 mensual|mehn-SWAHL|monthly
 la revisión mensual|lah rreh-bee-SYOHN mehn-SWAHL|the monthly review
@@ -498,7 +499,7 @@ ofrezco|oh-FREHS-koh|I offer
 disculpa|dees-KOOL-pah|apology`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Thank the client for their time.","Gracias por su tiempo."],["Acknowledge the client's concern.","Entiendo su preocupación."],["Say a request is outside the contract's scope.","Eso está fuera del alcance del contrato."]];
-const PAGES=[{"t":"Before the meeting","n":"Lucía plays the client. Sam learns the nouns first.","l":[["L","Today I play the client. {La cliente}. I'm the IT {directora}."],["S","Okay. It's {la revisión mensual}. The monthly review."],["L","What do you bring?"],["S","{El informe} with {las métricas}. Alerts are {alertas}, and incidents are {incidentes}."],["L","And the promise in the contract?"],["S","{El SLA}. Everybody just says SLA."],["L","{Perfecto}. Remember, with a client, you use {usted}."]]},{"t":"The numbers","n":"Opening the meeting and walking through metrics.","l":[["S","{Buenos días. Gracias por su tiempo}."],["L","{Buenos días}. Let's start with the numbers."],["S","{Este mes}, this month, {recibimos} twelve hundred {alertas}. Only twelve real incidents, {doce incidentes}."],["L","Twelve hundred, {mil doscientas}. And {el SLA}?"],["S","{Cumplimos el SLA en el noventa y ocho por ciento de los casos}. We met it in 98 percent of cases."],["L","{Muy bien}. But I have a complaint."]]},{"t":"The complaint","q":[["¿Hay demasiados falsos positivos?","Sí. Su equipo pierde tiempo","No"]],"n":"The client pushes back. Sam stays calm in Spanish.","l":[["L","{Hay demasiados falsos positivos}. Too many false positives."],["S","{¿Demasiados?}"],["L","{Sí. Mi equipo pierde tiempo}."],["S","{Entiendo su preocupación}. We'll tune the rules. {Vamos a ajustar las reglas}."],["L","{Y el martes, tardaron una hora} on a high alert."],["S","{Tiene razón. No cumplimos el SLA}. {Le ofrezco una disculpa}."],["L","What will you do?"],["S","{Lo voy a escalar hoy mismo}."]]},{"t":"Scope","n":"Mostly Spanish. A request that isn't in the contract.","l":[["L","{¿Pueden revisar nuestros servidores en la nube?}"],["S","{Eso está fuera del alcance del contrato}."],["L","{¿Fuera del alcance?}"],["S","{Sí. Pero puedo preparar una propuesta}. A proposal."],["L","{Perfecto}."]]},{"t":"Action items","q":[["¿La actualización es el viernes o el martes?","El viernes","El martes"]],"n":"All Spanish. Closing the meeting.","l":[["S","{Estos son los pendientes}."],["S","{Primero, ajustar las reglas}."],["S","{Segundo, escalar el caso del martes}."],["S","{Tercero, preparar una propuesta}."],["S","{Les envío el informe por correo. Les doy una actualización el viernes}."],["L","{¿Algo más?}"],["S","{Nada más. Gracias por su tiempo}."],["L","{Buen trabajo. Hasta el próximo mes}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["S","That ransomware call was a long day. I'm glad it's over."],["L","The incident is closed. {Ahora} the client wants a meeting."],["S","{Hoy}? {Pero} I'm not ready."],["L","{Mañana}. {Primero}, the words. We'll go {despacio}."],["S","{Gracias}. With a client it's {usted}, {¿no?}"],["L","{Exacto}. {Siempre} {usted}."],["L","Before any client meeting, {siempre} prepare the numbers first, {porque} that is what they always ask about."]]},{"t":"Before the meeting","n":"Lucía plays the client. Sam learns the nouns first.","l":[["L","Today I play the client. {La cliente}. I'm the IT {directora}."],["S","Okay. It's {la revisión mensual}. The monthly review."],["L","What do you bring?"],["S","{El informe} with {las métricas}. Alerts are {alertas}, and incidents are {incidentes}."],["L","And the promise in the contract?"],["S","{El SLA}. Everybody just says SLA."],["L","{Perfecto}. Remember, with a client, you use {usted}."]]},{"t":"The numbers","n":"Opening the meeting and walking through metrics.","l":[["S","{Buenos días. Gracias por su tiempo}."],["L","{Buenos días}. Let's start with the numbers."],["S","{Este mes}, this month, {recibimos} twelve hundred {alertas}. Only twelve real incidents, {doce incidentes}."],["L","Twelve hundred, {mil doscientas}. And {el SLA}?"],["S","{Cumplimos el SLA en el noventa y ocho por ciento de los casos}. We met it in 98 percent of cases."],["L","{Muy bien}. But I have a complaint."]]},{"t":"The complaint","q":[["¿Hay demasiados falsos positivos?","Sí. Su equipo pierde tiempo","No"]],"n":"The client pushes back. Sam stays calm in Spanish.","l":[["L","{Hay demasiados falsos positivos}. Too many false positives."],["S","{¿Demasiados?}"],["L","{Sí. Mi equipo pierde tiempo}."],["S","{Entiendo su preocupación}. We'll tune the rules. {Vamos a ajustar las reglas}."],["L","{Y el martes, tardaron una hora} on a high alert."],["S","{Tiene razón. No cumplimos el SLA}. {Le ofrezco una disculpa}."],["L","What will you do?"],["S","{Lo voy a escalar hoy mismo}."]]},{"t":"Scope","n":"Mostly Spanish. A request that isn't in the contract.","l":[["L","{¿Pueden revisar nuestros servidores en la nube?}"],["S","{Eso está fuera del alcance del contrato}."],["L","{¿Fuera del alcance?}"],["S","{Sí. Pero puedo preparar una propuesta}. A proposal."],["L","{Perfecto}."]]},{"t":"Action items","q":[["¿La actualización es el viernes o el martes?","El viernes","El martes"]],"n":"All Spanish. Closing the meeting.","l":[["S","{Estos son los pendientes}."],["S","{Primero, ajustar las reglas}."],["S","{Segundo, escalar el caso del martes}."],["S","{Tercero, preparar una propuesta}."],["S","{Les envío el informe por correo. Les doy una actualización el viernes}."],["L","{¿Algo más?}"],["S","{Nada más. Gracias por su tiempo}."],["L","{Buen trabajo. Hasta el próximo mes}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

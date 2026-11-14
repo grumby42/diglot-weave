@@ -95,6 +95,7 @@ de nada|deh NAH-dah|you're welcome
 hacia donde vamos|AH-syah DOHN-deh BAH-mohs|toward where we're going (direction of travel)
 donde|DOHN-deh|where (not a question)`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "It was beautiful from up there. I learned colors, numbers and a deer."],["L", "Today we learn the equipment, so you can help the crew and not just ride along."],["L", "{Buenos días}, Sam. Remember the view yesterday? {Todo} green."], ["S", "{Sí}. {Hoy} I want the words for the equipment too."], ["L", "{Perfecto}. {Pero} {primero}, {café}."], ["S", "{Gracias}. {Mucho} better. Where's the crew?"], ["L", "The {equipo} is at the {camioneta}. {Vamos a} start."],["S", "{Creo} the {camioneta} is unlocked. {Mira}."]]},
 {t:"The equipment",n:"Names for what you unload from the truck.",l:[
 ["S","Calm morning, Lucía. The {viento} finally gave up."],
 ["L","{¡Hoy volamos!} First, the {canasta}. In English, basket."],

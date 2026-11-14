@@ -58,6 +58,7 @@ humo|OO-moh|smoke
 piloncillo|pee-lohn-SEE-yoh|cone of unrefined cane sugar|Used to sweeten café de olla
 y|EE|and`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "My hands are still shaking from the cold up there."],["L", "That's why we eat right after every flight. Sit down, I'll order for both of us the first time."],["S", "Deal. Next time I order in Spanish."],["S", "That was a {muy} good flight, Lucía. {Gracias}, {equipo}!"], ["L", "{De nada}. And {ahora}? Breakfast."], ["S", "{Sí}. {Café} first, {por favor}."], ["L", "{Café}, {agua}, and something hot. {Tengo frío}."], ["S", "Me {también}. I mean, {yo también}."],["L", "{Ahora} we eat, {porque} you flew {muy} well."]]},
 {t:"The food",n:"What is on the table at a launch-field breakfast.",l:[
 ["S","Flight's over, Lucía, and I'm starving. How do I say that?"],
 ["L","{Tengo hambre}. You have hunger, like {tengo frío}."],

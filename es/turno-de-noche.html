@@ -3,8 +3,8 @@
 <title>Turno de noche</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-1750Z">
-<meta name="shipped-utc" content="2026-11-14T17:50:11Z">
+<meta name="build-id" content="WEAV-20261114-1927Z">
+<meta name="shipped-utc" content="2026-11-14T19:27:34Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -25,7 +25,7 @@ body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px
 h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
 h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
 .sub{margin:4px 0 0;color:var(--muted)}
-.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
 .bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
 .bar[aria-current="true"]{color:var(--ink);font-weight:700}
@@ -137,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-1750Z",SHIPPED="2026-11-14T17:50:11Z";
+const BUILD="WEAV-20261114-1927Z",SHIPPED="2026-11-14T19:27:34Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -409,6 +409,7 @@ cuando|KWAHN-doh|when (not a question)
 funciona|foon-SYOH-nah|works
 actualización|ahk-twah-lee-sah-SYOHN|update
 les|lehs|to them, to you (plural)
+todo bien|TOH-doh BYEHN|all good, everything's fine
 turno|TOOR-noh|shift
 de noche|deh NOH-cheh|night
 el turno de noche|ehl TOOR-noh deh NOH-cheh|the night shift
@@ -486,7 +487,7 @@ la|lah|the
 luz|LOOS|light`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Call out that the chocks are in.","¡Calzos puestos!"],["Say the brakes don't work.","Los frenos no funcionan."],["Ask how many containers are left.","¿Cuántos contenedores faltan?"]];
-const PAGES=[{"t":"Before it lands","n":"The equipment, named while the crew waits.","l":[["L","{El turno de noche}, Sam. The plane lands in ten minutes."],["S","Tell me the words before it gets loud."],["L","Each big box is {un contenedor}. Flat ones are {tarimas}, pallets."],["S","{Contenedor, tarima}. And what pulls them?"],["L","{El tractor} pulls a train of {dollies}. Most crews just say dolly."],["S","And the machine that lifts them to the door?"],["L","{El cargador}. And at the wheels, {los calzos}."],["S","{Calzos}. Chocks. Got it."]]},{"t":"The arrival","q":[["¿Qué dice Lucía cuando la luz anticolisión está apagada?","¡Calzos puestos!","¡Alto!"]],"n":"Safety calls that nobody gets to miss.","l":[["L","{El avión llega}. Watch {el señalero}. The marshaller."],["S","It's parked. Can we go?"],["L","No. {La luz anticolisión está encendida}. The beacon is on."],["S","So {nadie se acerca hasta que} the beacon is off."],["L","{Exacto}. {Los motores} are still running."],["S","Now {la luz anticolisión está apagada}."],["L","{Ahora sí. ¡Calzos puestos!}"],["S","{¡Calzos puestos!}"]]},{"t":"Unloading","n":"Instructions and checks, about half in Spanish.","l":[["L","{Abre la puerta de carga}. Then bring {el cargador}."],["S","{Listo}. First container out. {¿Qué posición?}"],["L","{La uno}. {Revisa el contenedor}. Look for {daño}."],["S","{Sin daño}. But it has a black and white striped {etiqueta}."],["L","{Es de mercancías peligrosas}. Is it on {el manifiesto} and the NOTOC?"],["S","{Sí, está en el manifiesto. Coincide}."],["L","{Muy bien}. If it doesn't match, {llama al supervisor}."]]},{"t":"A problem","q":[["¿Qué no funciona?","Los frenos del tractor","El cargador","La puerta de carga"]],"n":"Mostly Spanish. A tug fails and the crew adjusts.","l":[["S","{Lucía, los frenos del tractor no funcionan}."],["L","{¡Alto!} Don't drive it. {Fuera de servicio}."],["S","{Entendido. ¿Hay otro tractor?}"],["L","{Sí, allá. Lleva los dollies al almacén, despacio}."],["S","{¿Cuántos contenedores faltan?}"],["L","{Faltan tres más}."]]},{"t":"End of shift","n":"All Spanish.","l":[["S","{Asegura las correas. Es el último}."],["L","{Listo. Terminamos}."],["S","{Buen trabajo, equipo}."],["L","{Estoy cansada. Ya amaneció}."],["S","{¿Café?}"],["L","{Café. Vamos}."]]}];
+const PAGES=[{"t":"Warm-up","n":"Words from earlier pages come back before the new ones.","l":[["S","They moved me to the cargo side for a few nights. Different planes, same noise."],["L","Cargo is all containers and pallets. You'll pick it up quickly."],["L","{Hoy} it's the night shift, Sam. Lots of cargo."],["S","Work {otra vez}? {Pero} I just worked the ramp."],["L","{Sí}. {Tengo frío} already, and it's only ten."],["S","{Café} {después}?"],["L","{Después}. When {todo} is unloaded."],["L","Bring {agua} and a jacket. {Después} you'll thank me."],["S","{Gracias}, Lucía."],["L","{De nada}."]]},{"t":"Before it lands","n":"The equipment, named while the crew waits.","l":[["L","{El turno de noche}, Sam. The plane lands in ten minutes."],["S","Tell me the words before it gets loud."],["L","Each big box is {un contenedor}. Flat ones are {tarimas}, pallets."],["S","{Contenedor, tarima}. And what pulls them?"],["L","{El tractor} pulls a train of {dollies}. Most crews just say dolly."],["S","And the machine that lifts them to the door?"],["L","{El cargador}. And at the wheels, {los calzos}."],["S","{Calzos}. Chocks. Got it."]]},{"t":"The arrival","q":[["¿Qué dice Lucía cuando la luz anticolisión está apagada?","¡Calzos puestos!","¡Alto!"]],"n":"Safety calls that nobody gets to miss.","l":[["L","{El avión llega}. Watch {el señalero}. The marshaller."],["S","It's parked. Can we go?"],["L","No. {La luz anticolisión está encendida}. The beacon is on."],["S","So {nadie se acerca hasta que} the beacon is off."],["L","{Exacto}. {Los motores} are still running."],["S","Now {la luz anticolisión está apagada}."],["L","{Ahora sí. ¡Calzos puestos!}"],["S","{¡Calzos puestos!}"]]},{"t":"Unloading","n":"Instructions and checks, about half in Spanish.","l":[["L","{Abre la puerta de carga}. Then bring {el cargador}."],["S","{Listo}. First container out. {¿Qué posición?}"],["L","{La uno}. {Revisa el contenedor}. Look for {daño}."],["S","{Sin daño}. But it has a black and white striped {etiqueta}."],["L","{Es de mercancías peligrosas}. Is it on {el manifiesto} and the NOTOC?"],["S","{Sí, está en el manifiesto. Coincide}."],["L","{Muy bien}. If it doesn't match, {llama al supervisor}."]]},{"t":"A problem","q":[["¿Qué no funciona?","Los frenos del tractor","El cargador","La puerta de carga"]],"n":"Mostly Spanish. A tug fails and the crew adjusts.","l":[["S","{Lucía, los frenos del tractor no funcionan}."],["L","{¡Alto!} Don't drive it. {Fuera de servicio}."],["S","{Entendido. ¿Hay otro tractor?}"],["L","{Sí, allá. Lleva los dollies al almacén, despacio}."],["S","{¿Cuántos contenedores faltan?}"],["L","{Faltan tres más}."]]},{"t":"End of shift","n":"All Spanish.","l":[["S","{Asegura las correas. Es el último}."],["L","{Listo. Terminamos}."],["S","{Buen trabajo, equipo}."],["L","{Estoy cansada. Ya amaneció}."],["S","{¿Café?}"],["L","{Café. Vamos}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],

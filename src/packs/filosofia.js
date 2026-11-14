@@ -59,6 +59,7 @@ a mí también|ah MEE tahm-BYEHN|me too
 pensamos|pehn-SAH-mohs|we think
 mucho|MOO-choh|a lot`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "I keep thinking about those finches and how things change little by little."],["L", "Good, because today's question is about change too, and it's a very old one."],["L", "{Hoy} no flying, Sam. Too much {viento}. So {hoy} we think."], ["S", "Think about what?"], ["L", "About your {globo}. {Pero} {primero}, {café}."], ["S", "{Café}, {gracias}. {Entonces}? What's the question?"], ["L", "Go {despacio}. It's a hard one."],["S", "{Tal vez} I'll need {mucho} {café} for this one."],["L", "{Todo bien}. {Vamos a} begin."]]},
 {t:"The question",n:"A puzzle, set up mostly in English.",l:[
 ["L","I have {una pregunta}, Sam. A {difícil} one."],
 ["S","Difficult? Go ahead."],

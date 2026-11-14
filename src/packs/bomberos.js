@@ -72,6 +72,7 @@ cada vez|KAH-dah BEHS|every time
 la pregunta|lah preh-GOON-tah|the question
 más importante|MAHS eem-pohr-TAHN-teh|most important`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["L", "No flying for you {hoy}. {Hoy} you're at the fire station."], ["S", "{Sí}. Quiet so far. {Café}?"], ["L", "{Gracias}. {Pero} when the tones drop, {todo} changes."], ["S", "{Entonces} let's check the gear {ahora}."], ["L", "{Exacto}. And {cuidado}: some of these words are new."],["L", "{¿Dónde} is your helmet? Put it on the truck {ahora}, {porque} the calls come fast."]]},
 {t:"The gear",n:"Station words while the crew checks equipment.",l:[
 ["L","Quiet night at {la estación}. Let's check gear in Spanish."],
 ["S","Okay. {El casco}. Helmet."],

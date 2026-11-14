@@ -60,6 +60,7 @@ primero|pree-MEH-roh|first
 después|dehs-PWEHS|then, afterward
 desconfían|dehs-kohn-FEE-ahn|they get suspicious`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["L", "You did well on that call. Everyone got out, and you kept your head."],["S", "Thanks. My hands still feel it, though. I need something calmer tonight."],["S", "After that call, I want a quiet story, Lucía."], ["L", "A {historia}? {Bien}."], ["S", "{Sí}, {por favor}. Something with animals."], ["L", "{Perfecto}. My grandmother told me this one. I'll go {despacio}."], ["S", "{Despacio}. {Gracias}."],["L", "{Ahora} sit. {Mucho} {café} and {un poco} of quiet."]]},
 {t:"The invitation",n:"The guest list, one animal at a time.",l:[
 ["L","Another story, Sam. In the jungle, {las víboras} give a party. {Víboras} are snakes. A big {baile}. A dance."],
 ["S","{Las víboras} throw a {baile}? Who comes?"],

@@ -89,6 +89,7 @@ le ofrezco una disculpa|leh oh-FREHS-koh OO-nah dees-KOOL-pah|I apologize (forma
 ofrezco|oh-FREHS-koh|I offer
 disculpa|dees-KOOL-pah|apology`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "That ransomware call was a long day. I'm glad it's over."],["L", "The incident is closed. {Ahora} the client wants a meeting."], ["S", "{Hoy}? {Pero} I'm not ready."], ["L", "{Mañana}. {Primero}, the words. We'll go {despacio}."], ["S", "{Gracias}. With a client it's {usted}, {¿no?}"], ["L", "{Exacto}. {Siempre} {usted}."],["L", "Before any client meeting, {siempre} prepare the numbers first, {porque} that is what they always ask about."]]},
 {t:"Before the meeting",n:"Lucía plays the client. Sam learns the nouns first.",l:[
 ["L","Today I play the client. {La cliente}. I'm the IT {directora}."],
 ["S","Okay. It's {la revisión mensual}. The monthly review."],

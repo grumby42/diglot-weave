@@ -61,6 +61,7 @@ don goyo|dohn GOH-yoh|Don Goyo, a local name for Popocatépetl (from San Gregori
 la ciudad de méxico|lah syoo-DAHD deh MEH-hee-koh|Mexico City
 ciudad|syoo-DAHD|city`,
 pages:[
+{t:"Warm-up",n:"Words from earlier pages come back before the new ones.",l:[["S", "That flamingo story stuck with me. I keep thinking about the snakes at the party."],["L", "Then you'll like this one. It's from Mexico, near where my aunt lives, and everybody there knows it."],["L", "{Otra} {historia}, Sam? This one is about two mountains."], ["S", "{Sí}. {Hoy} I have time."], ["L", "It's sad, {pero} beautiful. Someday you'll see the {sol} rise behind them."], ["S", "{Tal vez}. Someday."], ["L", "{Tal vez}. {Entonces}, listen."],["S", "{Tengo frío}. Is it a long story?"],["L", "{Un poco}. Get a blanket {también}. {Vamos a} begin."]]},
 {t:"Two mountains",n:"Names first. The legend explains them.",l:[
 ["L","{Una leyenda}, Sam. A legend from Mexico, about two {volcanes}."],
 ["S","{Volcanes}. Volcanoes. Which ones?"],
