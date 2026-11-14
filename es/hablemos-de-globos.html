@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hablemos de globos</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="WEAV-20261114-0139Z">
+<meta name="shipped-utc" content="2026-11-14T01:39:12Z">
+<style>
+/* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
+:root{
+  --sky:#e6edf3; --paper:#f6f9fb; --ink:#1b2838; --muted:#566779; --line:#c6d3df;
+  --es:#a32a63; --es-soft:#f6dfe9; --sam:#1f6a7a; --lucia:#8a5a00; --strike:#a33a2a;
+  --read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a;
+  --es:#f492bd; --es-soft:#43243a; --sam:#74c6d6; --lucia:#e4b75c; --strike:#f0937f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a;
+  --es:#f492bd; --es-soft:#43243a; --sam:#74c6d6; --lucia:#e4b75c; --strike:#f0937f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.wrap{max-width:44rem;margin:0 auto;padding-block:20px 150px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
+.sub{margin:4px 0 0;color:var(--muted)}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
+.bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
+.bar[aria-current="true"]{color:var(--ink);font-weight:700}
+.bar[aria-current="true"] i{background:var(--es)}
+.bar:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:.875rem}
+.seg{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.seg b{font-weight:600;color:var(--muted)}
+.seg button,.nav button,.play-all{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+.page{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:16px}
+.head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.share{font-size:.875rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.note{margin:0;color:var(--muted);font-size:.9375rem}
+.lines{display:grid;gap:14px}
+.line{display:grid;grid-template-columns:3.4rem minmax(0,1fr) 2.4rem;gap:8px;align-items:start}
+.who{font-size:.8125rem;font-weight:700;padding-top:4px}
+.who.S{color:var(--sam)} .who.L{color:var(--lucia)}
+.txt{font-family:var(--read);font-size:1.1875rem;line-height:1.6;margin:0;min-width:0}
+.w{all:unset;cursor:pointer;color:var(--es);border-bottom:1px dotted var(--es)}
+.w:hover,.w.on{background:var(--es-soft)}
+.w:focus-visible{outline:2px solid var(--es)}
+.g{font-family:var(--ui);font-size:.75em;color:var(--muted);white-space:nowrap}
+.bad{color:var(--strike);text-decoration:line-through}
+.say{all:unset;cursor:pointer;width:2.4rem;height:2.4rem;display:grid;place-items:center;color:var(--muted);border-radius:50%}
+.say:hover{color:var(--es)}
+.say svg,.play-all svg{width:15px;height:15px;fill:currentColor}
+.play-all{display:inline-flex;gap:6px;align-items:center;justify-self:start}
+.play-all[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.ears .txt{filter:blur(6px)}.ears .txt:hover,.ears .txt:focus-within{filter:none}
+.cq,.qrow{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.cqp{margin:0;display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{font:inherit;font-size:.9375rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;cursor:pointer}
+.opt.right{border-color:var(--sam);background:var(--sam);color:var(--paper)}
+.opt.wrong{border-color:var(--strike);color:var(--strike);text-decoration:line-through}
+#check .qrow:first-of-type{margin-top:8px}
+details{border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:600;font-size:.9375rem}
+.table{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;text-align:left;color:var(--muted);font-weight:600}
+th,td{padding:5px 12px 5px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--es);font-family:var(--read);font-size:1.0625rem}
+.keynote{margin:10px 0 0;font-size:.9375rem;color:var(--muted)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button:disabled{opacity:.45;cursor:default}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}
+footer a{color:inherit}
+footer p{margin:0}
+#status{min-height:1.2em;font-size:.875rem;color:var(--strike);margin:0}
+#sheet{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));z-index:5}
+#sheet div{max-width:44rem;margin:0 auto;display:flex;gap:4px 14px;flex-wrap:wrap;align-items:baseline}
+#sheet strong{font-family:var(--read);font-size:1.375rem}
+#sheet span{font-size:1rem}
+#sheet em{font-style:normal;opacity:.82}
+@media (max-width:430px){.line{grid-template-columns:minmax(0,1fr) 2.4rem}.who{grid-column:1/-1;padding:0}.page{padding:16px}h1{font-size:1.75rem}}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:background .15s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Hablemos de globos</h1>
+    <p class="sub">Sam and Lucía crew a real flight morning. Start in English and finish running the flight in Spanish.</p>
+  </header>
+  <nav class="ascent" id="ascent" aria-label="Stages, by share of Spanish"></nav>
+  <div class="controls">
+    <span class="seg" role="group" aria-label="Pronunciation guides"><b>Guides</b>
+      <button id="g-fade" data-g="fade">Fading</button><button id="g-all" data-g="all">All</button><button id="g-none" data-g="none">Off</button></span>
+    <span class="seg" role="group" aria-label="Speech speed"><b>Speed</b>
+      <button id="r-slow" data-r="0.72">Slow</button><button id="r-norm" data-r="1">Normal</button></span>
+    <span class="seg" role="group" aria-label="Lucía's English"><b>Lucía's English</b>
+      <button id="l-es" data-l="es">Accented</button><button id="l-en" data-l="en">Clear</button></span>
+  </div>
+  <p id="status" role="status"></p>
+  <article class="page" id="page"></article>
+  <div class="nav"><button id="prev">Previous stage</button><button id="next">Next stage</button></div>
+  <footer>
+    <p>Original dialogue written for this pack. Ballooning terms vary by country and crew. Landing position follows the FAA Balloon Flying Handbook (FAA-H-8083-11B, Appendix C); always follow your pilot's briefing. Spanish follows Latin American pronunciation. Audio uses your device's speech voices.</p>
+    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a></p>
+    <p>Build <span id="b"></span> · shipped <span id="u"></span></p>
+  </footer>
+</div>
+<div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
+
+<script>
+const BUILD="WEAV-20261114-0139Z",SHIPPED="2026-11-14T01:39:12Z";
+const LEX={};
+`viento|BYEHN-toh|wind
+hoy|OY|today
+globo|GLOH-boh|balloon
+sol|SOHL|sun
+tengo|TEHN-goh|I have
+frío|FREE-oh|cold
+tengo frío|TEHN-goh FREE-oh|I'm cold (literally "I have cold")
+tengo calor|TEHN-goh kah-LOHR|I'm hot (literally "I have heat")
+el|ehl|the (masculine)
+y|ee|and
+fuerte|FWEHR-teh|strong
+un|oon|a, one (masculine)
+hombre|OHM-breh|man
+abrigo|ah-BREE-goh|coat
+tiene|TYEH-neh|has
+no|noh|no, not
+quién|KYEHN|who
+quien|kyehn|whoever
+puede|PWEH-deh|can
+pueda|PWEH-dah|can (after "whoever")
+quitar|kee-TAHR|to take off
+quitarle|kee-TAHR-leh|to take off of him
+sí|SEE|yes
+ganador|gah-nah-DOHR|winner
+primero|pree-MEH-roh|first
+muy|MWEE|very
+sopla|SOH-plah|blows
+sopló|soh-PLOH|blew
+soplaba|soh-PLAH-bah|was blowing
+exacto|ek-SAHK-toh|exactly
+más|MAHS|more
+ahora|ah-OH-rah|now
+calor|kah-LOHR|heat
+sale|SAH-leh|comes out, leaves
+salió|sah-LYOH|came out
+grita|GREE-tah|shouts
+solo|SOH-loh|only
+brilla|BREE-yah|shines
+brilló|bree-YOH|shone
+abre|AH-breh|opens
+mucho|MOO-choh|a lot of
+se|seh|himself, herself, itself
+quita|KEE-tah|takes off
+quitó|kee-TOH|took off
+gana|GAH-nah|wins
+entonces|ehn-TOHN-sehs|then, so
+es|ehs|is
+que|keh|than, that
+sé|SEH|I know
+qué|KEH|what
+piensas|PYEHN-sahs|you think
+tú|TOO|you
+yo|yoh|I
+pienso|PYEHN-soh|I think
+paciente|pah-SYEHN-teh|patient
+casi|KAH-see|almost
+la|lah|the (feminine)
+fuerza|FWEHR-sah|strength, force
+siempre|SYEHM-preh|always
+paciencia|pah-SYEHN-syah|patience
+como|KOH-moh|like
+buen|BWEHN|good
+piloto|pee-LOH-toh|pilot
+pelea|peh-LEH-ah|fights
+con|kohn|with
+perfecto|pehr-FEHK-toh|perfect
+pelear|peh-leh-AHR|to fight
+eres|EH-rehs|you are
+sabes|SAH-behs|you know
+volamos|boh-LAH-mohs|we fly
+mañana|mah-NYAH-nah|tomorrow
+tal vez|tahl BEHS|maybe
+lucía|loo-SEE-ah|Lucía (her name)
+me|meh|me, to me
+cuentas|KWEHN-tahs|you tell
+historia|ees-TOH-ryah|story
+otra|OH-trah|another
+otra vez|OH-trah BEHS|again
+toda|TOH-dah|all, the whole
+en|ehn|in
+español|ehs-pah-NYOHL|Spanish
+vas|BAHS|you are going
+a|ah|to, at
+entender|ehn-tehn-DEHR|to understand
+creo|KREH-oh|I think, I believe
+hablas|AH-blahs|you speak
+despacio|dehs-PAH-syoh|slowly
+escucho|ehs-KOO-choh|I listen
+bien|BYEHN|well
+pero|PEH-roh|but
+hay|EYE|there is
+café|kah-FEH|coffee
+camioneta|kah-myoh-NEH-tah|pickup truck
+después|dehs-PWEHS|afterward
+trato hecho|TRAH-toh EH-choh|it's a deal
+mira|MEE-rah|look
+baja|BAH-hah|drops
+un poco|oon POH-koh|a little
+se queda|seh KEH-dah|stays
+escucha|ehs-KOO-chah|listen
+discutían|dees-koo-TEE-ahn|were arguing
+era|EH-rah|was
+ese|EH-seh|that
+momento|moh-MEHN-toh|moment
+pasó|pah-SOH|passed by, happened
+dijeron|dee-HEH-rohn|they said
+al|ahl|to the, from the
+cuanto más|KWAHN-toh MAHS|the more
+apretaba|ah-preh-TAH-bah|was holding tight
+su|soo|his, her, its; your (formal)
+al final|ahl fee-NAHL|in the end
+no pudo más|noh POO-doh MAHS|could not go on
+calma|KAHL-mah|calm
+tuvo|TOO-boh|had
+tuvo que|TOO-boh keh|had to
+reconocer|rreh-koh-noh-SEHR|to admit
+así|ah-SEE|so, like that
+entendí|ehn-tehn-DEE|I understood
+todo|TOH-doh|everything
+canasta|kah-NAHS-tah|basket
+quemador|keh-mah-DOHR|burner
+quemar|keh-MAHR|to burn
+tanque|TAHN-keh|tank
+propano|proh-PAH-noh|propane
+de|deh|of, from
+vela|BEH-lah|envelope (literally "sail")
+envoltura|ehn-bohl-TOO-rah|envelope (literally "wrapping")
+equipo|eh-KEE-poh|team, crew
+tierra|TYEH-rrah|ground
+abro|AH-broh|I open
+abres|AH-brehs|you open
+ventilador|behn-tee-lah-DOHR|fan
+por favor|pohr fah-BOHR|please
+dónde|DOHN-deh|where
+está|ehs-TAH|is (location or condition)
+cuidado|kwee-DAH-doh|careful
+pises|PEE-sehs|step on (after "don't")
+jala|HAH-lah|pull
+jalo|HAH-loh|I pull
+cuerda|KWEHR-dah|rope
+enciende|ehn-SYEHN-deh|turn on, light
+ya|yah|already, now
+ya está|yah ehs-TAH|it's done
+aire|EYE-reh|air
+entra|EHN-trah|goes in
+llena|YEH-nah|fills
+se llena|seh YEH-nah|fills up
+atrás|ah-TRAHS|back, behind
+voy|BOY|I'm going
+voy a|BOY ah|I'm going to
+encender|ehn-sehn-DEHR|to light
+caliente|kah-LYEHN-teh|hot
+sube|SOO-beh|rises
+levanta|leh-BAHN-tah|lifts
+se levanta|seh leh-BAHN-tah|stands up, rises
+agarren|ah-GAH-rrehn|grab (to a group)
+buenos días|BWEH-nohs DEE-ahs|good morning
+soy|SOY|I am
+suban|SOO-bahn|climb in (to a group)
+por aquí|pohr ah-KEE|this way
+agárrense|ah-GAH-rrehn-seh|hold on (to a group)
+las|lahs|the (feminine plural)
+asas|AH-sahs|handles
+toquen|TOH-kehn|touch (to a group, after "don't")
+para|PAH-rah|for
+aterrizaje|ah-teh-rree-SAH-heh|landing
+doblen|DOH-blehn|bend (to a group)
+rodillas|rroh-DEE-yahs|knees
+miren|MEE-rehn|look (to a group)
+hacia adelante|AH-syah ah-deh-LAHN-teh|forward
+te|teh|you (object)
+veo|BEH-oh|I see
+cuál|KWAHL|what, which
+altura|ahl-TOO-rah|altitude, height
+mil|meel|one thousand
+pies|PYEHS|feet
+en calma|ehn KAHL-mah|calm
+hacia dónde|AH-syah DOHN-deh|which way
+hacia|AH-syah|toward
+este|EHS-teh|east
+bajar|bah-HAHR|to descend
+cables|KAH-blehs|wires
+cerca del|SEHR-kah dehl|near the
+camino|kah-MEE-noh|road
+los|lohs|them; the (masculine plural)
+aterrizar|ah-teh-rree-SAHR|to land
+ahí|ah-EE|there
+campo|KAHM-poh|field
+grande|GRAHN-deh|big
+detrás de|deh-TRAHS deh|behind
+escuela|ehs-KWEH-lah|school
+va en camino|bah ehn kah-MEE-noh|is on the way
+atención|ah-tehn-SYOHN|attention
+vamos a|BAH-mohs ah|we're going to
+ya llegamos|yah yeh-GAH-mohs|we've arrived
+todos|TOH-dohs|everyone
+gracias al|GRAH-syahs ahl|thanks to the
+qué sigue|KEH SEE-geh|what's next
+desinflar|dehs-een-FLAHR|to deflate
+tomar|toh-MAHR|to drink, to have
+brindis|BREEN-dees|toast (with drinks)
+champaña|chahm-PAH-nyah|champagne|"Champán" in Spain
+pasajeros|pah-sah-HEH-rohs|passengers
+tu|too|your
+de nada|deh NAH-dah|you're welcome
+hacia donde vamos|AH-syah DOHN-deh BAH-mohs|toward where we're going (direction of travel)
+donde|DOHN-deh|where (not a question)
+o|OH|or
+gracias|GRAH-syahs|thank you
+verde|BEHR-deh|green
+sin|SEEN|without
+son|SOHN|they are, that comes to
+veinte|BAYN-teh|twenty
+dólares|DOH-lah-rehs|dollars
+da|DAH|give
+estás|ehs-TAHS|you are
+estoy|ehs-TOY|I am
+alérgica|ah-LEHR-hee-kah|allergic (woman)
+alergias|ah-LEHR-hyahs|allergies
+pasajeros|pah-sah-HEH-rohs|passengers
+mi|MEE|my
+nuestro|NWEHS-troh|our
+pero|PEH-roh|but
+porque|POHR-keh|because
+también|tahm-BYEHN|also
+nada|NAH-dah|nothing
+mismo|MEES-moh|same
+misma|MEES-mah|same
+nuevo|NWEH-boh|new
+nueva|NWEH-bah|new
+viejo|BYEH-hoh|old
+años|AH-nyohs|years
+cada|KAH-dah|each
+hace|AH-seh|ago, makes
+dice|DEE-seh|says
+dicen|DEE-sehn|they say
+fue|FWEH|was, went
+están|ehs-TAHN|they are
+muchas|MOO-chahs|many
+muchos|MOO-chohs|many
+gracias a|GRAH-syahs ah|thanks to
+una|OO-nah|a, one (feminine)
+va|BAH|goes
+avión|ah-BYOHN|airplane
+del|DEHL|of the
+allá|ah-YAH|over there
+cuántos|KWAHN-tohs|how many
+casa|KAH-sah|house
+hijo|EE-hoh|son
+motor|moh-TOHR|engine
+hacer|ah-SEHR|to do, to make
+despegar|dehs-peh-GAHR|to take off
+usted|oos-TEHD|you (formal)
+por|POHR|for, by, per
+lo|LOH|it
+estos|EHS-tohs|these
+caso|KAH-soh|case
+hasta|AHS-tah|until
+próximo|PROHK-see-moh|next
+le|leh|to you, to him, to her
+canasta|kah-NAHS-tah|basket
+quemador|keh-mah-DOHR|burner
+quemar|keh-MAHR|to burn
+tanque|TAHN-keh|tank
+propano|proh-PAH-noh|propane
+de|deh|of, from
+vela|BEH-lah|envelope (literally "sail")
+envoltura|ehn-bohl-TOO-rah|envelope (literally "wrapping")
+equipo|eh-KEE-poh|team, crew
+tierra|TYEH-rrah|ground
+abro|AH-broh|I open
+abres|AH-brehs|you open
+ventilador|behn-tee-lah-DOHR|fan
+por favor|pohr fah-BOHR|please
+dónde|DOHN-deh|where
+está|ehs-TAH|is (location or condition)
+cuidado|kwee-DAH-doh|careful
+pises|PEE-sehs|step on (after "don't")
+jala|HAH-lah|pull
+jalo|HAH-loh|I pull
+cuerda|KWEHR-dah|rope
+enciende|ehn-SYEHN-deh|turn on, light
+ya|yah|already, now
+ya está|yah ehs-TAH|it's done
+aire|EYE-reh|air
+entra|EHN-trah|goes in
+llena|YEH-nah|fills
+se llena|seh YEH-nah|fills up
+atrás|ah-TRAHS|back, behind
+voy|BOY|I'm going
+voy a|BOY ah|I'm going to
+encender|ehn-sehn-DEHR|to light
+caliente|kah-LYEHN-teh|hot
+sube|SOO-beh|rises
+levanta|leh-BAHN-tah|lifts
+se levanta|seh leh-BAHN-tah|stands up, rises
+agarren|ah-GAH-rrehn|grab (to a group)
+buenos días|BWEH-nohs DEE-ahs|good morning
+soy|SOY|I am
+suban|SOO-bahn|climb in (to a group)
+por aquí|pohr ah-KEE|this way
+agárrense|ah-GAH-rrehn-seh|hold on (to a group)
+las|lahs|the (feminine plural)
+asas|AH-sahs|handles
+toquen|TOH-kehn|touch (to a group, after "don't")
+para|PAH-rah|for
+aterrizaje|ah-teh-rree-SAH-heh|landing
+doblen|DOH-blehn|bend (to a group)
+rodillas|rroh-DEE-yahs|knees
+miren|MEE-rehn|look (to a group)
+hacia adelante|AH-syah ah-deh-LAHN-teh|forward
+te|teh|you (object)
+veo|BEH-oh|I see
+cuál|KWAHL|what, which
+altura|ahl-TOO-rah|altitude, height
+mil|meel|one thousand
+pies|PYEHS|feet
+en calma|ehn KAHL-mah|calm
+hacia dónde|AH-syah DOHN-deh|which way
+hacia|AH-syah|toward
+este|EHS-teh|east
+bajar|bah-HAHR|to descend
+cables|KAH-blehs|wires
+cerca del|SEHR-kah dehl|near the
+camino|kah-MEE-noh|road
+los|lohs|them; the (masculine plural)
+aterrizar|ah-teh-rree-SAHR|to land
+ahí|ah-EE|there
+campo|KAHM-poh|field
+grande|GRAHN-deh|big
+detrás de|deh-TRAHS deh|behind
+escuela|ehs-KWEH-lah|school
+va en camino|bah ehn kah-MEE-noh|is on the way
+atención|ah-tehn-SYOHN|attention
+vamos a|BAH-mohs ah|we're going to
+ya llegamos|yah yeh-GAH-mohs|we've arrived
+todos|TOH-dohs|everyone
+gracias al|GRAH-syahs ahl|thanks to the
+qué sigue|KEH SEE-geh|what's next
+desinflar|dehs-een-FLAHR|to deflate
+tomar|toh-MAHR|to drink, to have
+brindis|BREEN-dees|toast (with drinks)
+champaña|chahm-PAH-nyah|champagne|"Champán" in Spain
+pasajeros|pah-sah-HEH-rohs|passengers
+tu|too|your
+de nada|deh NAH-dah|you're welcome
+hacia donde vamos|AH-syah DOHN-deh BAH-mohs|toward where we're going (direction of travel)
+donde|DOHN-deh|where (not a question)`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
+
+const PAGES=[{"t":"The equipment","n":"Names for what you unload from the truck.","l":[["S","Calm morning, Lucía. The {viento} finally gave up."],["L","{¡Hoy volamos!} First, the {canasta}. In English, basket."],["S","{Canasta}. And this burner up here?"],["L","{El quemador}. It comes from {quemar}, to burn."],["S","{El quemador}. And the propane tank?"],["L","{El tanque de propano}. Almost the same words. {De} means of."],["S","And the big fabric part? The envelope."],["L","People in the field often say {la vela}, like a sail. You can also say {la envoltura}."],["S","{La vela}. And the people who do all the real work?"],["L","{El equipo de tierra}. The ground crew. That's me."]]},{"t":"Laying out","n":"Short commands for a friend, plus the word every crew chief needs.","l":[["L","Now we work. {Abre la vela}. Open it."],["S","{Abro la vela}. So {abro} is I open, and {abre} is the order?"],["L","{Sí}. And {abres} is you open. Now, what do you need?"],["S","The fan. How do I ask?"],["L","{¿Dónde está el ventilador?} Use {está} for where things are."],["S","{¿Dónde está el ventilador?}"],["L","{En la camioneta}. And when somebody walks on the fabric?"],["S","No idea. Yell?"],["L","{¡Cuidado! No pises la vela}."],["S","{¡Cuidado!} I'll use that one every morning."],["L","{Jala la cuerda, por favor}. Pull the rope."],["S","{Yo jalo}, and {tú abres}. I like this arrangement."]]},{"t":"Inflation","n":"The sequence you say out loud as the balloon comes up.","l":[["S","{Enciende el ventilador}."],["L","{Ya está}. {Ya} means already. {El aire entra}."],["S","{La vela se llena de aire}. Is that right?"],["L","{Perfecto. Se llena}, it fills."],["S","{Ahora, el quemador}. I need everyone to stand back. How?"],["L","{¡Atrás, por favor!}"],["S","{¡Atrás! Voy a encender el quemador}."],["L","{El aire caliente sube, y la vela se levanta}."],["S","I need people on the basket. How do I say grab?"],["L","{Agarren la canasta}. That is for a group."],["S","{¡Agarren la canasta, por favor!}"]]},{"t":"The briefing","n":"Commands to a group end in -n. These are the lines your passengers hear.","l":[["S","{Buenos días. Yo soy el piloto. Suban por aquí, por favor}."],["L","{Muy bien. Suban} is for a group."],["S","{Agárrense de las asas}. That's hold the handles?"],["L","{Exacto}."],["S","{No toquen el quemador. Está muy caliente}."],["L","{Bien. ¿Y para el aterrizaje?}"],["S","Landing, right? {Para el aterrizaje, doblen las rodillas y miren hacia donde vamos}."],["L","{¡Perfecto, piloto!}"]]},{"t":"On the radio","n":"All Spanish. Chase crew and pilot work out where to land.","l":[["L","{Te veo. ¿Cuál es tu altura?}"],["S","{Mil pies. El viento está en calma}."],["L","{¿Hacia dónde vas?}"],["S","{Hacia el este. Voy a bajar}."],["L","{Cuidado. Hay cables cerca del camino}."],["S","{Los veo. No voy a aterrizar ahí}."],["L","{Hay un campo grande detrás de la escuela}."],["S","{Perfecto. Voy al campo}."],["L","{El equipo va en camino}."]]},{"t":"Landing","n":"All Spanish, from the final descent to the toast.","l":[["S","{Atención, por favor. Vamos a aterrizar}."],["S","{Agárrense de las asas. Doblen las rodillas y miren hacia donde vamos}."],["S","{¡Ya llegamos! ¿Todos bien?}"],["L","{Todos bien. ¿Qué sigue?}"],["S","{Primero, desinflar la vela. Después, tomar café}."],["L","{¿Y el brindis? Hay champaña para los pasajeros}."],["S","{Gracias al equipo de tierra}."],["L","{De nada, piloto. Mañana, otra vez}."]]}];
+
+const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
+["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],
+["j, g before e/i","h","a strong, breathy hat"],["ll, y","y","yes"],["ñ","ny","canyon"],["qu","k","kite"],["t, d","tongue on the back of the top teeth","Never the quick American flap in butter or ladder. Spanish hears that flap as r, so todo would sound like toro."],["p, t, k","no puff of air","Like the p in spin, not the p in pin."],["r","quick tap","the tt in American butter; at the start of a word or after n, l or s it is trilled like rr (rojo, honra)"],["rr","rolled","tongue trill, no English match"],["x","ks, or h in México","taxi is TAHK-see; México is MEH-hee-koh"],["ai, ay / ei, ey","EYE / AY","hay is EYE, aire is EYE-reh; veinte is BAYN-teh, seis is SAYSS"],["g in the guides","always hard","GEH and ghee are always the g of go, never the g of gem"]];
+
+const missing=[];
+function parse(s){
+  const out=[];
+  s.split(/(\{[^}]*\}|<<[^>]*>>)/).forEach(p=>{
+    if(!p)return;
+    if(p.startsWith("<<")){out.push({k:"bad",x:p.slice(2,-2)});return}
+    if(!p.startsWith("{")){out.push({k:"en",x:p});return}
+    const t=p.slice(1,-1).match(/\p{L}+|[^\p{L}]+/gu);
+    for(let i=0;i<t.length;){
+      if(!/\p{L}/u.test(t[i])){out.push({k:"p",x:t[i]});i++;continue}
+      let done=false;
+      for(const n of[5,4,3,2]){
+        const end=i+2*(n-1);
+        if(end<t.length&&t.slice(i,end+1).every((v,j)=>j%2?/^ +$/.test(v):true)){
+          const x=t.slice(i,end+1).join(""),key=x.toLowerCase();
+          if(LEX[key]){out.push({k:"es",x,key});i=end+1;done=true;break}
+        }
+      }
+      if(done)continue;
+      const key=t[i].toLowerCase();
+      if(!LEX[key])missing.push(t[i]);
+      out.push({k:"es",x:t[i],key});i++;
+    }
+  });
+  return out;
+}
+const count=s=>(s.match(/\p{L}+/gu)||[]).length;
+const seen={},stg={},lastPg={};
+PAGES.forEach(p=>{
+  let es=0,all=0,newTok=0;p.fresh=[];
+  (p.q||[]).forEach(q=>q.forEach(x=>parse("{"+x+"}")));
+  p.parsed=p.l.map(([w,s])=>{
+    const toks=parse(s);
+    toks.forEach(t=>{
+      if(t.k==="es"){const n=count(t.x);es+=n;all+=n;
+        seen[t.key]=(seen[t.key]||0)+1;t.nth=seen[t.key];
+        t.firstHere=lastPg[t.key]!==p;lastPg[t.key]=p;if(t.firstHere)stg[t.key]=(stg[t.key]||0)+1;t.stg=stg[t.key];
+        if(t.nth===1){p.fresh.push(t.key);newTok+=n}}
+      else if(t.k==="en")all+=count(t.x);
+    });
+    return{w,toks};
+  });
+  p.pct=Math.round(100*es/all);
+  p.known=es?Math.round(100*(1-newTok/es)):100;
+});
+window.weaveAudit={missing,pct:PAGES.map(p=>p.pct),known:PAGES.map(p=>p.known),unused:Object.keys(LEX).filter(k=>!seen[k])};
+
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let cur=Math.min(Math.max(+store.get("globos-stage")||0,0),PAGES.length-1),guide=store.get("guide")||"fade",rate=+(store.get("rate")||0.72),luciaEn=store.get("lucia")||"en";
+const $=id=>document.getElementById(id);
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let ears=!!store.get("ears");
+const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2l11 6-11 6z"/></svg>';
+
+const hasTTS="speechSynthesis" in window;
+let esVoice=null,samEs=null,enVoice=null;
+function pickVoices(){
+  if(!hasTTS)return;
+  const v=speechSynthesis.getVoices();
+  const by=t=>v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));
+  esVoice=by("es-mx")||by("es-us")||by("es-419")||by("es");
+  samEs=v.find(x=>/^es[-_](mx|us|419)/i.test(x.lang)&&x!==esVoice)||esVoice;
+  enVoice=by("en-us")||by("en");
+}
+if(hasTTS){pickVoices();speechSynthesis.addEventListener("voiceschanged",pickVoices)}
+function say(segs){
+  const st=$("status");
+  if(!hasTTS){st.textContent="This browser has no speech voices, so audio is unavailable. The written guides still work.";return}
+  pickVoices();
+  st.textContent=(!esVoice&&speechSynthesis.getVoices().length)?"No Spanish voice found. Add one in your device's text-to-speech settings.":"";
+  speechSynthesis.cancel();
+  segs.forEach(s=>{
+    if(!/\p{L}/u.test(s.x))return;
+    const u=new SpeechSynthesisUtterance(s.x);
+    u.lang=s.es?(esVoice?esVoice.lang:"es-MX"):"en-US";
+    const voice=s.es?(s.who==="S"?samEs:esVoice):enVoice;if(voice)u.voice=voice;
+    u.pitch=s.who==="S"?0.82:1.12;
+    u.rate=s.es?rate:1;
+    speechSynthesis.speak(u);
+  });
+}
+function segments(toks,who){
+  const out=[];
+  toks.forEach(t=>{
+    if(t.k==="bad")return;
+    const es=t.k==="es"||t.k==="p"||(who==="L"&&luciaEn==="es");
+    const last=out[out.length-1];
+    if(last&&last.es===es)last.x+=t.x;else out.push({es,x:t.x,who});
+  });
+  for(let i=1;i<out.length;i++){
+    const m=out[i].x.match(/^[\s.,;:!?…]+/);
+    if(m){out[i-1].x=out[i-1].x.trimEnd()+m[0];out[i].x=out[i].x.slice(m[0].length)}
+  }
+  return out;
+}
+function showWord(t,el){
+  document.querySelectorAll(".w.on").forEach(e=>e.classList.remove("on"));
+  el.classList.add("on");
+  const e=LEX[t.key],box=$("sheet").firstElementChild;
+  box.textContent="";
+  const a=document.createElement("strong");a.textContent=t.x;
+  const b=document.createElement("span");b.textContent=e.p;
+  const c=document.createElement("em");c.textContent=e.m+(e.n?" · "+e.n:"");
+  box.append(a,b,c);
+  say([{es:true,x:t.x,who:"L"}]);
+}
+function render(){
+  const p=PAGES[cur];
+  $("ascent").textContent="";
+  PAGES.forEach((q,i)=>{
+    const b=document.createElement("button");b.className="bar";b.id="stage-"+i;
+    b.setAttribute("aria-label","Stage "+(i+1)+", "+q.t+", "+q.pct+" percent Spanish");
+    b.setAttribute("aria-current",i===cur?"true":"false");
+    b.innerHTML='<i style="height:'+Math.max(q.pct*0.72,3)+'%"></i><span>'+(i+1)+'</span>';
+    b.onclick=()=>go(i);$("ascent").append(b);
+  });
+  const P=$("page");P.textContent="";
+  const head=document.createElement("div");head.className="head";
+  const h=document.createElement("h2");h.textContent="Stage "+(cur+1)+": "+p.t;
+  const s=document.createElement("span");s.className="share";s.textContent=p.pct+"% Spanish";
+  head.append(h,s);
+  const n=document.createElement("p");n.className="note";n.textContent=p.n;
+  const pa=document.createElement("button");pa.className="play-all";pa.id="play-all";pa.innerHTML=ICON+"Play this stage";
+  pa.onclick=()=>say(p.parsed.flatMap(l=>segments(l.toks,l.w)));
+  const ls=document.createElement("div");ls.className="lines";
+  p.parsed.forEach((l,li)=>{
+    const row=document.createElement("div");row.className="line";
+    const who=document.createElement("div");who.className="who "+l.w;who.textContent=l.w==="S"?"Sam":"Lucía";
+    const tx=document.createElement("p");tx.className="txt";
+    l.toks.forEach(t=>{
+      if(t.k==="es"){
+        const b=document.createElement("button");b.className="w";b.textContent=t.x;
+        b.onclick=()=>showWord(t,b);tx.append(b);
+        const show=guide==="all"||(guide==="fade"&&(t.nth<=2||(t.firstHere&&t.stg<=3)));
+        if(show){const g=document.createElement("span");g.className="g";g.textContent=" ("+LEX[t.key].p+")";tx.append(g)}
+      }else if(t.k==="bad"){
+        const b=document.createElement("span");b.className="bad";b.textContent=t.x;b.title="Incorrect Spanish, corrected in the next line";tx.append(b);const xm=document.createElement("span");xm.className="g";xm.setAttribute("role","img");xm.setAttribute("aria-label","incorrect");xm.textContent=" ✗";tx.append(xm);
+      }else tx.append(document.createTextNode(t.x));
+    });
+    const sb=document.createElement("button");sb.className="say";sb.id="say-"+li;sb.setAttribute("aria-label","Play this line");sb.innerHTML=ICON;
+    sb.onclick=()=>say(segments(l.toks,l.w));
+    row.append(who,tx,sb);ls.append(row);
+  });
+  const lf=document.createElement("button");lf.className="play-all";lf.id="listen-first";lf.setAttribute("aria-pressed",ears);lf.textContent="Listen first";
+  lf.onclick=()=>{ears=!ears;store.set("ears",ears?"1":"");render()};
+  const acts=document.createElement("div");acts.className="acts";acts.append(pa,lf);
+  if(ears)ls.classList.add("ears");
+  P.append(head,n,acts,ls);
+  (p.q||[]).forEach((q,qi)=>{
+    const box=document.createElement("div");box.className="cq";box.id="question-"+qi;
+    const pr=document.createElement("p");pr.className="cqp";
+    const say1=document.createElement("button");say1.className="say";say1.setAttribute("aria-label","Play the question");say1.innerHTML=ICON;say1.onclick=()=>say([{es:true,x:q[0],who:"S"}]);
+    const tq=document.createElement("span");tq.textContent=q[0];pr.append(say1,tq);
+    const ops=document.createElement("div");ops.className="opts";
+    shuffle(q.slice(1).map((o,i)=>[o,i===0])).forEach(([o,ok])=>{const b=document.createElement("button");b.className="opt";b.textContent=o;
+      b.onclick=()=>{b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+o);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===q[1])x.classList.add("right")});ls.classList.remove("ears")};ops.append(b)});
+    box.append(pr,ops);P.append(box);
+  });
+  const items=p.fresh.filter(k=>k.split(" ").length<=2&&LEX[k]).slice(0,4);
+  if(items.length>=2){
+    const d=document.createElement("details");d.id="check";
+    const sm=document.createElement("summary");sm.textContent="Check yourself ("+items.length+")";d.append(sm);
+    const pool=[...new Set(PAGES.flatMap(q=>q.fresh).filter(k=>LEX[k]).map(k=>LEX[k].m))];
+    items.forEach(k=>{
+      const right=LEX[k].m,opts=[right];
+      for(const m of shuffle(pool.slice()))if(opts.length<3&&m!==right)opts.push(m);
+      const row=document.createElement("div");row.className="qrow";
+      const w=document.createElement("button");w.className="w";w.textContent=k;w.onclick=()=>say([{es:true,x:k,who:"L"}]);
+      const ops=document.createElement("div");ops.className="opts";
+      shuffle(opts).forEach(m=>{const b=document.createElement("button");b.className="opt";b.textContent=m;
+        b.onclick=()=>{const ok=m===right;b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+m);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===right)x.classList.add("right")});say([{es:true,x:k,who:"L"}])};ops.append(b)});
+      row.append(w,ops);d.append(row);
+    });
+    P.append(d);
+  }
+  if(p.fresh.length){
+    const d=document.createElement("details");d.id="new-words";d.open=false;
+    d.innerHTML='<summary>New words on this page ('+p.fresh.length+')</summary><div class="table"><table><thead><tr><th>Spanish</th><th>Say it</th><th>Meaning</th></tr></thead><tbody></tbody></table></div>';
+    p.fresh.forEach(k=>{const r=d.querySelector("tbody").insertRow();[k,LEX[k].p,LEX[k].m].forEach(x=>{r.insertCell().textContent=x})});
+    P.append(d);
+  }
+  const k=document.createElement("details");k.id="sound-key";k.open=cur===0;
+  k.innerHTML='<summary>How Spanish sounds</summary><div class="table"><table><thead><tr><th>Letter</th><th>Sound</th><th>Like</th></tr></thead><tbody></tbody></table></div><p class="keynote">Capital letters mark the stressed syllable. Spanish letter names follow the same logic: a is ah, b is beh, c is seh, d is deh. Respellings are a bridge, so listen as well.</p>';
+  SOUND.forEach(rw=>{const r=k.querySelector("tbody").insertRow();rw.forEach(x=>{r.insertCell().textContent=x})});
+  P.append(k);
+  $("prev").disabled=cur===0;$("next").disabled=cur===PAGES.length-1;
+  document.querySelectorAll("[data-g]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g===guide));
+  document.querySelectorAll("[data-r]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===rate));
+  document.querySelectorAll("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===luciaEn));
+}
+function go(i){cur=i;store.set("globos-stage",i);if(hasTTS)speechSynthesis.cancel();render();window.scrollTo(0,0)}
+$("prev").onclick=()=>go(cur-1);$("next").onclick=()=>go(cur+1);
+document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{guide=b.dataset.g;store.set("guide",guide);render()});
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("rate",rate);render()});
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{luciaEn=b.dataset.l;store.set("lucia",luciaEn);render()});
+$("b").textContent=BUILD;$("u").textContent=SHIPPED;
+render();
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Diglot Weave</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Free bilingual dialogues that start in your language and end in the one you're learning.">
+<meta name="build-id" content="WEAV-20261114-0139Z">
+<meta name="shipped-utc" content="2026-11-14T01:39:12Z">
+<style>
+/* Layout: one column; three path cards, then a short explanation. */
+:root{--sky:#e6edf3;--paper:#f6f9fb;--ink:#1b2838;--muted:#566779;--line:#c6d3df;--es:#a32a63;--sam:#1f6a7a;
+--read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#111a25;--paper:#182432;--ink:#e7edf3;--muted:#9db0c2;--line:#32455a;--es:#f492bd;--sam:#74c6d6;color-scheme:dark}}
+:root[data-theme="dark"]{--sky:#111a25;--paper:#182432;--ink:#e7edf3;--muted:#9db0c2;--line:#32455a;--es:#f492bd;--sam:#74c6d6;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.wrap{max-width:46rem;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:24px}
+h1{font-family:var(--read);font-size:2.25rem;line-height:1.05;margin:0}
+h2{font-family:var(--read);font-size:1.3rem;margin:0}
+p{margin:0}.lede{color:var(--muted);max-width:60ch;margin-top:6px}
+.demo{font-family:var(--read);font-size:1.15rem;line-height:1.6;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:4px}
+.demo span{color:var(--es)}.demo small{font-family:var(--ui);font-size:.8125rem;color:var(--muted)}
+.paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.path{display:grid;gap:6px;align-content:start;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px;color:var(--ink);text-decoration:none}
+.path:hover{border-color:var(--es)}.path:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.dir{font-size:.8125rem;text-transform:uppercase;letter-spacing:.06em;color:var(--sam);font-weight:600}
+.path h2{color:var(--ink)}.path p{color:var(--muted);font-size:.9375rem}
+.about{display:grid;gap:10px;max-width:65ch}
+.about p{color:var(--ink)}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}
+footer a{color:inherit}
+@media (max-width:640px){.paths{grid-template-columns:minmax(0,1fr)}h1{font-size:1.9rem}}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Diglot Weave</h1>
+    <p class="lede">Free bilingual dialogues that start in your language and end in the one you're learning, one word at a time. Every new word has a pronunciation guide written in your own alphabet and tap-to-hear audio.</p>
+  </header>
+  <div class="demo" aria-label="Example">
+    <p>The <span>viento</span> wins, and the <span>globo</span> stays in the truck.</p>
+    <p><span>El viento gana y el globo se queda en la camioneta.</span></p>
+    <small>Stage 1 and the final stage of the same idea.</small>
+  </div>
+  <nav class="paths" aria-label="Choose a path">
+    <a class="path" href="es/index.html" lang="en"><span class="dir">English → Español</span><h2>Learn Spanish</h2><p>Seventeen pages: a fable, stories, legends, science, and work Spanish for aviation, cargo, firefighting, bars and cybersecurity.</p></a>
+    <a class="path" href="fr/l-essentiel.html" lang="en"><span class="dir">English → Français</span><h2>Learn French</h2><p>A phrasebook with a French sound guide, grammar and everyday verbs. Dialogues are coming next.</p></a>
+    <a class="path" href="en/index.html" lang="es"><span class="dir">Español → English</span><h2>Aprende inglés</h2><p>Inglés para profesionales de ciberseguridad que trabajan con clientes, con la pronunciación escrita en letras del español.</p></a>
+  </nav>
+  <section class="about">
+    <h2>How it works</h2>
+    <p>Two friends, Sam and Lucía, talk about something real: a balloon flight, a night shift on a cargo ramp, a client meeting. Early stages are almost all in your language. Each stage swaps in more of the other language, and by the last stage the conversation is entirely in it. You meet each word in context several times, with a pronunciation guide that fades after a few uses.</p>
+    <p>The pronunciation guides are a bridge, not the real sound. Listen to the audio, which uses your device's own speech voices.</p>
+  </section>
+  <footer>
+    <p>All pages work offline once opened. Content is original or retold from public-domain sources; see the <a href="https://github.com/grumby42/diglot-weave">project repository</a> for sources, review notes and how to contribute corrections.</p>
+    <p>Build WEAV-20261114-0139Z · shipped 2026-11-14T01:39:12Z</p>
+  </footer>
+</div>
+
+</html>

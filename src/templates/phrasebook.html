@@ -1,0 +1,484 @@
+<title>Lo básico</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="__BUILD__">
+<meta name="shipped-utc" content="__UTC__">
+<style>
+/* Layout: one reference column; a sticky section bar, then word cards in a two-column grid that drops to one on phones. */
+:root{
+  --sky:#e6edf3; --paper:#f6f9fb; --ink:#1b2838; --muted:#566779; --line:#c6d3df;
+  --es:#a32a63; --es-soft:#f6dfe9;
+  --read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a; --es:#f492bd; --es-soft:#43243a; color-scheme:dark}}
+:root[data-theme="dark"]{--sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a; --es:#f492bd; --es-soft:#43243a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sky)}
+.wrap{max-width:52rem;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0}
+h2{font-family:var(--read);font-size:1.4rem;margin:0;text-wrap:balance}
+.sub{margin:4px 0 0;color:var(--muted)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;background:var(--sky);padding-block:8px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.chips a{flex:none;font-size:.875rem;color:var(--ink);text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.chips a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:.875rem}
+.seg{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg b{font-weight:600;color:var(--muted)}
+.seg button{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:5px 10px;min-height:34px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+#q{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;width:100%;max-width:18rem}
+section{display:grid;gap:10px;scroll-margin-top:64px}
+.intro{margin:0;color:var(--muted);max-width:65ch}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.grid.wide{grid-template-columns:minmax(0,1fr)}
+.card{all:unset;box-sizing:border-box;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:2px;min-width:0}
+.card:hover,.card.on{border-color:var(--es);background:var(--es-soft)}
+.card:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.w{font-family:var(--read);font-size:1.25rem;color:var(--es);overflow-wrap:anywhere}
+.p{font-size:.9375rem;font-weight:600;letter-spacing:.02em}
+.m{font-size:.9375rem;color:var(--muted)}
+.n{font-size:.8125rem;color:var(--muted);font-style:italic}
+.hideP .p,.hideM .m,.hideM .n{visibility:hidden}
+.card.reveal .p,.card.reveal .m,.card.reveal .n{visibility:visible}
+.empty{color:var(--muted);margin:0}
+#status{min-height:1.2em;margin:0;font-size:.875rem;color:var(--es)}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}
+footer a{color:inherit}
+footer p{margin:0}
+@media (max-width:340px){.grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){h1{font-size:1.75rem}.card{padding:8px 10px}.w{font-size:1.125rem}.p,.m{font-size:.875rem}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Lo básico</h1>
+    <p class="sub">Spanish essentials, grammar and everyday verbs, with English-sound respellings. Tap a card to hear it. Capital letters mark the stressed syllable.</p>
+  </header>
+  <div class="bar">
+    <nav class="chips" id="chips" aria-label="Sections"></nav>
+  </div>
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search Spanish or English" aria-label="Search words">
+      <span class="seg" role="group" aria-label="Speech speed"><b>Speed</b><button id="r-slow" data-r="0.72">Slow</button><button id="r-norm" data-r="1">Normal</button></span>
+      <span class="seg" role="group" aria-label="Self-test"><b>Test me</b><button id="t-off" data-t="off">Show all</button><button id="t-p" data-t="p">Hide sounds</button><button id="t-m" data-t="m">Hide meanings</button></span>
+    </div>
+  <p id="status" role="status"></p>
+  <main id="main" style="display:grid;gap:28px"></main>
+  <footer>
+    <p>Latin American pronunciation. Respellings are a bridge to the real sounds, so listen as well. Audio uses your device's speech voices.</p>
+    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a></p>
+    <p>Build <span id="b"></span> · shipped <span id="u"></span></p>
+  </footer>
+</div>
+
+<script>
+const BUILD="__BUILD__",SHIPPED="__UTC__";
+// Language data: each section is a list of rows "spoken|SAY-it|meaning|note". The first field is what the voice reads.
+const LANG={code:"es",voices:["es-mx","es-us","es-419","es"],sections:[
+{id:"letras",t:"Letters",es:"Las letras",i:"Spanish letter names. Say them when spelling a name or a tail number. Ch and ll are pairs of letters with their own sounds, not separate letters.",rows:`a|AH|A
+be|BEH|B|Often "be larga" or "be grande" to tell it from V
+ce|SEH|C
+de|DEH|D
+e|EH|E
+efe|EH-feh|F
+ge|HEH|G
+hache|AH-cheh|H|The letter is always silent in words
+i|EE|I|Sometimes "i latina"
+jota|HOH-tah|J
+ka|KAH|K
+ele|EH-leh|L
+eme|EH-meh|M
+ene|EH-neh|N
+eñe|EH-nyeh|Ñ
+o|OH|O
+pe|PEH|P
+cu|KOO|Q
+erre|EH-rreh|R|Trill rr, and r at the start of a word
+ese|EH-seh|S
+te|TEH|T
+u|OO|U
+ve|BEH|V|Often "ve corta" or "ve chica"
+doble ve|DOH-bleh BEH|W|Also "doble u"
+equis|EH-kees|X
+ye|YEH|Y|Also "i griega", still the everyday name in Mexico. "Ye" is the RAE's recommended name
+zeta|SEH-tah|Z`},
+{id:"numeros",t:"Numbers",es:"Los números",i:"Learn 0 to 20 as words, then the tens. Above 30, numbers join with y: treinta y uno is 31.",rows:`cero|SEH-roh|0
+uno|OO-noh|1
+dos|DOHS|2
+tres|TREHS|3
+cuatro|KWAH-troh|4
+cinco|SEEN-koh|5
+seis|SAYSS|6
+siete|SYEH-teh|7
+ocho|OH-choh|8
+nueve|NWEH-beh|9
+diez|DYEHS|10
+once|OHN-seh|11
+doce|DOH-seh|12
+trece|TREH-seh|13
+catorce|kah-TOHR-seh|14
+quince|KEEN-seh|15
+dieciséis|dyeh-see-SAYSS|16
+diecisiete|dyeh-see-SYEH-teh|17
+dieciocho|dyeh-see-OH-choh|18
+diecinueve|dyeh-see-NWEH-beh|19
+veinte|BAYN-teh|20
+veintiuno|bayn-tee-OO-noh|21
+treinta|TRAYN-tah|30
+treinta y uno|TRAYN-tah ee OO-noh|31
+cuarenta|kwah-REHN-tah|40
+cincuenta|seen-KWEHN-tah|50
+sesenta|seh-SEHN-tah|60
+setenta|seh-TEHN-tah|70
+ochenta|oh-CHEHN-tah|80
+noventa|noh-BEHN-tah|90
+cien|SYEHN|100|Ciento before another number: ciento uno
+quinientos|kee-NYEHN-tohs|500
+mil|MEEL|1,000
+un millón|oon mee-YOHN|1,000,000
+primero|pree-MEH-roh|first
+segundo|seh-GOON-doh|second
+tercero|tehr-SEH-roh|third`},
+{id:"colores",t:"Colors",es:"Los colores",i:"Most colors change their ending to match the noun: un globo rojo, una vela roja.",rows:`rojo|RROH-hoh|red
+naranja|nah-RAHN-hah|orange
+amarillo|ah-mah-REE-yoh|yellow
+verde|BEHR-deh|green
+azul|ah-SOOL|blue
+morado|moh-RAH-doh|purple
+rosa|RROH-sah|pink|Also "rosado"
+blanco|BLAHN-koh|white
+negro|NEH-groh|black
+gris|GREES|gray
+café|kah-FEH|brown|Common in Mexico; "marrón" in many other countries
+marrón|mah-RROHN|brown
+dorado|doh-RAH-doh|gold
+plateado|plah-teh-AH-doh|silver
+claro|KLAH-roh|light|azul claro, light blue
+oscuro|ohs-KOO-roh|dark|verde oscuro, dark green`},
+{id:"animales",t:"Animals",es:"Los animales",i:"El and la tell you the gender. Animals have patas, not piernas.",rows:`el perro|ehl PEH-rroh|dog
+el gato|ehl GAH-toh|cat
+el caballo|ehl kah-BAH-yoh|horse
+la vaca|lah BAH-kah|cow
+el cerdo|ehl SEHR-doh|pig|Also "el puerco" or "el cochino"
+la oveja|lah oh-BEH-hah|sheep
+la cabra|lah KAH-brah|goat
+la gallina|lah gah-YEE-nah|hen
+el pato|ehl PAH-toh|duck
+el pájaro|ehl PAH-hah-roh|bird
+el águila|ehl AH-ghee-lah|eagle|Feminine, but takes el before a stressed a
+el búho|ehl BOO-oh|owl
+el venado|ehl beh-NAH-doh|deer
+el conejo|ehl koh-NEH-hoh|rabbit
+el ratón|ehl rrah-TOHN|mouse
+el zorro|ehl SOH-rroh|fox
+el lobo|ehl LOH-boh|wolf
+el oso|ehl OH-soh|bear
+el mono|ehl MOH-noh|monkey
+el león|ehl leh-OHN|lion
+el elefante|ehl eh-leh-FAHN-teh|elephant
+la serpiente|lah sehr-PYEHN-teh|snake
+la tortuga|lah tohr-TOO-gah|turtle
+la rana|lah RRAH-nah|frog
+el pez|ehl PEHS|fish (alive)|Fish on a plate is "el pescado"
+la ballena|lah bah-YEH-nah|whale
+el tiburón|ehl tee-boo-ROHN|shark
+la mariposa|lah mah-ree-POH-sah|butterfly
+la abeja|lah ah-BEH-hah|bee
+la hormiga|lah ohr-MEE-gah|ant
+la araña|lah ah-RAH-nyah|spider
+el mosquito|ehl mohs-KEE-toh|mosquito|"El zancudo" in parts of Latin America`},
+{id:"tierra",t:"Earth",es:"La tierra y el cielo",i:"Land, water and sky. La tierra means earth, land, soil and the ground you land on.",rows:`el mundo|ehl MOON-doh|world
+la tierra|lah TYEH-rrah|earth, land, ground
+el cielo|ehl SYEH-loh|sky
+la nube|lah NOO-beh|cloud
+el sol|ehl SOHL|sun
+la luna|lah LOO-nah|moon
+la estrella|lah ehs-TREH-yah|star
+la lluvia|lah YOO-byah|rain
+la nieve|lah NYEH-beh|snow
+la niebla|lah NYEH-blah|fog
+la montaña|lah mohn-TAH-nyah|mountain
+el cerro|ehl SEH-rroh|hill
+el volcán|ehl bohl-KAHN|volcano
+el valle|ehl BAH-yeh|valley
+la llanura|lah yah-NOO-rah|plain
+el desierto|ehl deh-SYEHR-toh|desert
+la cueva|lah KWEH-bah|cave
+la piedra|lah PYEH-drah|stone
+la arena|lah ah-REH-nah|sand
+el río|ehl RREE-oh|river
+el arroyo|ehl ah-RROH-yoh|creek
+el lago|ehl LAH-goh|lake
+la cascada|lah kahs-KAH-dah|waterfall
+el mar|ehl MAHR|sea
+el océano|ehl oh-SEH-ah-noh|ocean
+la playa|lah PLAH-yah|beach
+la isla|lah EES-lah|island`},
+{id:"plantas",t:"Growing things",es:"Lo que crece",i:"Plants, crops and the parts of a tree.",rows:`el bosque|ehl BOHS-keh|forest
+la selva|lah SEHL-bah|jungle
+el campo|ehl KAHM-poh|field, countryside
+el árbol|ehl AHR-bohl|tree
+la rama|lah RRAH-mah|branch
+la hoja|lah OH-hah|leaf
+la raíz|lah rrah-EES|root
+la semilla|lah seh-MEE-yah|seed
+la flor|lah FLOHR|flower
+el pasto|ehl PAHS-toh|grass|Also "la hierba" (YEHR-bah)
+el musgo|ehl MOOS-goh|moss
+el hongo|ehl OHN-goh|mushroom, fungus
+el cactus|ehl KAHK-toos|cactus
+el pino|ehl PEE-noh|pine
+el roble|ehl RROH-bleh|oak
+el maíz|ehl mah-EES|corn
+el trigo|ehl TREE-goh|wheat
+la soya|lah SOH-yah|soybeans
+la fruta|lah FROO-tah|fruit
+la cosecha|lah koh-SEH-chah|harvest`},
+{id:"preguntas",t:"Questions",es:"Las preguntas",i:"Question words carry an accent mark. Your voice rises at the end of yes-or-no questions.",rows:`¿Qué?|KEH|What?
+¿Quién?|KYEHN|Who?
+¿Dónde?|DOHN-deh|Where?
+¿Cuándo?|KWAHN-doh|When?
+¿Cómo?|KOH-moh|How?
+¿Por qué?|pohr KEH|Why?|"Porque" as one word means because
+¿Cuánto?|KWAHN-toh|How much?
+¿Cuál?|KWAHL|Which?
+¿Cómo te llamas?|KOH-moh teh YAH-mahs|What's your name?|To a stranger: ¿Cómo se llama?
+¿Cómo estás?|KOH-moh ehs-TAHS|How are you?|To a stranger: ¿Cómo está usted?
+¿De dónde eres?|deh DOHN-deh EH-rehs|Where are you from?|To a stranger: ¿De dónde es?
+¿A qué te dedicas?|ah KEH teh deh-DEE-kahs|What do you do for work?|To a stranger: ¿A qué se dedica?
+¿Hablas inglés?|AH-blahs een-GLEHS|Do you speak English?|To a stranger: ¿Habla inglés?
+¿Cómo se dice...?|KOH-moh seh DEE-seh|How do you say...?
+¿Qué significa?|KEH seeg-nee-FEE-kah|What does it mean?
+¿Puedes repetir?|PWEH-dehs rreh-peh-TEER|Can you repeat that?|To a stranger: ¿Puede repetir?
+¿Qué hora es?|KEH OH-rah EHS|What time is it?
+¿Cuánto cuesta?|KWAHN-toh KWEHS-tah|How much does it cost?
+¿Dónde está el baño?|DOHN-deh ehs-TAH ehl BAH-nyoh|Where is the bathroom?
+¿Me ayudas?|meh ah-YOO-dahs|Can you help me?|To a stranger: ¿Me ayuda?`},
+{id:"frases",t:"Phrases",es:"Las frases",i:"The lines that keep a conversation moving when you are stuck.",rows:`Hola|OH-lah|Hello
+¿Mande?|MAHN-deh|Pardon? Sorry?|The polite way to ask someone to repeat in Mexico
+Buenos días|BWEH-nohs DEE-ahs|Good morning
+Buenas tardes|BWEH-nahs TAHR-dehs|Good afternoon
+Buenas noches|BWEH-nahs NOH-chehs|Good evening, good night
+Adiós|ah-DYOHS|Goodbye
+Hasta luego|AHS-tah LWEH-goh|See you later
+Mucho gusto|MOO-choh GOOS-toh|Nice to meet you
+Me llamo Ted|meh YAH-moh TEHD|My name is Ted
+Por favor|pohr fah-BOHR|Please
+Gracias|GRAH-syahs|Thank you
+De nada|deh NAH-dah|You're welcome
+Perdón|pehr-DOHN|Sorry, excuse me
+Con permiso|kohn pehr-MEE-soh|Excuse me, coming through
+Lo siento|loh SYEHN-toh|I'm sorry
+Sí|SEE|Yes
+No|NOH|No
+Claro|KLAH-roh|Of course
+Está bien|ehs-TAH BYEHN|It's okay
+No entiendo|noh ehn-TYEHN-doh|I don't understand
+No sé|noh SEH|I don't know
+Más despacio, por favor|MAHS dehs-PAH-syoh pohr fah-BOHR|Slower, please
+Hablo un poco de español|AH-bloh oon POH-koh deh ehs-pah-NYOHL|I speak a little Spanish
+¡Cuidado!|kwee-DAH-doh|Careful!
+¡Salud!|sah-LOOD|Cheers! Bless you!
+¡Buen provecho!|BWEHN proh-BEH-choh|Enjoy your meal!`}
+,
+{id:"gramatica",wide:1,t:"Grammar",es:"La gramática",i:"Eleven patterns that carry most beginner conversation. Each card is an example; the meaning line gives the rule.",rows:`Soy piloto. Estoy cansado.|SOY pee-LOH-toh. ehs-TOY kahn-SAH-doh|Two verbs for "to be." Ser is what something is. Estar is where it is or how it is right now.
+el globo, la vela|ehl GLOH-boh, lah BEH-lah|Every noun is masculine (el) or feminine (la). Most -o words take el, and most -a words take la.|Learn the el or la with the word
+los globos, las velas|lohs GLOH-bohs, lahs BEH-lahs|Plural: add -s after a vowel, -es after a consonant. El becomes los, and la becomes las.
+un globo rojo|oon GLOH-boh RROH-hoh|Describing words usually come after the noun and match it: una vela roja.
+Tengo hambre. Tengo frío.|TEHN-goh AHM-breh. TEHN-goh FREE-oh|Hunger, thirst, cold, heat, fear and age use tener, "to have": Tengo treinta años.
+No hablo francés.|noh AH-bloh frahn-SEHS|To make a sentence negative, put no before the verb.
+¿Hablas inglés?|AH-blahs een-GLEHS|A yes-or-no question uses the same words as a statement. Only your voice rises.
+Me gusta el café. Me gustan los tacos.|meh GOOS-tah ehl kah-FEH. meh GOOS-tahn lohs TAH-kohs|"I like" is literally "it pleases me." Use gustan when the liked thing is plural.
+Voy a volar mañana.|BOY ah boh-LAHR mah-NYAH-nah|Near future: a form of ir, then a, then the verb. Easier than a future tense.
+Hablé con Lucía. Comí tacos.|ah-BLEH kohn loo-SEE-ah. koh-MEE TAH-kohs|Simple past for "I": -ar verbs end in -é, and -er or -ir verbs end in -í, with the stress on that last syllable.
+tú y usted|TOO ee oos-TEHD|Both mean "you." Use tú with friends and usted with strangers, elders and customers.|When in doubt, start with usted`},
+{id:"verbos",wide:1,t:"Verbs",es:"Los verbos",i:"Twelve everyday verbs in the present tense, in the order I, you, he or she, we, they.",rows:`soy, eres, es, somos, son|SOY, EH-rehs, EHS, SOH-mohs, SOHN|ser: to be (what something is)
+estoy, estás, está, estamos, están|ehs-TOY, ehs-TAHS, ehs-TAH, ehs-TAH-mohs, ehs-TAHN|estar: to be (where, how)
+tengo, tienes, tiene, tenemos, tienen|TEHN-goh, TYEH-nehs, TYEH-neh, teh-NEH-mohs, TYEH-nehn|tener: to have
+voy, vas, va, vamos, van|BOY, BAHS, BAH, BAH-mohs, BAHN|ir: to go
+hago, haces, hace, hacemos, hacen|AH-goh, AH-sehs, AH-seh, ah-SEH-mohs, AH-sehn|hacer: to do, to make
+quiero, quieres, quiere, queremos, quieren|KYEH-roh, KYEH-rehs, KYEH-reh, keh-REH-mohs, KYEH-rehn|querer: to want
+puedo, puedes, puede, podemos, pueden|PWEH-doh, PWEH-dehs, PWEH-deh, poh-DEH-mohs, PWEH-dehn|poder: can, to be able
+digo, dices, dice, decimos, dicen|DEE-goh, DEE-sehs, DEE-seh, deh-SEE-mohs, DEE-sehn|decir: to say
+sé, sabes, sabe, sabemos, saben|SEH, SAH-behs, SAH-beh, sah-BEH-mohs, SAH-behn|saber: to know (facts)
+hablo, hablas, habla, hablamos, hablan|AH-bloh, AH-blahs, AH-blah, ah-BLAH-mohs, AH-blahn|hablar: to speak|The pattern for regular -ar verbs
+como, comes, come, comemos, comen|KOH-moh, KOH-mehs, KOH-meh, koh-MEH-mohs, KOH-mehn|comer: to eat|The pattern for regular -er verbs
+vivo, vives, vive, vivimos, viven|BEE-boh, BEE-behs, BEE-beh, bee-BEE-mohs, BEE-behn|vivir: to live|The pattern for regular -ir verbs`},
+{id:"conectores",t:"Linking words",es:"Las palabras de enlace",i:"Small words that turn short phrases into real sentences.",rows:`y|EE|and
+o|OH|or
+pero|PEH-roh|but
+porque|POHR-keh|because
+entonces|ehn-TOHN-sehs|so, then
+también|tahm-BYEHN|also
+tampoco|tahm-POH-koh|neither, not either
+con|KOHN|with
+sin|SEEN|without
+para|PAH-rah|for, in order to
+cuando|KWAHN-doh|when (not a question)
+si|SEE|if|Sí with an accent means yes
+muy|MWEE|very
+más|MAHS|more
+menos|MEH-nohs|less
+siempre|SYEHM-preh|always
+nunca|NOON-kah|never
+a veces|ah BEH-sehs|sometimes`},
+{id:"tiempo",t:"Time",es:"El tiempo y el calendario",i:"Days and months are not capitalized in Spanish.",rows:`lunes|LOO-nehs|Monday
+martes|MAHR-tehs|Tuesday
+miércoles|MYEHR-koh-lehs|Wednesday
+jueves|HWEH-behs|Thursday
+viernes|BYEHR-nehs|Friday
+sábado|SAH-bah-doh|Saturday
+domingo|doh-MEEN-goh|Sunday
+enero|eh-NEH-roh|January
+febrero|feh-BREH-roh|February
+marzo|MAHR-soh|March
+abril|ah-BREEL|April
+mayo|MAH-yoh|May
+junio|HOO-nyoh|June
+julio|HOO-lyoh|July
+agosto|ah-GOHS-toh|August
+septiembre|sehp-TYEHM-breh|September
+octubre|ohk-TOO-breh|October
+noviembre|noh-BYEHM-breh|November
+diciembre|dee-SYEHM-breh|December
+hoy|OY|today
+mañana|mah-NYAH-nah|tomorrow, morning
+ayer|ah-YEHR|yesterday
+ahora|ah-OH-rah|now
+temprano|tehm-PRAH-noh|early
+tarde|TAHR-deh|late, afternoon
+la semana|lah seh-MAH-nah|week
+el mes|ehl MEHS|month
+el año|ehl AH-nyoh|year|Keep the tilde: "ano" means something very different
+Es la una.|ehs lah OO-nah|It's one o'clock.
+Son las tres y media.|sohn lahs TREHS ee MEH-dyah|It's three thirty.
+a las seis de la mañana|ah lahs SAYSS deh lah mah-NYAH-nah|at 6 a.m.`},
+{id:"clima",t:"Weather",es:"El clima",i:"Most weather uses hace, literally “it makes”: hace viento, it's windy.",rows:`Hace calor.|AH-seh kah-LOHR|It's hot.
+Hace frío.|AH-seh FREE-oh|It's cold.
+Hace viento.|AH-seh BYEHN-toh|It's windy.
+Hace sol.|AH-seh SOHL|It's sunny.
+Está nublado.|ehs-TAH noo-BLAH-doh|It's cloudy.
+Llueve.|YWEH-beh|It's raining.
+Nieva.|NYEH-bah|It's snowing.
+la tormenta|lah tohr-MEHN-tah|storm
+el relámpago|ehl rreh-LAHM-pah-goh|lightning
+el trueno|ehl TRWEH-noh|thunder
+la temperatura|lah tehm-peh-rah-TOO-rah|temperature
+veinte grados|BAYN-teh GRAH-dohs|twenty degrees|Most Spanish-speaking countries use Celsius`},
+{id:"gente",t:"People",es:"La gente y la familia",i:"Masculine plurals cover mixed groups: los padres means the parents.",rows:`la familia|lah fah-MEE-lyah|family
+la madre|lah MAH-dreh|mother|Casually "mamá"
+el padre|ehl PAH-dreh|father|Casually "papá"
+los padres|lohs PAH-drehs|parents
+el hermano|ehl ehr-MAH-noh|brother
+la hermana|lah ehr-MAH-nah|sister
+el hijo|ehl EE-hoh|son
+la hija|lah EE-hah|daughter
+el esposo|ehl ehs-POH-soh|husband
+la esposa|lah ehs-POH-sah|wife
+los abuelos|lohs ah-BWEH-lohs|grandparents
+el amigo|ehl ah-MEE-goh|friend (male)
+la amiga|lah ah-MEE-gah|friend (female)
+el niño|ehl NEE-nyoh|boy, child
+la niña|lah NEE-nyah|girl
+el señor|ehl seh-NYOHR|sir, Mr.
+la señora|lah seh-NYOH-rah|ma'am, Mrs.`},
+{id:"cuerpo",t:"Body & health",es:"El cuerpo y la salud",i:"Useful with passengers or in an emergency. For pain, Spanish says “it hurts me”: me duele.",rows:`la cabeza|lah kah-BEH-sah|head
+los ojos|lohs OH-hohs|eyes
+la boca|lah BOH-kah|mouth
+el cuello|ehl KWEH-yoh|neck
+el pecho|ehl PEH-choh|chest
+el corazón|ehl koh-rah-SOHN|heart
+la espalda|lah ehs-PAHL-dah|back
+el estómago|ehl ehs-TOH-mah-goh|stomach
+el brazo|ehl BRAH-soh|arm
+la mano|lah MAH-noh|hand|Feminine even though it ends in -o
+la pierna|lah PYEHR-nah|leg
+la rodilla|lah rroh-DEE-yah|knee
+el tobillo|ehl toh-BEE-yoh|ankle
+el pie|ehl PYEH|foot
+Me duele la cabeza.|meh DWEH-leh lah kah-BEH-sah|My head hurts.
+¿Dónde le duele?|DOHN-deh leh DWEH-leh|Where does it hurt? (formal)
+¿Está bien?|ehs-TAH BYEHN|Are you okay? (formal)
+No se mueva.|noh seh MWEH-bah|Don't move. (formal)
+¿Puede respirar?|PWEH-deh rrehs-pee-RAHR|Can you breathe?
+¿Toma medicamentos?|TOH-mah meh-dee-kah-MEHN-tohs|Do you take any medications?
+Necesito un médico.|neh-seh-SEE-toh oon MEH-dee-koh|I need a doctor.
+Llame al nueve uno uno.|YAH-meh ahl NWEH-beh OO-noh OO-noh|Call 911.|Emergency numbers differ by country`},
+{id:"direcciones",t:"Directions",es:"Las direcciones",i:"For giving directions to passengers, chase crews and lost travelers.",rows:`a la izquierda|ah lah ees-KYEHR-dah|to the left
+a la derecha|ah lah deh-REH-chah|to the right
+todo derecho|TOH-doh deh-REH-choh|straight ahead|Also "todo recto" in Spain
+aquí|ah-KEE|here
+ahí|ah-EE|there|In Mexico "ahí" and "allá" are far more common than "allí"
+cerca|SEHR-kah|near
+lejos|LEH-hohs|far
+arriba|ah-RREE-bah|up, above
+abajo|ah-BAH-hoh|down, below
+la calle|lah KAH-yeh|street
+la esquina|lah ehs-KEE-nah|corner
+el norte|ehl NOHR-teh|north
+el sur|ehl SOOR|south
+el este|ehl EHS-teh|east
+el oeste|ehl oh-EHS-teh|west`},
+{id:"sentimientos",t:"Feelings",es:"Los sentimientos",i:"Moods use estar. Needs like thirst and fear use tener. Endings change for a woman: cansada, nerviosa.",rows:`Estoy feliz.|ehs-TOY feh-LEES|I'm happy.
+Estoy cansado.|ehs-TOY kahn-SAH-doh|I'm tired.|A woman says cansada
+Estoy triste.|ehs-TOY TREES-teh|I'm sad.
+Estoy nervioso.|ehs-TOY nehr-BYOH-soh|I'm nervous.|A woman says nerviosa
+Estoy enfermo.|ehs-TOY ehn-FEHR-moh|I'm sick.|A woman says enferma
+Estoy aburrido.|ehs-TOY ah-boo-RREE-doh|I'm bored.|A woman says aburrida
+Tengo sed.|TEHN-goh SEHD|I'm thirsty.
+Tengo sueño.|TEHN-goh SWEH-nyoh|I'm sleepy.
+Tengo miedo.|TEHN-goh MYEH-doh|I'm afraid.
+Me gusta.|meh GOOS-tah|I like it.
+No me gusta.|noh meh GOOS-tah|I don't like it.
+Me encanta.|meh ehn-KAHN-tah|I love it.`}
+]};
+LANG.sections.forEach(s=>s.items=s.rows.split("\n").map(r=>{const[w,p,m,n]=r.split("|");return{w,p,m,n}}));
+window.basicoAudit={sections:LANG.sections.map(s=>s.id+":"+s.items.length),bad:LANG.sections.flatMap(s=>s.items.filter(i=>!i.w||!i.p||!i.m).map(i=>s.id+":"+i.w))};
+
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let rate=+(store.get("basico-rate")||0.72),test=store.get("basico-test")||"off";
+const hasTTS="speechSynthesis" in window;let voice=null;
+function pick(){if(!hasTTS)return;const v=speechSynthesis.getVoices();for(const t of LANG.voices){const f=v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));if(f){voice=f;return}}}
+if(hasTTS){pick();speechSynthesis.addEventListener("voiceschanged",pick)}
+function say(text){
+  if(!hasTTS){$("status").textContent="This browser has no speech voices, so audio is unavailable.";return}
+  pick();$("status").textContent=(!voice&&speechSynthesis.getVoices().length)?"No Spanish voice found. Add one in your device's text-to-speech settings.":"";
+  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text.replace(/\.\.\./g,""));u.lang=voice?voice.lang:"es-MX";if(voice)u.voice=voice;u.rate=rate;speechSynthesis.speak(u);
+}
+function render(){
+  const q=$("q").value.trim().toLowerCase();const M=$("main");M.textContent="";
+  M.className=test==="p"?"hideP":test==="m"?"hideM":"";
+  let shown=0;
+  LANG.sections.forEach(s=>{
+    const items=s.items.filter(i=>!q||(i.w+" "+i.m).toLowerCase().includes(q));
+    if(!items.length)return;shown+=items.length;
+    const sec=document.createElement("section");sec.id=s.id;
+    const h=document.createElement("h2");h.textContent=s.es+" · "+s.t;
+    const p=document.createElement("p");p.className="intro";p.textContent=s.i;
+    const g=document.createElement("div");g.className="grid"+(s.wide?" wide":"");
+    items.forEach(i=>{
+      const c=document.createElement("button");c.className="card";
+      c.innerHTML='<span class="w"></span><span class="p"></span><span class="m"></span>'+(i.n?'<span class="n"></span>':"");
+      c.querySelector(".w").textContent=i.w;c.querySelector(".p").textContent=i.p;c.querySelector(".m").textContent=i.m;
+      if(i.n)c.querySelector(".n").textContent=i.n;
+      c.onclick=()=>{document.querySelectorAll(".card.on").forEach(e=>e.classList.remove("on"));c.classList.add("on","reveal");say(i.w)};
+      g.append(c);
+    });
+    sec.append(h,p,g);M.append(sec);
+  });
+  if(!shown){const e=document.createElement("p");e.className="empty";e.textContent="No matches. Try fewer letters, or search in English.";M.append(e)}
+  document.querySelectorAll("[data-r]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===rate));
+  document.querySelectorAll("[data-t]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===test));
+}
+LANG.sections.forEach(s=>{const a=document.createElement("a");a.href="#"+s.id;a.textContent=s.t;$("chips").append(a)});
+$("q").addEventListener("input",render);
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("basico-rate",rate);render()});
+document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{test=b.dataset.t;store.set("basico-test",test);render()});
+$("b").textContent=BUILD;$("u").textContent=SHIPPED;
+render();
+</script>

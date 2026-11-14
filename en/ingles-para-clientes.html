@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es"><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Inglés para clientes</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="WEAV-20261114-0139Z">
+<meta name="shipped-utc" content="2026-11-14T01:39:22Z">
+<style>
+/* Layout: one reference column; a sticky section bar, then word cards in a two-column grid that drops to one on phones. */
+:root{
+  --sky:#e6edf3; --paper:#f6f9fb; --ink:#1b2838; --muted:#566779; --line:#c6d3df;
+  --es:#a32a63; --es-soft:#f6dfe9;
+  --read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a; --es:#f492bd; --es-soft:#43243a; color-scheme:dark}}
+:root[data-theme="dark"]{--sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a; --es:#f492bd; --es-soft:#43243a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sky)}
+.wrap{max-width:52rem;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0}
+h2{font-family:var(--read);font-size:1.4rem;margin:0;text-wrap:balance}
+.sub{margin:4px 0 0;color:var(--muted)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:4;background:var(--sky);padding-block:8px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.chips a{flex:none;font-size:.875rem;color:var(--ink);text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.chips a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:.875rem}
+.seg{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg b{font-weight:600;color:var(--muted)}
+.seg button{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:5px 10px;min-height:34px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+#q{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;width:100%;max-width:18rem}
+section{display:grid;gap:10px;scroll-margin-top:64px}
+.intro{margin:0;color:var(--muted);max-width:65ch}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.grid.wide{grid-template-columns:minmax(0,1fr)}
+.card{all:unset;box-sizing:border-box;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:2px;min-width:0}
+.card:hover,.card.on{border-color:var(--es);background:var(--es-soft)}
+.card:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.w{font-family:var(--read);font-size:1.25rem;color:var(--es);overflow-wrap:anywhere}
+.p{font-size:.9375rem;font-weight:600;letter-spacing:.02em}
+.m{font-size:.9375rem;color:var(--muted)}
+.n{font-size:.8125rem;color:var(--muted);font-style:italic}
+.hideP .p,.hideM .m,.hideM .n{visibility:hidden}
+.card.reveal .p,.card.reveal .m,.card.reveal .n{visibility:visible}
+.empty{color:var(--muted);margin:0}
+#status{min-height:1.2em;margin:0;font-size:.875rem;color:var(--es)}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}
+footer a{color:inherit}
+footer p{margin:0}
+@media (max-width:340px){.grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){h1{font-size:1.75rem}.card{padding:8px 10px}.w{font-size:1.125rem}.p,.m{font-size:.875rem}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Inglés para clientes</h1>
+    <p class="sub">Inglés para equipos de ciberseguridad que trabajan con clientes. Toca una tarjeta para oírla. La pronunciación está escrita con letras del español, y las mayúsculas marcan la sílaba con más fuerza.</p>
+  </header>
+  <div class="bar">
+    <nav class="chips" id="chips" aria-label="Secciones"></nav>
+  </div>
+    <div class="controls">
+      <input id="q" type="search" placeholder="Busca en inglés o en español" aria-label="Buscar palabras">
+      <span class="seg" role="group" aria-label="Velocidad de voz"><b>Velocidad</b><button id="r-slow" data-r="0.72">Lenta</button><button id="r-norm" data-r="1">Normal</button></span>
+      <span class="seg" role="group" aria-label="Practicar"><b>Practicar</b><button id="t-off" data-t="off">Mostrar todo</button><button id="t-p" data-t="p">Ocultar pronunciación</button><button id="t-m" data-t="m">Ocultar significado</button></span>
+    </div>
+  <p id="status" role="status"></p>
+  <main id="main" style="display:grid;gap:28px"></main>
+  <footer>
+    <p>Inglés de Estados Unidos. La pronunciación escrita es solo un puente, porque el inglés no se lee como se escribe. Escucha siempre el audio. El audio usa las voces de tu dispositivo.</p>
+    <p><a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a></p>
+    <p>Versión <span id="b"></span> · publicada <span id="u"></span></p>
+  </footer>
+</div>
+
+<script>
+const BUILD="WEAV-20261114-0139Z",SHIPPED="2026-11-14T01:39:22Z";
+// Language data: each section is a list of rows "spoken|SAY-it|meaning|note". The first field is what the voice reads.
+const LANG={"code":"en","voices":["en-us","en-gb","en"],"sections":[{"id":"sonidos","wide":1,"t":"Sonidos","es":"Sounds","i":"Lee esto primero. Estos sonidos no existen en español, y la pronunciación escrita en toda la página usa estas letras.","rows":"think, thanks|THINK, THENKS|th sin voz: la lengua entre los dientes y sopla. No es «tink» ni «sink».\nthis, that|DHIS, DHET|th con voz: como una d muy suave con la lengua entre los dientes. Se escribe dh.\nship, sheep|SHIP, SHIIP|La i corta es relajada; la ii es larga y tensa. Cambian el significado: barco y oveja.\nvery, berry|VE-ri, BE-ri|v: el labio de abajo toca los dientes de arriba. very (muy) no es berry (baya).\nhello, help|je-LOU, JELP|h: solo aire, como una j muy suave.\njob, general|DYOB, DYE-ne-ral|j y g suave: como dy rápido. No es «yob».\nshe, shift|SHII, SHIFT|sh: como cuando pides silencio.\nzero, zone|ZII-rou, ZOUN|z: una s que zumba.\nabout, problem|e-BAUT, PRO-blem|Las sílabas sin fuerza se relajan en una e débil.\nred, report|RED, ri-PORT|r: la lengua no toca nada y no vibra. Nunca es la rr española.\nschool, security|SKUUL, si-KIU-ri-ti|Sin e al principio. No es «eskul».\nworked, fixed|WERKT, FIKST|La -ed final no suma sílaba, excepto después de t o d: started = STAR-ted.\nday, go, my|DEI, GOU, MAI|Muchas vocales largas en inglés son diptongos.\nthanks, have|THENKS, JEV|La a de cat: boca más abierta que para la e española, entre e y a. La guía la escribe e.\nnot, job|NOT, DYOB|En Estados Unidos esta o suena más cerca de la a española. La guía escribe o, así que escucha el audio.\nget, give|GUET, GUIV|En esta guía la g siempre es fuerte, como en «guerra»."},{"id":"cortesia","t":"Cortesía","es":"Courtesy","i":"Frases para abrir, guiar y cerrar una reunión con buen tono.","rows":"Good morning.|gud MOR-ning|Buenos días.\nThanks for joining.|THENKS for DYOI-ning|Gracias por conectarse.\nNice to meet you.|NAIS tu MIIT iu|Mucho gusto.\nHow are you doing?|JAU ar iu DUU-ing|¿Cómo está?\nLet's get started.|lets guet STAR-ted|Empecemos.\nDoes that make sense?|daz dhet meik SENS|¿Tiene sentido?\nCould you repeat that, please?|kud iu ri-PIIT dhet PLIIZ|¿Puede repetirlo, por favor?\nCould you say that more slowly?|kud iu SEI dhet mor SLOU-li|¿Puede decirlo más despacio?\nLet me make sure I understand.|let mii meik SHUR ai an-der-STEND|Déjeme confirmar que entiendo.\nLet me check and get back to you.|let mii CHEK end guet BEK tu iu|Déjeme revisar y le respondo.\nI'll follow up by email.|ail FO-lou ap bai II-meil|Le doy seguimiento por correo.\nThank you for your time.|THENK iu for ior TAIM|Gracias por su tiempo.\nHave a great weekend.|jev e greit WIIK-end|Que tenga buen fin de semana."},{"id":"analista","t":"Analista SOC","es":"SOC analyst","i":"Términos y frases para explicar alertas e investigaciones a un cliente.","rows":"alert|e-LERT|alerta\ntriage|tri-ASH|clasificación inicial, triaje\nfalse positive|FOLS PO-zi-tiv|falso positivo\ntrue positive|TRUU PO-zi-tiv|verdadero positivo\nlogs|LOGZ|registros\nindicator of compromise|IN-di-kei-ter ov KOM-pro-maiz|indicador de compromiso, IOC\ncompromised account|KOM-pro-maizd e-KAUNT|cuenta comprometida\nmulti-factor authentication|MAL-ti FEK-ter o-then-ti-KEI-shon|autenticación multifactor, MFA\nIP address|AI-PII e-DRES|dirección IP\ncontainment|kon-TEIN-ment|contención\nisolate the host|AI-so-leit dhe JOUST|aislar el equipo\nescalate|ES-ka-leit|escalar\nshift handoff|SHIFT JEND-of|entrega de turno\nWe detected suspicious activity.|wii di-TEK-ted se-SPI-shos ek-TI-vi-ti|Detectamos actividad sospechosa.\nThe account was compromised.|dhi e-KAUNT woz KOM-pro-maizd|La cuenta fue comprometida.\nWe isolated the host.|wii AI-so-lei-ted dhe JOUST|Aislamos el equipo.\nWe reset the password and revoked the sessions.|wii rii-SET dhe PES-werd end ri-VOUKT dhe SE-shonz|Restablecimos la contraseña y revocamos las sesiones.\nWe're still investigating.|wir STIL in-VES-ti-guei-ting|Seguimos investigando.\nI'll escalate this to tier two.|ail ES-ka-leit dhis tu TIR TUU|Lo voy a escalar al nivel dos."},{"id":"ingeniero","t":"Ingeniero","es":"Engineer","i":"Cambios, parches y configuración, explicados a un cliente.","rows":"firewall rule|FAI-er-wol RUUL|regla de firewall\npatch|PECH|parche\nvulnerability|val-ne-re-BI-li-ti|vulnerabilidad\nmaintenance window|MEIN-te-nens WIN-dou|ventana de mantenimiento\nchange request|CHEINDY ri-KWEST|solicitud de cambio\nreboot|rii-BUUT|reiniciar\ndeploy|di-PLOI|desplegar\nleast privilege|LIIST PRI-vi-lidy|privilegio mínimo\nencryption|en-KRIP-shon|cifrado\nexpired certificate|ek-SPAIRD ser-TI-fi-ket|certificado vencido\nThe agent isn't reporting.|dhi EI-dyent I-zent ri-POR-ting|El agente no está reportando.\nWe need a maintenance window.|wii NIID e MEIN-te-nens WIN-dou|Necesitamos una ventana de mantenimiento.\nIs the change approved?|iz dhe CHEINDY e-PRUUVD|¿El cambio está aprobado?\nWe'll patch it tonight.|wiil PECH it tu-NAIT|Lo parchamos esta noche.\nThe certificate expires on Friday.|dhe ser-TI-fi-ket ek-SPAIRZ on FRAI-dei|El certificado vence el viernes."},{"id":"entrega","t":"Entrega de servicio","es":"Service delivery","i":"Revisión de servicio, SLA, alcance y pendientes. El tono con clientes es cortés pero directo.","rows":"service level agreement|SER-vis LE-vel e-GRII-ment|acuerdo de nivel de servicio, SLA\nresponse time|ri-SPONS TAIM|tiempo de respuesta\nmonthly review|MANTH-li ri-VIU|revisión mensual\nreport|ri-PORT|informe, reporte\nmetrics|MET-riks|métricas\nscope|SKOUP|alcance\nstakeholders|STEIK-joul-derz|partes interesadas\naction items|EK-shon AI-temz|pendientes\nrenewal|ri-NUU-al|renovación\nend of day|END ov DEI|al final del día, EOD\nLet's review last month's metrics.|lets ri-VIU LEST manths MET-riks|Revisemos las métricas del mes pasado.\nWe met the SLA in 98 percent of cases.|wii met dhi es el EI in NAIN-ti EIT per-SENT ov KEI-siz|Cumplimos el SLA en el 98 % de los casos.\nI understand your concern.|ai an-der-STEND ior ken-SERN|Entiendo su preocupación.\nYou're right. We missed the SLA.|iur RAIT. wii MIST dhi es el EI|Tiene razón. No cumplimos el SLA.\nThat's outside the scope of the contract.|dhets aut-SAID dhe SKOUP ov dhe KON-trekt|Eso está fuera del alcance del contrato.\nI can prepare a proposal.|ai ken pri-PER e pro-POU-zal|Puedo preparar una propuesta.\nWhat does success look like for you?|wot daz sek-SES luk laik for IU|¿Qué sería un buen resultado para usted?\nWho else should be in this meeting?|JUU els shud bii in dhis MII-ting|¿Quién más debería estar en esta reunión?\nYou'll have an update by end of day.|iul jev en AP-deit bai END ov DEI|Tendrá una actualización antes de que termine el día."},{"id":"suavizar","t":"Suavizar","es":"Softeners","i":"El inglés de Estados Unidos con clientes es directo pero amable. Estas frases suavizan una mala noticia, un no o una corrección.","rows":"I'm afraid…|aim e-FREID|Me temo que…|Antes de una mala noticia\nUnfortunately,|an-FOR-chu-net-li|Lamentablemente,\nWe'd be happy to…|wiid bii JE-pi tu|Con gusto…\nJust to confirm,|DYAST tu ken-FERM|Solo para confirmar,\nWould it be possible to…?|wud it bii PO-si-bel tu|¿Sería posible…?\nI'd suggest…|aid seg-DYEST|Yo sugeriría…\nI see your point, but…|ai SII ior POINT bat|Entiendo su punto, pero…\nThat's a fair question.|dhets e FER KWES-chon|Es una pregunta válida."},{"id":"incidente","t":"Llamada de incidente","es":"Incident call","i":"Frases para una llamada urgente con el cliente: impacto, tiempos y próximos pasos.","rows":"Can everyone hear me?|ken EV-ri-wan JIR mii|¿Todos me escuchan?\nYou're on mute.|iur on MIUT|Tiene el micrófono silenciado.\nWhat's the impact?|wots dhi IM-pekt|¿Cuál es el impacto?\nWhen did it start?|WEN did it START|¿Cuándo empezó?\nWho's affected?|juuz e-FEK-ted|¿A quién afecta?\nWe've contained the threat.|wiiv kon-TEIND dhe THRET|Contuvimos la amenaza.\nWe don't have evidence of data loss yet.|wii dount jev E-vi-dens ov DEI-ta LOS yet|Todavía no tenemos evidencia de pérdida de datos.\nI'll take care of that.|ail teik KER ov dhet|Yo me encargo de eso.\nNext update in thirty minutes.|NEKST AP-deit in THER-ti MI-nits|Próxima actualización en treinta minutos."},{"id":"correo","t":"Correo","es":"Email","i":"Frases comunes para correos con clientes.","rows":"Following up on our call.|FO-lou-ing ap on aur KOL|Doy seguimiento a nuestra llamada.\nPlease find the report attached.|pliiz faind dhe ri-PORT e-TECHT|Adjunto el informe.\nLet me know if you have any questions.|let mii NOU if iu jev E-ni KWES-chonz|Avíseme si tiene preguntas.\nSorry for the delay.|SO-ri for dhe di-LEI|Disculpe la demora.\nJust a quick reminder.|dyast e KWIK ri-MAIN-der|Solo un recordatorio rápido.\nBest regards,|BEST ri-GARDZ|Saludos cordiales,"},{"id":"falsos","wide":1,"t":"Falsos amigos","es":"False friends","i":"Palabras que parecen iguales pero significan otra cosa. Estas causan malentendidos reales con clientes.","rows":"actually|EK-chu-a-li|en realidad (no «actualmente»)|«Actualmente» es currently\neventually|i-VEN-chu-a-li|al final, con el tiempo (no «eventualmente»)|«Eventualmente» es possibly\nassist|e-SIST|ayudar (no «asistir a» un evento)|«Asistir a una reunión» es attend a meeting\nattend|e-TEND|asistir\nsensible|SEN-si-bel|sensato (no «sensible»)|«Sensible» es sensitive\nsensitive data|SEN-si-tiv DEI-ta|datos sensibles\nrealize|RII-e-laiz|darse cuenta (no «realizar»)|«Realizar» es carry out o perform\nrésumé|RE-zu-mei|currículum (no «resumen»)|«Resumen» es summary. Sin acentos, resume (ri-ZUUM) es el verbo reanudar\npreoccupation|pri-o-kiu-PEI-shon|obsesión, distracción (no «preocupación»)|«Preocupación» es concern\nsupport|se-PORT|apoyar, dar soporte (no «soportar»)|«Soportar» es tolerate\nlibrary|LAI-bre-ri|biblioteca (no «librería»)|En software, library también es biblioteca\ndiscuss|dis-KAS|hablar de, conversar (no «discutir» con enojo)|«Discutir» con enojo es argue\nmolest|mo-LEST|acosar, abusar (no «molestar»)|«Molestar» es bother: Sorry to bother you\ncommitment|ko-MIT-ment|compromiso|«Compromise» es concesión, y en seguridad «compromised» es vulnerado\nadvise|ed-VAIZ|aconsejar, recomendar (no «avisar»)|«Avisar» es let you know\ncarpet|KAR-pet|alfombra (no «carpeta»)|«Carpeta» es folder"}]};
+LANG.sections.forEach(s=>s.items=s.rows.split("\n").map(r=>{const[w,p,m,n]=r.split("|");return{w,p,m,n}}));
+window.basicoAudit={sections:LANG.sections.map(s=>s.id+":"+s.items.length),bad:LANG.sections.flatMap(s=>s.items.filter(i=>!i.w||!i.p||!i.m).map(i=>s.id+":"+i.w))};
+
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let rate=+(store.get("clientes-rate")||0.72),test=store.get("clientes-test")||"off";
+const hasTTS="speechSynthesis" in window;let voice=null;
+function pick(){if(!hasTTS)return;const v=speechSynthesis.getVoices();for(const t of LANG.voices){const f=v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));if(f){voice=f;return}}}
+if(hasTTS){pick();speechSynthesis.addEventListener("voiceschanged",pick)}
+function say(text){
+  if(!hasTTS){$("status").textContent="Este navegador no tiene voces, así que no hay audio.";return}
+  pick();$("status").textContent=(!voice&&speechSynthesis.getVoices().length)?"No se encontró una voz en inglés. Agrega una en la configuración de texto a voz de tu dispositivo.":"";
+  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text.replace(/\.\.\./g,""));u.lang=voice?voice.lang:"en-US";if(voice)u.voice=voice;u.rate=rate;speechSynthesis.speak(u);
+}
+function render(){
+  const q=$("q").value.trim().toLowerCase();const M=$("main");M.textContent="";
+  M.className=test==="p"?"hideP":test==="m"?"hideM":"";
+  let shown=0;
+  LANG.sections.forEach(s=>{
+    const items=s.items.filter(i=>!q||(i.w+" "+i.m).toLowerCase().includes(q));
+    if(!items.length)return;shown+=items.length;
+    const sec=document.createElement("section");sec.id=s.id;
+    const h=document.createElement("h2");h.textContent=s.es+" · "+s.t;
+    const p=document.createElement("p");p.className="intro";p.textContent=s.i;
+    const g=document.createElement("div");g.className="grid"+(s.wide?" wide":"");
+    items.forEach(i=>{
+      const c=document.createElement("button");c.className="card";
+      c.innerHTML='<span class="w"></span><span class="p"></span><span class="m"></span>'+(i.n?'<span class="n"></span>':"");
+      c.querySelector(".w").textContent=i.w;c.querySelector(".p").textContent=i.p;c.querySelector(".m").textContent=i.m;
+      if(i.n)c.querySelector(".n").textContent=i.n;
+      c.onclick=()=>{document.querySelectorAll(".card.on").forEach(e=>e.classList.remove("on"));c.classList.add("on","reveal");say(i.w)};
+      g.append(c);
+    });
+    sec.append(h,p,g);M.append(sec);
+  });
+  if(!shown){const e=document.createElement("p");e.className="empty";e.textContent="Sin resultados. Prueba con menos letras o busca en español.";M.append(e)}
+  document.querySelectorAll("[data-r]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===rate));
+  document.querySelectorAll("[data-t]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===test));
+}
+LANG.sections.forEach(s=>{const a=document.createElement("a");a.href="#"+s.id;a.textContent=s.t;$("chips").append(a)});
+$("q").addEventListener("input",render);
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("clientes-rate",rate);render()});
+document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{test=b.dataset.t;store.set("clientes-test",test);render()});
+$("b").textContent=BUILD;$("u").textContent=SHIPPED;
+render();
+</script>
+
+</html>

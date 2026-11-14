@@ -1,0 +1,73 @@
+<title>Ruta del español</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="__BUILD__">
+<meta name="shipped-utc" content="__UTC__">
+<style>
+/* Layout: one column; a numbered route, because the order is the point. */
+:root{--sky:#e6edf3;--paper:#f6f9fb;--ink:#1b2838;--muted:#566779;--line:#c6d3df;--es:#a32a63;
+--read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#111a25;--paper:#182432;--ink:#e7edf3;--muted:#9db0c2;--line:#32455a;--es:#f492bd;color-scheme:dark}}
+:root[data-theme="dark"]{--sky:#111a25;--paper:#182432;--ink:#e7edf3;--muted:#9db0c2;--line:#32455a;--es:#f492bd;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.wrap{max-width:44rem;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0}
+h2{font-family:var(--read);font-size:1.25rem;margin:0}
+p{margin:0}.sub{color:var(--muted);margin-top:4px;max-width:65ch}
+.how{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:8px}
+.how ol{margin:0;padding-left:1.25rem;display:grid;gap:4px}
+.route{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.route li{display:grid;grid-template-columns:2.25rem minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.route li::before{counter-increment:s;content:counter(s);font-family:var(--read);font-size:1.375rem;color:var(--es);font-variant-numeric:tabular-nums;text-align:right}
+.route a{font-family:var(--read);font-size:1.1875rem;color:var(--ink);text-decoration-color:var(--es);text-underline-offset:3px}
+.route a:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.meta{font-size:.8125rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.d{color:var(--muted);font-size:.9375rem}
+footer{font-size:.8125rem;color:var(--muted)}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Ruta del español</h1>
+    <p class="sub">Seventeen Spanish pages in a suggested order: two reference pages, then fifteen dialogues that start in English and end in Spanish. Later dialogues reuse some earlier words, and each page starts its pronunciation guides fresh.</p>
+  </header>
+  <section class="how">
+    <h2>How to use each page</h2>
+    <ol>
+      <li>Play each line before you read its pronunciation guide, then say it aloud.</li>
+      <li>Read it again with guides off. Tap only the words you lose.</li>
+      <li>Read the final stage out loud before playing it, then compare. Try "Listen first" and the "Check yourself" quiz on each stage.</li>
+      <li>The next day, replay the last stage with guides off before you open a new page.</li>
+      <li>Keep Lo básico and Español de trabajo open in other tabs and look things up as you go.</li>
+    </ol>
+  </section>
+  <ol class="route" id="route"></ol>
+  <footer><a href="../index.html" style="color:inherit">Home</a> · Build <span id="b"></span> · shipped <span id="u"></span></footer>
+</div>
+<script>
+const R=[
+["Lo básico","lo-basico.html","Reference · 354 entries","Sounds, letters, numbers, grammar, verbs and everyday words. Skim the sound key and grammar first, then use it as a lookup."],
+["Español de trabajo","espanol-de-trabajo.html","Reference · 245 entries","Cargo ramp, ground equipment, cockpit, balloon briefings, fire scene, bar, SOC analyst, security engineer and service delivery terms. Use it alongside the work dialogues."],
+["El viento y el sol","viento-y-sol.html","Fable · 8 stages","Aesop's wind-and-sun contest. The gentlest ramp, and it introduces Sam and Lucía."],
+["Desde el globo","desde-el-globo.html","Topic · 5 stages","Colors, counting, animals and landscape from the basket."],
+["Hablemos de globos","hablemos-de-globos.html","Topic · 6 stages","Gear, inflation, the passenger briefing, radio and landing."],
+["A la mesa","a-la-mesa.html","Topic · 5 stages","Ordering, spice, allergies and paying."],
+["En la barra","en-la-barra.html","Topic · 6 stages","A bar shift: orders, a margarita, ID checks and closing out."],
+["En la rampa","en-la-rampa.html","Topic · 5 stages","Ramp orders, helping passengers, a lost bag and a simplified tower call."],
+["Turno de noche","turno-de-noche.html","Work · 5 stages","A cargo night shift: beacon, chocks, containers, dangerous goods labels and a failed tug."],
+["Historias de cabina","historias-de-cabina.html","Work story · 5 stages","Preflight, a gusty crosswind and Lucía's go-around story, told in the past tense."],
+["La llamada","la-llamada.html","Work story · 5 stages","A kitchen fire call, counting occupants and the lesson told at the station."],
+["Los flamencos y las medias","flamencos-y-medias.html","Story · 6 stages","A retelling of Quiroga's tale of why flamingos have red legs."],
+["Los dos volcanes","los-dos-volcanes.html","Legend · 5 stages","Popocatépetl and Iztaccíhuatl. The first full past-tense storytelling."],
+["Respuesta a incidentes","respuesta-a-incidentes.html","Topic · 5 stages","A phishing click becomes a ransomware call and a client briefing."],
+["La revisión mensual","la-revision-mensual.html","Work · 5 stages","A monthly client service review: metrics, false positives, a missed SLA, a scope request and action items."],
+["Los picos de los pinzones","los-picos-de-los-pinzones.html","Science · 5 stages","Darwin's finches, a drought and natural selection."],
+["El globo de Teseo","el-globo-de-teseo.html","Philosophy · 5 stages","An identity puzzle, argued in Spanish. Save it for last."]];
+const ol=document.getElementById("route");
+R.forEach(([t,u,m,d])=>{const li=document.createElement("li");const div=document.createElement("div");
+const a=document.createElement("a");a.href=u;a.textContent=t;
+const mm=document.createElement("p");mm.className="meta";mm.textContent=m;
+const dd=document.createElement("p");dd.className="d";dd.textContent=d;
+div.append(a,mm,dd);li.append(div);ol.append(li)});
+document.getElementById("b").textContent="__BUILD__";document.getElementById("u").textContent="__UTC__";
+</script>

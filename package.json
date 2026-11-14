@@ -1,0 +1,13 @@
+{
+  "name": "diglot-weave",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual diglot-weave dialogues and phrasebooks (English↔Spanish, English→French) as static offline pages.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node src/build/build-all.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}
