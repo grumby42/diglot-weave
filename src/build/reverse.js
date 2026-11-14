@@ -86,7 +86,7 @@ swap(/  <details class="how" id="how">[\s\S]*?<\/details>\n/.exec(s)[0],`  <deta
       <li>Toca <b>Reproducir esta etapa</b> antes de leer. <b>Primero escucha</b> oculta el texto hasta que lo oigas.</li>
       <li>Lee al mismo tiempo. Toca cualquier palabra que no conozcas para oírla y ver qué significa.</li>
       <li>Cuando una etapa empieza con <b>Palabras que vienen</b>, repásalas primero. Son nuevas en esa etapa.</li>
-      <li>Repite cada línea en voz alta después de la voz.</li>
+      <li>Toca <b>Repite después de mí</b>: la página lee cada línea y hace una pausa para que la repitas en voz alta.</li>
       <li>Responde la pregunta de la etapa y luego usa <b>Ponte a prueba</b>.</li>
       <li>En la última etapa, haz <b>Tu turno</b>: di la frase en inglés antes de ver la respuesta.</li>
       <li>Al día siguiente, vuelve a escuchar la última etapa sin guías.</li>
@@ -96,6 +96,7 @@ swap(/  <details class="how" id="how">[\s\S]*?<\/details>\n/.exec(s)[0],`  <deta
 swap('ws.textContent="Words ahead ("+ahead.length+"): meet them before you read"','ws.textContent="Palabras que vienen ("+ahead.length+"): repásalas antes de leer"');
 swap('uh.textContent="Your turn: say it in Spanish out loud, then check"','uh.textContent="Tu turno: dilo en inglés en voz alta y luego revisa"');
 swap('btn.textContent="Show answer"','btn.textContent="Ver respuesta"');
+swap('sh.textContent="Repeat after me"','sh.textContent="Repite después de mí"');
 swap('sy.setAttribute("aria-label","Play the answer")','sy.setAttribute("aria-label","Reproducir la respuesta")');
 // Pack content
 swap('`.split("\\n").forEach',"\n"+pack.lex+'`.split("\\n").forEach');

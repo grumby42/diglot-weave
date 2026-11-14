@@ -8,3 +8,5 @@ run('pages.js');
 for(const f of ['globos','flamencos','barra','aeropuerto','ciber','desde','comida','filosofia','leyenda','evolucion','carga','piloto','bomberos','revision'])run('build.js',f+'.js');
 for(const f of ['trabajo-data','essentiel-data','clientes-data'])run('phrasebook.js',f+'.js');
 run('reverse.js','review-en.js');
+run('reverse.js','incident-en.js');
+run('french.js','bise.js');

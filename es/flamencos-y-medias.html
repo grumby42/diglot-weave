@@ -3,8 +3,8 @@
 <title>Los flamencos y las medias</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-0550Z">
-<meta name="shipped-utc" content="2026-11-14T05:50:40Z">
+<meta name="build-id" content="WEAV-20261114-1559Z">
+<meta name="shipped-utc" content="2026-11-14T15:59:01Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -56,6 +56,7 @@ h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:b
 .play-all{display:inline-flex;gap:6px;align-items:center;justify-self:start}
 .play-all[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
 .acts{display:flex;flex-wrap:wrap;gap:8px}
+.line.now{background:var(--es-soft);border-radius:6px;outline:4px solid var(--es-soft)}
 .ears .txt{filter:blur(6px)}.ears .txt:hover,.ears .txt:focus-within{filter:none}
 .cq,.qrow{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px}
 .cqp{margin:0;display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
@@ -109,7 +110,7 @@ footer p{margin:0}
       <li>Press <b>Play this stage</b> before you read. <b>Listen first</b> hides the text until you've heard it.</li>
       <li>Read along. Tap any word you don't know to hear it and see what it means.</li>
       <li>When a stage opens with <b>Words ahead</b>, go through those words first. They are new in that stage.</li>
-      <li>Say each line out loud after the voice.</li>
+      <li>Press <b>Repeat after me</b>: the page reads each line, then pauses so you can say it out loud.</li>
       <li>Answer the question under the stage, then try <b>Check yourself</b>.</li>
       <li>On the last stage, do <b>Your turn</b>: say the line in Spanish before you reveal the answer.</li>
       <li>The next day, replay the last stage with guides off.</li>
@@ -136,7 +137,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-0550Z",SHIPPED="2026-11-14T05:50:40Z";
+const BUILD="WEAV-20261114-1559Z",SHIPPED="2026-11-14T15:59:01Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -527,6 +528,27 @@ let cur=Math.min(Math.max(+store.get("flamencos-stage")||0,0),PAGES.length-1),gu
 const $=id=>document.getElementById(id);
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 let ears=!!store.get("ears");
+let shadowing=0;
+const calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function shadow(btn){
+  if(shadowing){shadowing=0;if(hasTTS)speechSynthesis.cancel();document.querySelectorAll(".line.now").forEach(e=>e.classList.remove("now"));btn.setAttribute("aria-pressed","false");return}
+  const run=shadowing=Date.now();btn.setAttribute("aria-pressed","true");
+  const p=PAGES[cur],rows=[...document.querySelectorAll(".line")];let i=0;
+  const next=()=>{
+    if(shadowing!==run)return;
+    rows.forEach(r=>r.classList.remove("now"));
+    if(i>=p.parsed.length){shadowing=0;btn.setAttribute("aria-pressed","false");return}
+    const l=p.parsed[i],row=rows[i];i++;
+    row.classList.add("now");row.scrollIntoView({block:"center",behavior:calm?"auto":"smooth"});
+    const segs=segments(l.toks,l.w),u=say(segs);
+    const words=segs.map(s=>s.x).join(" ").trim().split(/\s+/).length;
+    const pause=Math.max(1800,words*650/rate);
+    if(!u){setTimeout(next,pause);return}
+    let done=false;const fin=()=>{if(done)return;done=true;setTimeout(next,pause)};
+    u.onend=fin;u.onerror=fin;
+  };
+  next();
+}
 const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2l11 6-11 6z"/></svg>';
 
 const hasTTS="speechSynthesis" in window;
@@ -546,6 +568,7 @@ function say(segs){
   pickVoices();
   st.textContent=(!esVoice&&speechSynthesis.getVoices().length)?"No Spanish voice found. Add one in your device's text-to-speech settings.":"";
   speechSynthesis.cancel();
+  let last=null;
   segs.forEach(s=>{
     if(!/\p{L}/u.test(s.x))return;
     const u=new SpeechSynthesisUtterance(s.x);
@@ -553,8 +576,9 @@ function say(segs){
     const voice=s.es?(s.who==="S"?samEs:esVoice):enVoice;if(voice)u.voice=voice;
     u.pitch=s.who==="S"?0.82:1.12;
     u.rate=s.es?rate:1;
-    speechSynthesis.speak(u);
+    speechSynthesis.speak(u);last=u;
   });
+  return last;
 }
 function segments(toks,who){
   const out=[];
@@ -620,7 +644,9 @@ function render(){
   });
   const lf=document.createElement("button");lf.className="play-all";lf.id="listen-first";lf.setAttribute("aria-pressed",ears);lf.textContent="Listen first";
   lf.onclick=()=>{ears=!ears;store.set("ears",ears?"1":"");render()};
-  const acts=document.createElement("div");acts.className="acts";acts.append(pa,lf);
+  const sh=document.createElement("button");sh.className="play-all";sh.id="shadow";sh.setAttribute("aria-pressed","false");sh.textContent="Repeat after me";
+  sh.onclick=()=>shadow(sh);
+  const acts=document.createElement("div");acts.className="acts";acts.append(pa,sh,lf);
   if(ears)ls.classList.add("ears");
   const prev=PAGES[cur-1];
   const ahead=p.fresh.filter(k=>LEX[k]);
@@ -688,7 +714,7 @@ function render(){
   document.querySelectorAll("[data-r]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===rate));
   document.querySelectorAll("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===luciaEn));
 }
-function go(i){cur=i;store.set("flamencos-stage",i);if(hasTTS)speechSynthesis.cancel();render();window.scrollTo(0,0)}
+function go(i){shadowing=0;cur=i;store.set("flamencos-stage",i);if(hasTTS)speechSynthesis.cancel();render();window.scrollTo(0,0)}
 $("prev").onclick=()=>go(cur-1);$("next").onclick=()=>go(cur+1);
 document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{guide=b.dataset.g;store.set("guide",guide);render()});
 document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("rate",rate);render()});

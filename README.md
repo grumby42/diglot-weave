@@ -11,8 +11,8 @@ Two friends, Sam (a US balloon pilot who also works in aviation and cybersecurit
 | Path | Folder | What's there |
 |---|---|---|
 | English → Spanish | [`es/`](es/index.html) | 17 pages: a fable, a story and legend retelling, science, philosophy, everyday topics, and work Spanish for ballooning, cargo ramps, cockpits, firefighting, bars and cybersecurity. Two phrasebooks (essentials and work). |
-| English → French | [`fr/`](fr/index.html) | A phrasebook with a French sound guide, grammar, verbs and everyday vocabulary. Dialogues are planned. |
-| Español → English | [`en/`](en/index.html) | For Spanish-speaking cybersecurity professionals who work with clients in English: a phrasebook (with a false-friends section) and a client-meeting dialogue. The interface is in Spanish, and English is respelled with Spanish letter values. |
+| English → French | [`fr/`](fr/index.html) | A phrasebook with a French sound guide, grammar, verbs and everyday vocabulary, and the first dialogue, *La bise et le soleil*. |
+| Español → English | [`en/`](en/index.html) | For Spanish-speaking cybersecurity professionals who work with clients in English: a phrasebook (with false-friends and softeners sections), a client-meeting dialogue and an incident-call dialogue. The interface is in Spanish, and English is respelled with Spanish letter values. |
 
 Every page is a single self-contained HTML file. Pages work offline once loaded, and progress settings are stored only in your browser.
 
@@ -22,6 +22,7 @@ Every page is a single self-contained HTML file. Pages work offline once loaded,
 - **Pronunciation guides:** shown for a word's first two uses, then at the start of each of the next stages where it appears. Readers can switch them to always on or off.
 - **Check yourself:** a short quiz at the end of each stage, built from that stage's new words. Every dialogue also has comprehension questions.
 - **Listen first:** blurs the text until you've heard it.
+- **Repeat after me:** reads each line, highlights it, then pauses long enough for you to say it out loud (shadowing).
 - **Words ahead:** any stage that brings in four or more new words opens with a preview of them, with sound and meaning. It opens automatically at the bigger steps up in the target language.
 - **Your turn:** the last stage ends with English prompts. Say the line in the target language out loud, then reveal and hear the model answer.
 - **How to study this page:** a short method at the top of every dialogue.
@@ -93,8 +94,7 @@ Content fact checks
 2. Rewrite the all-target-language final stages so most of their words have already appeared earlier on the page.
 3. A core list of about 150 high-frequency words recycled across at least three packs each, checked at build time.
 4. Spaced review across packs (needs a single shared page or an export/import progress code).
-6. A shadowing mode that pauses after each line for you to repeat it.
-7. French dialogues, then more English-for-Spanish-speakers packs (incident calls first).
+7. More French dialogues, and more English-for-Spanish-speakers packs (a security engineer's change review next).
 
 ## Building from source
 

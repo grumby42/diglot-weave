@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="es"><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Incident Call</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="WEAV-20261114-1559Z">
+<meta name="shipped-utc" content="2026-11-14T15:59:11Z">
+<style>
+/* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
+:root{
+  --sky:#e6edf3; --paper:#f6f9fb; --ink:#1b2838; --muted:#566779; --line:#c6d3df;
+  --es:#a32a63; --es-soft:#f6dfe9; --sam:#1f6a7a; --lucia:#8a5a00; --strike:#a33a2a;
+  --read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a;
+  --es:#f492bd; --es-soft:#43243a; --sam:#74c6d6; --lucia:#e4b75c; --strike:#f0937f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a;
+  --es:#f492bd; --es-soft:#43243a; --sam:#74c6d6; --lucia:#e4b75c; --strike:#f0937f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.wrap{max-width:44rem;margin:0 auto;padding-block:20px 150px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
+.sub{margin:4px 0 0;color:var(--muted)}
+.ascent{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:92px}
+.bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
+.bar[aria-current="true"]{color:var(--ink);font-weight:700}
+.bar[aria-current="true"] i{background:var(--es)}
+.bar:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:.875rem}
+.seg{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.seg b{font-weight:600;color:var(--muted)}
+.seg button,.nav button,.play-all{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+.page{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:16px}
+.head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.share{font-size:.875rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.note{margin:0;color:var(--muted);font-size:.9375rem}
+.lines{display:grid;gap:14px}
+.line{display:grid;grid-template-columns:3.4rem minmax(0,1fr) 2.4rem;gap:8px;align-items:start}
+.who{font-size:.8125rem;font-weight:700;padding-top:4px}
+.who.S{color:var(--lucia)} .who.L{color:var(--sam)}
+.txt{font-family:var(--read);font-size:1.1875rem;line-height:1.6;margin:0;min-width:0}
+.w{all:unset;cursor:pointer;color:var(--es);border-bottom:1px dotted var(--es)}
+.w:hover,.w.on{background:var(--es-soft)}
+.w:focus-visible{outline:2px solid var(--es)}
+.g{font-family:var(--ui);font-size:.75em;color:var(--muted);white-space:nowrap}
+.bad{color:var(--strike);text-decoration:line-through}
+.say{all:unset;cursor:pointer;width:2.4rem;height:2.4rem;display:grid;place-items:center;color:var(--muted);border-radius:50%}
+.say:hover{color:var(--es)}
+.say svg,.play-all svg{width:15px;height:15px;fill:currentColor}
+.play-all{display:inline-flex;gap:6px;align-items:center;justify-self:start}
+.play-all[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.line.now{background:var(--es-soft);border-radius:6px;outline:4px solid var(--es-soft)}
+.ears .txt{filter:blur(6px)}.ears .txt:hover,.ears .txt:focus-within{filter:none}
+.cq,.qrow{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.cqp{margin:0;display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{font:inherit;font-size:.9375rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;cursor:pointer}
+.opt.right{border-color:var(--sam);background:var(--sam);color:var(--paper)}
+.opt.wrong{border-color:var(--strike);color:var(--strike);text-decoration:line-through}
+#check .qrow:first-of-type{margin-top:8px}
+details{border-top:1px solid var(--line);padding-top:12px}
+.how{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.how ol{margin:8px 0 0;padding-left:1.25rem;display:grid;gap:4px;font-size:.9375rem}
+#ahead{background:var(--es-soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+#ahead .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;display:grid;gap:1px;min-width:0}
+.chip:focus-visible{outline:2px solid var(--es)}
+.chip b{font-family:var(--read);font-weight:400;font-size:1.0625rem;color:var(--es)}
+.chip span{font-size:.75rem;color:var(--muted)}
+#use{display:grid;gap:10px}
+.urow{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.urow p{margin:0}.uprompt{font-size:.9375rem}
+.ans{display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
+summary{cursor:pointer;font-weight:600;font-size:.9375rem}
+.table{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;text-align:left;color:var(--muted);font-weight:600}
+th,td{padding:5px 12px 5px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--es);font-family:var(--read);font-size:1.0625rem}
+.keynote{margin:10px 0 0;font-size:.9375rem;color:var(--muted)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button:disabled{opacity:.45;cursor:default}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}
+footer a{color:inherit}
+footer p{margin:0}
+#status{min-height:1.2em;font-size:.875rem;color:var(--strike);margin:0}
+#sheet{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));z-index:5}
+#sheet div{max-width:44rem;margin:0 auto;display:flex;gap:4px 14px;flex-wrap:wrap;align-items:baseline}
+#sheet strong{font-family:var(--read);font-size:1.375rem}
+#sheet span{font-size:1rem}
+#sheet em{font-style:normal;opacity:.82}
+@media (max-width:430px){.line{grid-template-columns:minmax(0,1fr) 2.4rem}.who{grid-column:1/-1;padding:0}.page{padding:16px}h1{font-size:1.75rem}}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:background .15s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>The Incident Call</h1>
+    <p class="sub">Lucía dirige su primera llamada de incidente con un cliente en inglés. Sam la ayuda. La página empieza en español y termina en inglés.</p>
+  </header>
+  <details class="how" id="how"><summary>Cómo estudiar esta página</summary>
+    <ol>
+      <li>Toca <b>Reproducir esta etapa</b> antes de leer. <b>Primero escucha</b> oculta el texto hasta que lo oigas.</li>
+      <li>Lee al mismo tiempo. Toca cualquier palabra que no conozcas para oírla y ver qué significa.</li>
+      <li>Cuando una etapa empieza con <b>Palabras que vienen</b>, repásalas primero. Son nuevas en esa etapa.</li>
+      <li>Toca <b>Repite después de mí</b>: la página lee cada línea y hace una pausa para que la repitas en voz alta.</li>
+      <li>Responde la pregunta de la etapa y luego usa <b>Ponte a prueba</b>.</li>
+      <li>En la última etapa, haz <b>Tu turno</b>: di la frase en inglés antes de ver la respuesta.</li>
+      <li>Al día siguiente, vuelve a escuchar la última etapa sin guías.</li>
+    </ol>
+  </details>
+  <nav class="ascent" id="ascent" aria-label="Etapas, según la proporción de inglés"></nav>
+  <div class="controls">
+    <span class="seg" role="group" aria-label="Guías de pronunciación"><b>Guías</b>
+      <button id="g-fade" data-g="fade">Al inicio</button><button id="g-all" data-g="all">Todas</button><button id="g-none" data-g="none">Ninguna</button></span>
+    <span class="seg" role="group" aria-label="Velocidad de voz"><b>Velocidad</b>
+      <button id="r-slow" data-r="0.72">Lenta</button><button id="r-norm" data-r="1">Normal</button></span>
+    <span class="seg" role="group" aria-label="Voces"><b>Voces</b>
+      <button id="l-es" data-l="es" title="Cada línea con una sola voz, para que fluya. El inglés suena exacto y el español con acento.">Fluida</button><button id="l-en" data-l="en" title="Cambia de voz en cada cambio de idioma: sonido nativo en los dos idiomas, con pausas cortas.">Exacta</button></span>
+  </div>
+  <p id="status" role="status"></p>
+  <article class="page" id="page"></article>
+  <div class="nav"><button id="prev">Etapa anterior</button><button id="next">Siguiente etapa</button></div>
+  <footer>
+    <p>Diálogo original escrito para esta página. En una llamada de incidente, el inglés profesional es corto, claro y con horas concretas. La pronunciación sigue el inglés de Estados Unidos. El audio usa las voces de tu dispositivo.</p>
+    <p><a href="index.html">Todas las páginas</a> · <a href="../index.html">Inicio</a></p>
+    <p>Versión <span id="b"></span> · publicada <span id="u"></span></p>
+  </footer>
+</div>
+<div id="sheet" aria-live="polite"><div><span>Toca cualquier palabra en color para oírla y ver qué significa.</span></div></div>
+
+<script>
+const BUILD="WEAV-20261114-1559Z",SHIPPED="2026-11-14T15:59:11Z";
+const LEX={};
+`viento|BYEHN-toh|wind
+hoy|OY|today
+globo|GLOH-boh|balloon
+sol|SOHL|sun
+tengo|TEHN-goh|I have
+frío|FREE-oh|cold
+tengo frío|TEHN-goh FREE-oh|I'm cold (literally "I have cold")
+tengo calor|TEHN-goh kah-LOHR|I'm hot (literally "I have heat")
+el|ehl|the (masculine)
+y|ee|and
+o|oh|or
+fuerte|FWEHR-teh|strong
+un|oon|a, one (masculine)
+hombre|OHM-breh|man
+abrigo|ah-BREE-goh|coat
+tiene|TYEH-neh|has
+no|noh|no, not
+quién|KYEHN|who
+quien|kyehn|whoever
+puede|PWEH-deh|can
+pueda|PWEH-dah|can (after "whoever")
+quitar|kee-TAHR|to take off
+quitarle|kee-TAHR-leh|to take off of him
+sí|SEE|yes
+ganador|gah-nah-DOHR|winner
+primero|pree-MEH-roh|first
+muy|MWEE|very
+sopla|SOH-plah|blows
+sopló|soh-PLOH|blew
+soplaba|soh-PLAH-bah|was blowing
+exacto|ek-SAHK-toh|exactly
+más|MAHS|more
+ahora|ah-OH-rah|now
+calor|kah-LOHR|heat
+sale|SAH-leh|comes out, leaves
+salió|sah-LYOH|came out
+grita|GREE-tah|shouts
+solo|SOH-loh|only
+brilla|BREE-yah|shines
+brilló|bree-YOH|shone
+abre|AH-breh|opens
+mucho|MOO-choh|a lot of
+se|seh|himself, herself, itself
+quita|KEE-tah|takes off
+quitó|kee-TOH|took off
+gana|GAH-nah|wins
+entonces|ehn-TOHN-sehs|then, so
+es|ehs|is
+que|keh|than, that
+sé|SEH|I know
+qué|KEH|what
+piensas|PYEHN-sahs|you think
+tú|TOO|you
+yo|yoh|I
+pienso|PYEHN-soh|I think
+paciente|pah-SYEHN-teh|patient
+casi|KAH-see|almost
+la|lah|the (feminine)
+fuerza|FWEHR-sah|strength, force
+siempre|SYEHM-preh|always
+paciencia|pah-SYEHN-syah|patience
+como|KOH-moh|like
+buen|BWEHN|good
+piloto|pee-LOH-toh|pilot
+pelea|peh-LEH-ah|fights
+con|kohn|with
+perfecto|pehr-FEHK-toh|perfect
+pelear|peh-leh-AHR|to fight
+eres|EH-rehs|you are
+sabes|SAH-behs|you know
+volamos|boh-LAH-mohs|we fly
+mañana|mah-NYAH-nah|tomorrow
+tal vez|tahl BEHS|maybe
+lucía|loo-SEE-ah|Lucía (her name)
+me|meh|me, to me
+cuentas|KWEHN-tahs|you tell
+historia|ees-TOH-ryah|story
+otra|OH-trah|another
+otra vez|OH-trah BEHS|again
+toda|TOH-dah|all, the whole
+en|ehn|in
+español|ehs-pah-NYOHL|Spanish
+vas|BAHS|you are going
+a|ah|to, at
+entender|ehn-tehn-DEHR|to understand
+creo|KREH-oh|I think, I believe
+hablas|AH-blahs|you speak
+despacio|dehs-PAH-syoh|slowly
+escucho|ehs-KOO-choh|I listen
+bien|BYEHN|well
+pero|PEH-roh|but
+hay|EYE|there is
+café|kah-FEH|coffee
+camioneta|kah-myoh-NEH-tah|pickup truck
+después|dehs-PWEHS|afterward
+trato hecho|TRAH-toh EH-choh|it's a deal
+mira|MEE-rah|look
+baja|BAH-hah|drops
+un poco|oon POH-koh|a little
+se queda|seh KEH-dah|stays
+escucha|ehs-KOO-chah|listen
+discutían|dees-koo-TEE-ahn|were arguing
+era|EH-rah|was
+ese|EH-seh|that
+momento|moh-MEHN-toh|moment
+pasó|pah-SOH|passed by, happened
+dijeron|dee-HEH-rohn|they said
+al|ahl|to the, from the
+cuanto más|KWAHN-toh MAHS|the more
+apretaba|ah-preh-TAH-bah|was holding tight
+su|soo|his, her, its; your (formal)
+al final|ahl fee-NAHL|in the end
+no pudo más|noh POO-doh MAHS|could not go on
+calma|KAHL-mah|calm
+tuvo|TOO-boh|had
+tuvo que|TOO-boh keh|had to
+reconocer|rreh-koh-noh-SEHR|to admit
+así|ah-SEE|so, like that
+entendí|ehn-tehn-DEE|I understood
+todo|TOH-doh|everything
+the|dhe|el, la, los, las
+a|e|un, una
+and|end|y
+of|ov|de
+in|in|en
+at|et|a las (hora)
+on|on|en
+for|for|para, por
+it|it|lo, eso
+is|iz|es, está
+are|ar|son, están
+we|wii|nosotros
+you|iu|usted, ustedes, tú
+me|mii|me, mí
+that|dhet|eso
+no|nou|no
+yes|ies|sí
+the call|dhe KOL|la llamada
+call|kol|llamada
+the bridge|dhe BRIDY|la llamada de incidente (literalmente «el puente»)
+bridge|bridy|puente; llamada de incidente
+the impact|dhi IM-pekt|el impacto
+impact|IM-pekt|impacto
+affected|e-FEK-ted|afectado, afectados
+contained|ken-TEIND|contenido, contenida
+threat|THRET|amenaza
+think|THINK|pensar
+data loss|DEI-ta LOS|pérdida de datos|La t de data suena casi como una r suave
+data|DEI-ta|datos
+loss|los|pérdida
+update|AP-deit|actualización
+good morning|gud MOR-ning|buenos días
+can everyone hear me|ken EV-ri-wan JIR mii|¿todos me escuchan?
+we can hear you|wii ken JIR iu|sí te escuchamos
+you're on mute|iur on MIUT|tiene el micrófono silenciado
+thanks for joining|THENKS for DYOI-ning|gracias por conectarse
+thanks|thenks|gracias
+everyone|EV-ri-wan|todos
+i'm|aim|yo soy
+lucía|lu-SII-a|Lucía
+from the soc|fram dhe SOK|del SOC
+the soc|dhe SOK|el SOC|SOC se dice como una sola palabra
+when did it start|WEN did it START|¿cuándo empezó?
+at two in the morning|et TUU in dhe MOR-ning|a las dos de la mañana
+what's the impact|wots dhi IM-pekt|¿cuál es el impacto?
+three servers are affected|THRII SER-verz ar e-FEK-ted|hay tres servidores afectados
+who's affected|juuz e-FEK-ted|¿a quién afecta?
+the finance team|dhe FAI-nens TIIM|el equipo de finanzas
+what did you do|WOT did iu DU|¿qué hicieron?
+we isolated the hosts|wii AI-so-lei-ted dhe JOUSTS|aislamos los equipos
+we reset the passwords|wii rii-SET dhe PES-werdz|restablecimos las contraseñas
+and the sessions|end dhe SE-shonz|¿y las sesiones?
+we revoked the sessions|wii ri-VOUKT dhe SE-shonz|revocamos las sesiones
+do we have data loss|du wii jev DEI-ta LOS|¿hay pérdida de datos?
+we don't have|wii dount JEV|no tenemos
+we don't have evidence|wii dount jev E-vi-dens|no tenemos evidencia
+evidence|E-vi-dens|evidencia|Nunca lleva s en inglés: some evidence, no evidence
+yet|iet|todavía (al final de la frase)
+can someone check the backups|ken SAM-wan CHEK dhe BEK-aps|¿alguien puede revisar los respaldos?
+i'll take care of that|ail teik KER ov dhet|yo me encargo de eso
+when is the next update|wen iz dhe NEKST AP-deit|¿cuándo es la próxima actualización?
+next update in thirty minutes|NEKST AP-deit in THER-ti MI-nits|próxima actualización en treinta minutos|La t de thirty suena casi como una r suave
+okay|ou-KEI|de acuerdo
+thank you|THENK iu|gracias
+quick update|KWIK AP-deit|actualización rápida
+the threat is contained|dhe THRET iz ken-TEIND|la amenaza está contenida
+the threat|dhe THRET|la amenaza
+is anyone else affected|iz E-ni-wan ELS e-FEK-ted|¿hay alguien más afectado?
+only the finance team|OUN-li dhe FAI-nens TIIM|solo el equipo de finanzas
+great work|greit WERK|buen trabajo
+next update at nine|NEKST AP-deit et NAIN|próxima actualización a las nueve
+short answers|SHORT EN-serz|respuestas cortas
+short and clear|SHORT end KLIR|corto y claro
+good|gud|bien, bueno
+always give a time|OL-weiz guiv e TAIM|siempre da una hora`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
+
+const USE=[["Pregunta si todos te escuchan.","Can everyone hear me?"],["Di que todavía no tienen evidencia de pérdida de datos.","We don't have evidence of data loss yet."],["Di que la próxima actualización es en treinta minutos.","Next update in thirty minutes."]];
+const PAGES=[{"t":"Las palabras","n":"Sam enseña las palabras clave antes de la llamada.","l":[["S","Sam, hoy tengo mi primera llamada de incidente en inglés. ¿Por dónde empiezo?"],["L","Por las palabras. La llamada es {the call}. En muchas empresas le dicen {the bridge}."],["S","{The bridge}. ¿Y el impacto?"],["L","{The impact}. La fuerza va al principio: {impact}."],["S","¿Y afectados?"],["L","{Affected}. Y cuando ya controlaste la amenaza, está {contained}."],["S","{Contained}. ¿Y amenaza?"],["L","{Threat}. Con la th de {think}: {threat}, no «tret»."],["S","¿Pérdida de datos?"],["L","{Data loss}. Y la actualización, {update}, ya la conoces."]]},{"t":"Abrir la llamada","n":"Las primeras frases de toda llamada.","l":[["L","Practiquemos. Yo soy el cliente. Empieza tú."],["S","{Good morning}. ¿Cómo pregunto si todos me escuchan?"],["L","{Can everyone hear me?}"],["S","{Good morning. Can everyone hear me?}"],["L","{Yes}, {we can hear you}."],["S","¿Y si alguien habla pero no se oye nada?"],["L","Le dices: {you're on mute}."],["S","{You're on mute}. Ahora me presento."],["L","Agradece primero: {thanks for joining}."],["S","{Thanks for joining}. {I'm} {Lucía}, {from the SOC}."]]},{"t":"Los hechos","n":"Las preguntas del cliente y respuestas cortas con datos.","q":[["Who's affected?","The finance team","The SOC"]],"l":[["L","Ahora el cliente pregunta. {When did it start?}"],["S","{At two in the morning}."],["L","{Good}. {What's the impact?}"],["S","{Three servers are affected}."],["L","{Who's affected?}"],["S","¿Cómo digo «el equipo de finanzas»?"],["L","{The finance team}."],["S","{The finance team}. {Short answers}, ¿verdad?"],["L","Exacto. {Short and clear}."]]},{"t":"La contención","n":"Lo que ya hicieron, en pasado. Ojo con un error muy común.","l":[["L","{What did you do?}"],["S","{We isolated the hosts}. Y luego, {we reset the passwords}."],["L","{And the sessions?}"],["S","{We revoked the sessions}."],["L","{Do we have data loss?}"],["S","{We don't have} <<evidences>>..."],["L","Sin s. En inglés, {evidence} no lleva plural: {we don't have evidence}."],["S","{We don't have evidence of data loss yet}."]]},{"t":"Próximos pasos","n":"Casi todo en inglés. Asignar tareas y la próxima hora.","l":[["L","{Can someone check the backups?}"],["S","{I'll take care of that}."],["L","{When is the next update?}"],["S","{Next update in thirty minutes}."],["L","{Okay. Thank you}. {Good}. {Always give a time}."]]},{"t":"La actualización","n":"Todo en inglés. Treinta minutos después.","q":[["Is the threat contained?","Yes","No"]],"l":[["S","{Quick update}. {The threat is contained}."],["L","{Is anyone else affected?}"],["S","{No}. {Only the finance team}."],["L","{Great work}."],["S","{Next update at nine}. {Thanks}, {everyone}."]]}];
+
+const SOUND=[["th (think)","th sin voz","Lengua entre los dientes y sopla. think = THINK, no «tink» ni «sink»."],["th (this)","th con voz","Como una d muy suave con la lengua entre los dientes. this = DHIS."],["i corta (ship)","i","Más corta y relajada que la i española. ship (barco) no es sheep (oveja)."],["ee (sheep)","ii","Una i larga y tensa. Se escribe ii en esta guía."],["v","v","Labio de abajo contra los dientes de arriba. very no es berry."],["h","j","Como una j suave, solo aire. hello = je-LOU."],["j, g (job, general)","dy","Como dy rápido. job = DYOB, no «yob»."],["sh","sh","Como cuando pides silencio. she = SHII."],["z","z","Una s que zumba. zero = ZII-rou."],["vocal débil (about)","e","Una e muy relajada y corta en sílabas sin fuerza. about = e-BAUT."],["r","r","La lengua no toca nada y no vibra. Nunca es la rr española."],["s- inicial","s","Sin e delante. school = SKUUL, no «eskul»."],["-ed final","t, d","Casi siempre sin vocal extra. worked = WERKT, no «work-ed». Después de t o d sí suma sílaba: started = STAR-ted."],["ei, ou, ai","ei, ou, ai","Diptongos: day = DEI, go = GOU, my = MAI."],["a (cat, thanks, have)","e abierta","Más abierta que la e española, entre e y a. thanks = THENKS. Esta guía la escribe e, igual que la e de bed, así que escucha el audio."],["o (not, job, problem)","o","En Estados Unidos suena más cerca de la a española: not suena casi «nat». Esta guía escribe o; escucha el audio."],["t entre vocales (meeting, data)","r suave","En Estados Unidos suena como la r de «pero». La guía escribe t: meeting suena casi «MII-ring»."],["g en esta guía","siempre fuerte","gue y gui como en «guerra» y «guitarra»: get = guet, give = guiv."]];
+
+const missing=[];
+function parse(s){
+  const out=[];
+  s.split(/(\{[^}]*\}|<<[^>]*>>)/).forEach(p=>{
+    if(!p)return;
+    if(p.startsWith("<<")){out.push({k:"bad",x:p.slice(2,-2)});return}
+    if(!p.startsWith("{")){out.push({k:"en",x:p});return}
+    const t=p.slice(1,-1).match(/\p{L}+(?:['’-]\p{L}+)*|[^\p{L}]+/gu);
+    for(let i=0;i<t.length;){
+      if(!/\p{L}/u.test(t[i])){out.push({k:"p",x:t[i]});i++;continue}
+      let done=false;
+      for(const n of[5,4,3,2]){
+        const end=i+2*(n-1);
+        if(end<t.length&&t.slice(i,end+1).every((v,j)=>j%2?/^ +$/.test(v):true)){
+          const x=t.slice(i,end+1).join(""),key=x.toLowerCase();
+          if(LEX[key]){out.push({k:"es",x,key});i=end+1;done=true;break}
+        }
+      }
+      if(done)continue;
+      const key=t[i].toLowerCase();
+      if(!LEX[key])missing.push(t[i]);
+      out.push({k:"es",x:t[i],key});i++;
+    }
+  });
+  return out;
+}
+const count=s=>(s.match(/\p{L}+/gu)||[]).length;
+const seen={},stg={},lastPg={};
+PAGES.forEach(p=>{
+  let es=0,all=0,newTok=0;p.fresh=[];
+  (p.q||[]).forEach(q=>q.forEach(x=>parse("{"+x+"}")));
+  p.parsed=p.l.map(([w,s])=>{
+    const toks=parse(s);
+    toks.forEach(t=>{
+      if(t.k==="es"){const n=count(t.x);es+=n;all+=n;
+        seen[t.key]=(seen[t.key]||0)+1;t.nth=seen[t.key];
+        t.firstHere=lastPg[t.key]!==p;lastPg[t.key]=p;if(t.firstHere)stg[t.key]=(stg[t.key]||0)+1;t.stg=stg[t.key];
+        if(t.nth===1){p.fresh.push(t.key);newTok+=n}}
+      else if(t.k==="en")all+=count(t.x);
+    });
+    return{w,toks};
+  });
+  p.pct=Math.round(100*es/all);
+  p.known=es?Math.round(100*(1-newTok/es)):100;
+});
+USE.forEach(u=>parse("{"+u[1]+"}"));
+window.weaveAudit={missing,pct:PAGES.map(p=>p.pct),known:PAGES.map(p=>p.known),unused:Object.keys(LEX).filter(k=>!seen[k])};
+
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let cur=Math.min(Math.max(+store.get("incident-en-stage")||0,0),PAGES.length-1),guide=store.get("guide")||"fade",rate=+(store.get("rate")||0.72),luciaEn=store.get("rev-flow")||"es";
+const $=id=>document.getElementById(id);
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let ears=!!store.get("ears");
+let shadowing=0;
+const calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function shadow(btn){
+  if(shadowing){shadowing=0;if(hasTTS)speechSynthesis.cancel();document.querySelectorAll(".line.now").forEach(e=>e.classList.remove("now"));btn.setAttribute("aria-pressed","false");return}
+  const run=shadowing=Date.now();btn.setAttribute("aria-pressed","true");
+  const p=PAGES[cur],rows=[...document.querySelectorAll(".line")];let i=0;
+  const next=()=>{
+    if(shadowing!==run)return;
+    rows.forEach(r=>r.classList.remove("now"));
+    if(i>=p.parsed.length){shadowing=0;btn.setAttribute("aria-pressed","false");return}
+    const l=p.parsed[i],row=rows[i];i++;
+    row.classList.add("now");row.scrollIntoView({block:"center",behavior:calm?"auto":"smooth"});
+    const segs=segments(l.toks,l.w),u=say(segs);
+    const words=segs.map(s=>s.x).join(" ").trim().split(/\s+/).length;
+    const pause=Math.max(1800,words*650/rate);
+    if(!u){setTimeout(next,pause);return}
+    let done=false;const fin=()=>{if(done)return;done=true;setTimeout(next,pause)};
+    u.onend=fin;u.onerror=fin;
+  };
+  next();
+}
+const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2l11 6-11 6z"/></svg>';
+
+const hasTTS="speechSynthesis" in window;
+let esVoice=null,samEs=null,enVoice=null;
+function pickVoices(){
+  if(!hasTTS)return;
+  const v=speechSynthesis.getVoices();
+  const by=t=>v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));
+  esVoice=by("en-us")||by("en-gb")||by("en");
+  samEs=v.find(x=>/^en[-_](us|gb|ca|au)/i.test(x.lang)&&x!==esVoice)||esVoice;
+  enVoice=by("es-mx")||by("es-us")||by("es-419")||by("es");
+}
+if(hasTTS){pickVoices();speechSynthesis.addEventListener("voiceschanged",pickVoices)}
+function say(segs){
+  const st=$("status");
+  if(!hasTTS){st.textContent="Este navegador no tiene voces, así que no hay audio. Las guías escritas sí funcionan.";return}
+  pickVoices();
+  st.textContent=(!esVoice&&speechSynthesis.getVoices().length)?"No se encontró una voz en inglés. Agrega una en la configuración de texto a voz de tu dispositivo.":"";
+  speechSynthesis.cancel();
+  let last=null;
+  segs.forEach(s=>{
+    if(!/\p{L}/u.test(s.x))return;
+    const u=new SpeechSynthesisUtterance(s.x);
+    u.lang=s.es?(esVoice?esVoice.lang:"en-US"):(enVoice?enVoice.lang:"es-MX");
+    const voice=s.es?(s.who==="S"?samEs:esVoice):enVoice;if(voice)u.voice=voice;
+    u.pitch=s.who==="S"?1.12:0.82;
+    u.rate=s.es?rate:1;
+    speechSynthesis.speak(u);last=u;
+  });
+  return last;
+}
+function segments(toks,who){
+  const out=[];
+  toks.forEach(t=>{
+    if(t.k==="bad")return;
+    const es=t.k==="es"||t.k==="p"||luciaEn==="es";
+    const last=out[out.length-1];
+    if(last&&last.es===es)last.x+=t.x;else out.push({es,x:t.x,who});
+  });
+  for(let i=1;i<out.length;i++){
+    const m=out[i].x.match(/^[\s.,;:!?…]+/);
+    if(m){out[i-1].x=out[i-1].x.trimEnd()+m[0];out[i].x=out[i].x.slice(m[0].length)}
+  }
+  return out;
+}
+function showWord(t,el){
+  document.querySelectorAll(".w.on").forEach(e=>e.classList.remove("on"));
+  el.classList.add("on");
+  const e=LEX[t.key],box=$("sheet").firstElementChild;
+  box.textContent="";
+  const a=document.createElement("strong");a.textContent=t.x;
+  const b=document.createElement("span");b.textContent=e.p;
+  const c=document.createElement("em");c.textContent=e.m+(e.n?" · "+e.n:"");
+  box.append(a,b,c);
+  say([{es:true,x:t.x,who:"L"}]);
+}
+function render(){
+  const p=PAGES[cur];
+  $("ascent").textContent="";
+  PAGES.forEach((q,i)=>{
+    const b=document.createElement("button");b.className="bar";b.id="stage-"+i;
+    b.setAttribute("aria-label","Etapa "+(i+1)+", "+q.t+", "+q.pct+" por ciento en inglés");
+    b.setAttribute("aria-current",i===cur?"true":"false");
+    b.innerHTML='<i style="height:'+Math.max(q.pct*0.72,3)+'%"></i><span>'+(i+1)+'</span>';
+    b.onclick=()=>go(i);$("ascent").append(b);
+  });
+  const P=$("page");P.textContent="";
+  const head=document.createElement("div");head.className="head";
+  const h=document.createElement("h2");h.textContent="Etapa "+(cur+1)+": "+p.t;
+  const s=document.createElement("span");s.className="share";s.textContent=p.pct+"% inglés";
+  head.append(h,s);
+  const n=document.createElement("p");n.className="note";n.textContent=p.n;
+  const pa=document.createElement("button");pa.className="play-all";pa.id="play-all";pa.innerHTML=ICON+"Reproducir esta etapa";
+  pa.onclick=()=>say(p.parsed.flatMap(l=>segments(l.toks,l.w)));
+  const ls=document.createElement("div");ls.className="lines";
+  p.parsed.forEach((l,li)=>{
+    const row=document.createElement("div");row.className="line";
+    const who=document.createElement("div");who.className="who "+l.w;who.textContent=l.w==="S"?"Lucía":"Sam";
+    const tx=document.createElement("p");tx.className="txt";
+    l.toks.forEach(t=>{
+      if(t.k==="es"){
+        const b=document.createElement("button");b.className="w";b.textContent=t.x;
+        b.onclick=()=>showWord(t,b);tx.append(b);
+        const show=guide==="all"||(guide==="fade"&&(t.nth<=2||(t.firstHere&&t.stg<=3)));
+        if(show){const g=document.createElement("span");g.className="g";g.textContent=" ("+LEX[t.key].p+")";tx.append(g)}
+      }else if(t.k==="bad"){
+        const b=document.createElement("span");b.className="bad";b.textContent=t.x;b.title="Inglés incorrecto, corregido en la siguiente línea";tx.append(b);const xm=document.createElement("span");xm.className="g";xm.setAttribute("role","img");xm.setAttribute("aria-label","incorrecto");xm.textContent=" ✗";tx.append(xm);
+      }else tx.append(document.createTextNode(t.x));
+    });
+    const sb=document.createElement("button");sb.className="say";sb.id="say-"+li;sb.setAttribute("aria-label","Reproducir esta línea");sb.innerHTML=ICON;
+    sb.onclick=()=>say(segments(l.toks,l.w));
+    row.append(who,tx,sb);ls.append(row);
+  });
+  const lf=document.createElement("button");lf.className="play-all";lf.id="listen-first";lf.setAttribute("aria-pressed",ears);lf.textContent="Primero escucha";
+  lf.onclick=()=>{ears=!ears;store.set("ears",ears?"1":"");render()};
+  const sh=document.createElement("button");sh.className="play-all";sh.id="shadow";sh.setAttribute("aria-pressed","false");sh.textContent="Repite después de mí";
+  sh.onclick=()=>shadow(sh);
+  const acts=document.createElement("div");acts.className="acts";acts.append(pa,sh,lf);
+  if(ears)ls.classList.add("ears");
+  const prev=PAGES[cur-1];
+  const ahead=p.fresh.filter(k=>LEX[k]);
+  if(cur>0&&ahead.length>=4){
+    const wa=document.createElement("details");wa.id="ahead";wa.open=p.pct>=60||p.pct-prev.pct>=15;
+    const ws=document.createElement("summary");ws.textContent="Palabras que vienen ("+ahead.length+"): repásalas antes de leer";wa.append(ws);
+    const ch=document.createElement("div");ch.className="chips";
+    ahead.forEach(k=>{const c=document.createElement("button");c.className="chip";
+      const b=document.createElement("b");b.textContent=k;const sp=document.createElement("span");sp.textContent=LEX[k].p+" · "+LEX[k].m;
+      c.append(b,sp);c.onclick=()=>say([{es:true,x:k,who:"L"}]);ch.append(c)});
+    wa.append(ch);P.append(head,n,wa,acts,ls);
+  }else P.append(head,n,acts,ls);
+  (p.q||[]).forEach((q,qi)=>{
+    const box=document.createElement("div");box.className="cq";box.id="question-"+qi;
+    const pr=document.createElement("p");pr.className="cqp";
+    const say1=document.createElement("button");say1.className="say";say1.setAttribute("aria-label","Reproducir la pregunta");say1.innerHTML=ICON;say1.onclick=()=>say([{es:true,x:q[0],who:"S"}]);
+    const tq=document.createElement("span");tq.textContent=q[0];pr.append(say1,tq);
+    const ops=document.createElement("div");ops.className="opts";
+    shuffle(q.slice(1).map((o,i)=>[o,i===0])).forEach(([o,ok])=>{const b=document.createElement("button");b.className="opt";b.textContent=o;
+      b.onclick=()=>{b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correcto: ":"Casi: ")+o);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===q[1])x.classList.add("right")});ls.classList.remove("ears")};ops.append(b)});
+    box.append(pr,ops);P.append(box);
+  });
+  if(cur===PAGES.length-1&&USE.length){
+    const u=document.createElement("section");u.id="use";
+    const uh=document.createElement("h3");uh.className="note";uh.style.margin="0";uh.textContent="Tu turno: dilo en inglés en voz alta y luego revisa";u.append(uh);
+    USE.forEach(([pr,ans],ui)=>{const r=document.createElement("div");r.className="urow";
+      const pp=document.createElement("p");pp.className="uprompt";pp.textContent=pr;
+      const btn=document.createElement("button");btn.className="opt";btn.id="show-"+ui;btn.textContent="Ver respuesta";
+      const a=document.createElement("p");a.className="ans";a.hidden=true;
+      const sy=document.createElement("button");sy.className="say";sy.setAttribute("aria-label","Reproducir la respuesta");sy.innerHTML=ICON;sy.onclick=()=>say([{es:true,x:ans,who:"L"}]);
+      const at=document.createElement("span");at.textContent=ans;a.append(sy,at);
+      btn.onclick=()=>{a.hidden=false;btn.hidden=true;say([{es:true,x:ans,who:"L"}])};
+      r.append(pp,btn,a);u.append(r)});
+    P.append(u);
+  }
+  const items=p.fresh.filter(k=>k.split(" ").length<=2&&LEX[k]).slice(0,4);
+  if(items.length>=2){
+    const d=document.createElement("details");d.id="check";
+    const sm=document.createElement("summary");sm.textContent="Ponte a prueba ("+items.length+")";d.append(sm);
+    const pool=[...new Set(PAGES.flatMap(q=>q.fresh).filter(k=>LEX[k]).map(k=>LEX[k].m))];
+    items.forEach(k=>{
+      const right=LEX[k].m,opts=[right];
+      for(const m of shuffle(pool.slice()))if(opts.length<3&&m!==right)opts.push(m);
+      const row=document.createElement("div");row.className="qrow";
+      const w=document.createElement("button");w.className="w";w.textContent=k;w.onclick=()=>say([{es:true,x:k,who:"L"}]);
+      const ops=document.createElement("div");ops.className="opts";
+      shuffle(opts).forEach(m=>{const b=document.createElement("button");b.className="opt";b.textContent=m;
+        b.onclick=()=>{const ok=m===right;b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correcto: ":"Casi: ")+m);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===right)x.classList.add("right")});say([{es:true,x:k,who:"L"}])};ops.append(b)});
+      row.append(w,ops);d.append(row);
+    });
+    P.append(d);
+  }
+  if(p.fresh.length){
+    const d=document.createElement("details");d.id="new-words";d.open=false;
+    d.innerHTML='<summary>Palabras nuevas en esta página ('+p.fresh.length+')</summary><div class="table"><table><thead><tr><th>Inglés</th><th>Pronunciación</th><th>Significado</th></tr></thead><tbody></tbody></table></div>';
+    p.fresh.forEach(k=>{const r=d.querySelector("tbody").insertRow();[k,LEX[k].p,LEX[k].m].forEach(x=>{r.insertCell().textContent=x})});
+    P.append(d);
+  }
+  const k=document.createElement("details");k.id="sound-key";k.open=cur===0;
+  k.innerHTML='<summary>Cómo suena el inglés</summary><div class="table"><table><thead><tr><th>Letras</th><th>Sonido</th><th>Ejemplo</th></tr></thead><tbody></tbody></table></div><p class="keynote">Las mayúsculas marcan la sílaba con más fuerza. La pronunciación está escrita con letras del español, así que es solo un puente: escucha también el audio. El inglés no se lee como se escribe.</p>';
+  SOUND.forEach(rw=>{const r=k.querySelector("tbody").insertRow();rw.forEach(x=>{r.insertCell().textContent=x})});
+  P.append(k);
+  $("prev").disabled=cur===0;$("next").disabled=cur===PAGES.length-1;
+  document.querySelectorAll("[data-g]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g===guide));
+  document.querySelectorAll("[data-r]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===rate));
+  document.querySelectorAll("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===luciaEn));
+}
+function go(i){shadowing=0;cur=i;store.set("incident-en-stage",i);if(hasTTS)speechSynthesis.cancel();render();window.scrollTo(0,0)}
+$("prev").onclick=()=>go(cur-1);$("next").onclick=()=>go(cur+1);
+document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{guide=b.dataset.g;store.set("guide",guide);render()});
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("rate",rate);render()});
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{luciaEn=b.dataset.l;store.set("rev-flow",luciaEn);render()});
+$("b").textContent=BUILD;$("u").textContent=SHIPPED;
+render();
+</script>
+
+</html>
