@@ -15,7 +15,7 @@ oui, moi|WEE, MWAH|oi sounds like "wah."
 beau, aussi|BOH, oh-SEE|eau and au sound like "oh."
 été, café|ay-TAY, kah-FAY|é is a clean, short "ay."
 fille, travail|FEEY, trah-VYE|ill and ail usually make a y sound. Exceptions: mille, ville and tranquille say "eel."
-montagne|mohn-TAHN-yuh|gn sounds like the ny in "canyon."
+montagne|mohn-TAHNY|gn sounds like the ny in "canyon."
 ça, garçon|SAH, gar-SOHN|ç always sounds like s.
 petit, chat|puh-TEE, SHAH|Most final consonants are silent, but c, r, f and l often sound: avec, bonjour, neuf, avril.
 les amis|lay zah-MEE|Liaison: a silent final s becomes a z sound before a vowel.
@@ -141,7 +141,7 @@ l'étoile|lay-TWAHL|star
 la pluie|lah PLWEE|rain
 la neige|lah NEZH|snow
 le brouillard|luh broo-YAR|fog
-la montagne|lah mohn-TAHN-yuh|mountain
+la montagne|lah mohn-TAHNY|mountain
 la colline|lah koh-LEEN|hill
 le volcan|luh vohl-KAHN|volcano
 la vallée|lah vah-LAY|valley

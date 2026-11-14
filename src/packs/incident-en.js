@@ -24,19 +24,19 @@ the call|dhe KOL|la llamada
 call|kol|llamada
 the bridge|dhe BRIDY|la llamada de incidente (literalmente «el puente»)
 bridge|bridy|puente; llamada de incidente
-the impact|dhi IM-pekt|el impacto
+the impact|dhii IM-pekt|el impacto
 impact|IM-pekt|impacto
 affected|e-FEK-ted|afectado, afectados
 contained|ken-TEIND|contenido, contenida
 threat|THRET|amenaza
 think|THINK|pensar
-data loss|DEI-ta LOS|pérdida de datos|La t de data suena casi como una r suave
-data|DEI-ta|datos
+data loss|DEI-te LOS|pérdida de datos|La t de data suena casi como una r suave
+data|DEI-te|datos
 loss|los|pérdida
 update|AP-deit|actualización
 good morning|gud MOR-ning|buenos días
 can everyone hear me|ken EV-ri-wan JIR mii|¿todos me escuchan?
-we can hear you|wii ken JIR iu|sí te escuchamos
+we can hear you|wii ken JIR iu|te escuchamos
 you're on mute|iur on MIUT|tiene el micrófono silenciado
 thanks for joining|THENKS for DYOI-ning|gracias por conectarse
 thanks|thenks|gracias
@@ -47,19 +47,19 @@ from the soc|fram dhe SOK|del SOC
 the soc|dhe SOK|el SOC|SOC se dice como una sola palabra
 when did it start|WEN did it START|¿cuándo empezó?
 at two in the morning|et TUU in dhe MOR-ning|a las dos de la mañana
-what's the impact|wots dhi IM-pekt|¿cuál es el impacto?
+what's the impact|wots dhii IM-pekt|¿cuál es el impacto?
 three servers are affected|THRII SER-verz ar e-FEK-ted|hay tres servidores afectados
 who's affected|juuz e-FEK-ted|¿a quién afecta?
 the finance team|dhe FAI-nens TIIM|el equipo de finanzas
-what did you do|WOT did iu DU|¿qué hicieron?
-we isolated the hosts|wii AI-so-lei-ted dhe JOUSTS|aislamos los equipos
+what did you do|WOT did iu DUU|¿qué hicieron?
+we isolated the hosts|wii AI-se-lei-ted dhe JOUSTS|aislamos los equipos
 we reset the passwords|wii rii-SET dhe PES-werdz|restablecimos las contraseñas
-and the sessions|end dhe SE-shonz|¿y las sesiones?
-we revoked the sessions|wii ri-VOUKT dhe SE-shonz|revocamos las sesiones
-do we have data loss|du wii jev DEI-ta LOS|¿hay pérdida de datos?
+and the sessions|end dhe SE-shenz|¿y las sesiones?
+we revoked the sessions|wii ri-VOUKT dhe SE-shenz|revocamos las sesiones
+do we have data loss|du wii jev DEI-te LOS|¿hay pérdida de datos?
 we don't have|wii dount JEV|no tenemos
 we don't have evidence|wii dount jev E-vi-dens|no tenemos evidencia
-evidence|E-vi-dens|evidencia|Nunca lleva s en inglés: some evidence, no evidence
+evidence|E-vi-dens|evidencia|No se usa en plural: some evidence, no evidence, a piece of evidence
 yet|iet|todavía (al final de la frase)
 can someone check the backups|ken SAM-wan CHEK dhe BEK-aps|¿alguien puede revisar los respaldos?
 i'll take care of that|ail teik KER ov dhet|yo me encargo de eso
@@ -83,7 +83,7 @@ pages:[
 ["S","Sam, hoy tengo mi primera llamada de incidente en inglés. ¿Por dónde empiezo?"],
 ["L","Por las palabras. La llamada es {the call}. En muchas empresas le dicen {the bridge}."],
 ["S","{The bridge}. ¿Y el impacto?"],
-["L","{The impact}. La fuerza va al principio: {impact}."],
+["L","{The impact}. El acento va en la primera sílaba: {impact}."],
 ["S","¿Y afectados?"],
 ["L","{Affected}. Y cuando ya controlaste la amenaza, está {contained}."],
 ["S","{Contained}. ¿Y amenaza?"],

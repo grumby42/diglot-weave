@@ -12,11 +12,11 @@ le vent|luh VAHN|the wind
 vent|VAHN|wind
 aujourd'hui|oh-zhoor-DWEE|today
 ballon|bah-LOHN|balloon
-une montgolfière|ewn mohn-gol-FYAIR|a hot air balloon|Named for the Montgolfier brothers, who flew the first one in 1783
+une montgolfière|ewn mohn-gol-FYAIR|a hot air balloon|Named for the Montgolfier brothers, who launched the first one in 1783
 montgolfière|mohn-gol-FYAIR|hot air balloon
 le soleil|luh soh-LAY|the sun
 soleil|soh-LAY|sun
-la bise|lah BEEZ|the north wind|A cold, dry wind from the north or northeast
+la bise|lah BEEZ|the north wind|A cold, dry wind from the north or northeast. Also the cheek kiss (faire la bise)
 bise|BEEZ|north wind
 j'ai froid|zhay FRWAH|I'm cold (literally "I have cold")
 froid|FRWAH|cold
@@ -40,14 +40,14 @@ oui|WEE|yes
 non|NOHN|no
 la bise souffle|lah beez SOOFL|the north wind blows
 souffle|SOOFL|blows
-elle souffle très fort|el soofl treh FOR|she blows very hard
+elle souffle très fort|el soofl treh FOR|it blows very hard|Elle = it, because la bise is feminine
 très fort|treh FOR|very hard, very strong
 très|TREH|very
 il tient son manteau|eel tyan sohn mahn-TOH|he holds on to his coat
 son manteau|sohn mahn-TOH|his coat
 exactement|eg-zak-tuh-MAHN|exactly
-plus de vent|plew duh VAHN|more wind
-plus de froid|plew duh FRWAH|more cold
+plus de vent|plews duh VAHN|more wind|When plus means "more", say the s
+plus de froid|plews duh FRWAH|more cold
 alors|ah-LOR|so, then
 et alors|ay ah-LOR|and then?
 le soleil brille|luh soh-lay BREEY|the sun shines
@@ -58,15 +58,15 @@ l'homme|LOM|the man
 il ouvre son manteau|ee-loovr sohn mahn-TOH|he opens his coat
 et le soleil brille encore|ay luh soh-lay bree-yahn-KOR|and the sun is still shining
 encore|ahn-KOR|still, again
-l'homme enlève son manteau|lom ahn-lev sohn mahn-TOH|the man takes off his coat
-le soleil gagne|luh soh-lay GAHN-yuh|the sun wins
-gagne|GAHN-yuh|wins
+l'homme enlève son manteau|loh-mahn-lev sohn mahn-TOH|the man takes off his coat
+le soleil gagne|luh soh-lay GAHNY|the sun wins
+gagne|GAHNY|wins
 la douceur|lah doo-SUHR|gentleness
 plus forte|plew FORT|stronger (feminine)
 que|KUH|than
 la patience|lah pah-SYAHNS|patience
-comme un bon pilote|kom uhn bohn pee-LOT|like a good pilot
-un bon pilote attend|uhn bohn pee-lot ah-TAHN|a good pilot waits
+comme un bon pilote|koh-muhn bohn pee-LOT|like a good pilot
+un bon pilote attend|uhn bohn pee-loh-tah-TAHN|a good pilot waits
 aujourd'hui, on ne vole pas|oh-zhoor-dwee ohn nuh vol PAH|today we're not flying
 on ne vole pas|ohn nuh vol PAH|we're not flying
 pas aujourd'hui|pah oh-zhoor-DWEE|not today
@@ -77,9 +77,9 @@ un café|uhn kah-FAY|a coffee
 café|kah-FAY|coffee
 camille|kah-MEEY|Camille (her name)
 tu me racontes l'histoire|tew muh rah-kohnt lees-TWAHR|will you tell me the story
-encore une fois|ahn-kor ewn FWAH|one more time
+encore une fois|ahn-koh-rewn FWAH|one more time
 en français|ahn frahn-SEH|in French
-tout en français|too tahn frahn-SEH|all in French
+tout en français|too-tahn frahn-SEH|all in French
 tu vas comprendre|tew vah kohm-PRAHNDR|you're going to understand
 je crois|zhuh KRWAH|I think so, I believe
 parle lentement|parl lahnt-MAHN|speak slowly
@@ -87,20 +87,20 @@ parle lentement|parl lahnt-MAHN|speak slowly
 se disputaient|suh dees-pew-TEH|were arguing
 qui était le plus fort|kee ay-teh luh plew FOR|who was the strongest
 un homme passait|uh-nom pah-SEH|a man was passing by
-avec un manteau|ah-vek uhn mahn-TOH|with a coat
-la bise a soufflé|lah beez ah soo-FLAY|the north wind blew
+avec un manteau|ah-veh-kuhn mahn-TOH|with a coat
+la bise a soufflé|lah bee-zah soo-FLAY|the north wind blew
 mais|MEH|but
 l'homme a serré son manteau|loh-mah seh-ray sohn mahn-TOH|the man pulled his coat tight
 puis|PWEE|then
-le soleil a brillé doucement|luh soh-lay ah bree-yay doos-MAHN|the sun shone gently
+le soleil a brillé doucement|luh soh-leh-yah bree-yay doos-MAHN|the sun shone gently
 l'homme a eu chaud|loh-mah ew SHOH|the man got hot
 il a enlevé son manteau|ee-lah ahn-luh-vay sohn mahn-TOH|he took off his coat
-la douceur a gagné|lah doo-suhr ah gah-NYAY|gentleness won
+la douceur a gagné|lah doo-suh-rah gah-NYAY|gentleness won
 j'ai tout compris|zhay too kohm-PREE|I understood everything
 tout|TOO|everything
 presque tout|presk TOO|almost everything
 une autre histoire|ew-noh-trees-TWAHR|another story
-qui gagne|kee GAHN-yuh|who wins
+qui gagne|kee GAHNY|who wins
 l'homme a froid ou chaud|loh-mah frwah oo SHOH|is the man cold or hot
 ou|OO|or
 qui|KEE|who
@@ -114,7 +114,7 @@ pages:[
 ["S","{Aujourd'hui}. That's a long word for today."],
 ["L","Long, but you say it fast: {aujourd'hui}. So {le vent} wins today."],
 ["S","And the {ballon} stays in the truck."],
-["L","A hot air balloon is {une montgolfière}, after the two brothers who flew the first one here in France."],
+["L","A hot air balloon is {une montgolfière}, after the two brothers who launched the first one here in France."],
 ["S","{Une montgolfière}. I like that."],
 ["L","And up there, {le soleil}. Do you know the story of {la bise} and {le soleil}? {La bise} is the cold north wind."],
 ["S","I know it in English. You tell it, and I'll steal your words."],
@@ -145,7 +145,7 @@ pages:[
 ["S","{Et alors ?}"],
 ["L","{Alors}, {le soleil brille}. {Doucement}. Gently."],
 ["S","And the man gets hot. How do I say that? <<Il est chaud>> ?"],
-["L","Careful, that means something else. Say {il a chaud}: he has heat, just like {il a froid}."]]},
+["L","Careful, for a person that means he's keen, or even aroused. Say {il a chaud}: he has heat, just like {il a froid}."]]},
 {t:"Half and half",n:"Most sentences are now shared between the two languages.",q:[["L'homme a froid ou chaud ?","Il a chaud","Il a froid"]],l:[
 ["L","{L'homme a chaud}. First, {il ouvre son manteau}."],
 ["S","{Et le soleil brille encore ?}"],

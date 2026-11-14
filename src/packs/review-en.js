@@ -180,9 +180,9 @@ pages:[
 ["S","Sam, mañana tengo mi primera reunión con un cliente en inglés. Estoy nerviosa."],
 ["L","Tranquila. Primero, las palabras. Cliente es {client}. La reunión es {the meeting}."],
 ["S","{Client}. {Meeting}. ¿Y el informe?"],
-["L","{Report}. Con la fuerza al final: {report}. Y las métricas, {metrics}."],
+["L","{Report}. El acento va en la última sílaba: {report}. Y las métricas, {metrics}."],
 ["S","¿Alertas e incidentes?"],
-["L","{Alerts} e {incidents}. Ojo: en {incidents}, la fuerza va al principio."],
+["L","{Alerts} e {incidents}. Ojo: en {incidents}, el acento va en la primera sílaba."],
 ["S","¿Y el SLA? ¿Se dice igual?"],
 ["L","Casi. Las letras en inglés: {S}, {L}, {A}. Suena «es-el-EI»: {SLA}."]]},
 {t:"Abrir la reunión",n:"Frases cortas para empezar con buen tono.",l:[
