@@ -11,8 +11,8 @@ Two friends, Sam (a US balloon pilot who also works in aviation and cybersecurit
 | Path | Folder | What's there |
 |---|---|---|
 | English → Spanish | [`es/`](es/index.html) | 17 pages: a fable, a story and legend retelling, science, philosophy, everyday topics, and work Spanish for ballooning, cargo ramps, cockpits, firefighting, bars and cybersecurity. Two phrasebooks (essentials and work). |
-| English → French | [`fr/`](fr/index.html) | A phrasebook with a French sound guide, grammar, verbs and everyday vocabulary, and the first dialogue, *La bise et le soleil*. |
-| Español → English | [`en/`](en/index.html) | For Spanish-speaking cybersecurity professionals who work with clients in English: a phrasebook (with false-friends and softeners sections), a client-meeting dialogue and an incident-call dialogue. The interface is in Spanish, and English is respelled with Spanish letter values. |
+| English → French | [`fr/`](fr/index.html) | A phrasebook with a French sound guide, grammar, verbs and everyday vocabulary, and two dialogues: *La bise et le soleil* and *Une montgolfière*. |
+| Español → English | [`en/`](en/index.html) | For Spanish-speaking cybersecurity professionals who work with clients in English: a phrasebook (with false-friends and softeners sections), and three dialogues: a client meeting, an incident call and a change review. The interface is in Spanish, and English is respelled with Spanish letter values. |
 
 Every page is a single self-contained HTML file. Pages work offline once loaded, and progress settings are stored only in your browser.
 
@@ -94,7 +94,7 @@ Content fact checks
 1. Native-speaker review of all Spanish and French content.
 2. Rewrite the all-target-language final stages so most of their words have already appeared earlier on the page.
 3. Recycle more vocabulary across packs. `src/build/vocab-report.js` measures it (see `src/vocab-report.md`): at the moment 84% of Spanish words and phrases appear in only one pack. Spaced review covers the words you meet; rewriting packs to reuse a core list is the content fix.
-7. More French dialogues, and more English-for-Spanish-speakers packs (a security engineer's change review next).
+7. More French dialogues, and more English-for-Spanish-speakers packs.
 
 ## Building from source
 

@@ -10,3 +10,5 @@ for(const f of ['trabajo-data','essentiel-data','clientes-data'])run('phrasebook
 run('reverse.js','review-en.js');
 run('reverse.js','incident-en.js');
 run('french.js','bise.js');
+run('french.js','montgolfiere.js');
+run('reverse.js','change-en.js');

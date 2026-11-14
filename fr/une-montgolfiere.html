@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Une montgolfière</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="build-id" content="WEAV-20261114-1748Z">
+<meta name="shipped-utc" content="2026-11-14T17:48:29Z">
+<style>
+/* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of French on that page. */
+:root{
+  --sky:#e6edf3; --paper:#f6f9fb; --ink:#1b2838; --muted:#566779; --line:#c6d3df;
+  --es:#a32a63; --es-soft:#f6dfe9; --sam:#1f6a7a; --lucia:#8a5a00; --strike:#a33a2a;
+  --read:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a;
+  --es:#f492bd; --es-soft:#43243a; --sam:#74c6d6; --lucia:#e4b75c; --strike:#f0937f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sky:#111a25; --paper:#182432; --ink:#e7edf3; --muted:#9db0c2; --line:#32455a;
+  --es:#f492bd; --es-soft:#43243a; --sam:#74c6d6; --lucia:#e4b75c; --strike:#f0937f; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.wrap{max-width:44rem;margin:0 auto;padding-block:20px 150px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--read);font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:balance}
+.sub{margin:4px 0 0;color:var(--muted)}
+.ascent{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;align-items:end;height:92px}
+.bar{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;text-align:center;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar i{display:block;background:var(--line);min-height:3px;border-radius:2px 2px 0 0}
+.bar[aria-current="true"]{color:var(--ink);font-weight:700}
+.bar[aria-current="true"] i{background:var(--es)}
+.bar:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--es);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:.875rem}
+.seg{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.seg b{font-weight:600;color:var(--muted)}
+.seg button,.nav button,.play-all{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+.page{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:16px}
+.head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.share{font-size:.875rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.note{margin:0;color:var(--muted);font-size:.9375rem}
+.lines{display:grid;gap:14px}
+.line{display:grid;grid-template-columns:3.4rem minmax(0,1fr) 2.4rem;gap:8px;align-items:start}
+.who{font-size:.8125rem;font-weight:700;padding-top:4px}
+.who.S{color:var(--sam)} .who.L{color:var(--lucia)}
+.txt{font-family:var(--read);font-size:1.1875rem;line-height:1.6;margin:0;min-width:0}
+.w{all:unset;cursor:pointer;color:var(--es);border-bottom:1px dotted var(--es)}
+.w:hover,.w.on{background:var(--es-soft)}
+.w:focus-visible{outline:2px solid var(--es)}
+.g{font-family:var(--ui);font-size:.75em;color:var(--muted);white-space:nowrap}
+.bad{color:var(--strike);text-decoration:line-through}
+.say{all:unset;cursor:pointer;width:2.4rem;height:2.4rem;display:grid;place-items:center;color:var(--muted);border-radius:50%}
+.say:hover{color:var(--es)}
+.say svg,.play-all svg{width:15px;height:15px;fill:currentColor}
+.play-all{display:inline-flex;gap:6px;align-items:center;justify-self:start}
+.play-all[aria-pressed="true"]{background:var(--es);border-color:var(--es);color:var(--paper)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.line.now{background:var(--es-soft);border-radius:6px;outline:4px solid var(--es-soft)}
+.ears .txt{filter:blur(6px)}.ears .txt:hover,.ears .txt:focus-within{filter:none}
+.cq,.qrow{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.cqp{margin:0;display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{font:inherit;font-size:.9375rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;min-height:36px;cursor:pointer}
+.opt.right{border-color:var(--sam);background:var(--sam);color:var(--paper)}
+.opt.wrong{border-color:var(--strike);color:var(--strike);text-decoration:line-through}
+#check .qrow:first-of-type{margin-top:8px}
+details{border-top:1px solid var(--line);padding-top:12px}
+.how{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.how ol{margin:8px 0 0;padding-left:1.25rem;display:grid;gap:4px;font-size:.9375rem}
+#ahead{background:var(--es-soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+#ahead .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;display:grid;gap:1px;min-width:0}
+.chip:focus-visible{outline:2px solid var(--es)}
+.chip b{font-family:var(--read);font-weight:400;font-size:1.0625rem;color:var(--es)}
+.chip span{font-size:.75rem;color:var(--muted)}
+#use{display:grid;gap:10px}
+.urow{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.urow p{margin:0}.uprompt{font-size:.9375rem}
+.ans{display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
+summary{cursor:pointer;font-weight:600;font-size:.9375rem}
+.table{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;text-align:left;color:var(--muted);font-weight:600}
+th,td{padding:5px 12px 5px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--es);font-family:var(--read);font-size:1.0625rem}
+.keynote{margin:10px 0 0;font-size:.9375rem;color:var(--muted)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button:disabled{opacity:.45;cursor:default}
+footer{font-size:.8125rem;color:var(--muted);display:grid;gap:4px}
+footer a{color:inherit}
+footer p{margin:0}
+#status{min-height:1.2em;font-size:.875rem;color:var(--strike);margin:0}
+#sheet{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));z-index:5}
+#sheet div{max-width:44rem;margin:0 auto;display:flex;gap:4px 14px;flex-wrap:wrap;align-items:baseline}
+#sheet strong{font-family:var(--read);font-size:1.375rem}
+#sheet span{font-size:1rem}
+#sheet em{font-style:normal;opacity:.82}
+@media (max-width:430px){.line{grid-template-columns:minmax(0,1fr) 2.4rem}.who{grid-column:1/-1;padding:0}.page{padding:16px}h1{font-size:1.75rem}}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:background .15s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Une montgolfière</h1>
+    <p class="sub">Sam flies a balloon in France with Camille as crew chief. Start in English and finish the flight in French.</p>
+  </header>
+  <details class="how" id="how"><summary>How to study this page</summary>
+    <ol>
+      <li>Press <b>Play this stage</b> before you read. <b>Listen first</b> hides the text until you've heard it.</li>
+      <li>Read along. Tap any word you don't know to hear it and see what it means.</li>
+      <li>When a stage opens with <b>Words ahead</b>, go through those words first. They are new in that stage.</li>
+      <li>Press <b>Repeat after me</b>: the page reads each line, then pauses so you can say it out loud.</li>
+      <li>Answer the question under the stage, then try <b>Check yourself</b>.</li>
+      <li>On the last stage, do <b>Your turn</b>: say the line in French before you reveal the answer.</li>
+      <li>The next day, replay the last stage with guides off.</li>
+    </ol>
+  </details>
+  <nav class="ascent" id="ascent" aria-label="Stages, by share of French"></nav>
+  <div class="controls">
+    <span class="seg" role="group" aria-label="Pronunciation guides"><b>Guides</b>
+      <button id="g-fade" data-g="fade">Fading</button><button id="g-all" data-g="all">All</button><button id="g-none" data-g="none">Off</button></span>
+    <span class="seg" role="group" aria-label="Speech speed"><b>Speed</b>
+      <button id="r-slow" data-r="0.72">Slow</button><button id="r-norm" data-r="1">Normal</button></span>
+    <span class="seg" role="group" aria-label="Voices"><b>Voices</b>
+      <button id="l-es" data-l="es" title="Each line in one voice, so it flows. The French is exact and the English has an accent.">Smooth</button><button id="l-en" data-l="en" title="Switches voices at every language change: native sound for both languages, with short pauses.">Exact</button></span>
+  </div>
+  <p id="status" role="status"></p>
+  <article class="page" id="page"></article>
+  <div class="nav"><button id="prev">Previous stage</button><button id="next">Next stage</button></div>
+  <footer>
+    <p>Original dialogue written for this page. Landing position follows the FAA Balloon Flying Handbook; always follow your pilot's briefing. The champagne toast is a ballooning tradition said to go back to the first French flights. Pronunciation follows standard French as spoken in France. Audio uses your device's speech voices.</p>
+    <p><a href="index.html">All pages</a> · <a href="../index.html">Home</a> · <a href="review.html">Review (<span id="due">0</span> due)</a></p>
+    <p>Build <span id="b"></span> · shipped <span id="u"></span></p>
+  </footer>
+</div>
+<div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
+
+<script>
+const BUILD="WEAV-20261114-1748Z",SHIPPED="2026-11-14T17:48:29Z";
+const LEX={};
+`la nacelle|lah nah-SEL|the basket
+nacelle|nah-SEL|basket
+le brûleur|luh brew-LUHR|the burner
+l'enveloppe|lahn-vuh-LOP|the envelope
+le ventilateur|luh vahn-tee-lah-TUHR|the fan
+l'équipe au sol|lay-kee-poh SOL|the ground crew
+on gonfle|ohn GOHNFL|we inflate
+oui|WEE|yes
+l'air entre|lair AHNTR|the air goes in
+attention|ah-tahn-SYOHN|careful, watch out
+ne marchez pas sur l'enveloppe|nuh mar-shay pah sewr lahn-vuh-LOP|don't walk on the envelope (vous)
+reculez|ruh-kew-LAY|step back (vous)
+l'air chaud monte|lair shoh MOHNT|hot air rises
+le ballon se lève|luh bah-lohn suh LEV|the balloon stands up
+bonjour|bohn-ZHOOR|hello, good morning
+je suis votre pilote|zhuh swee vohtr pee-LOT|I'm your pilot
+montez par ici|mohn-tay pah-ree-SEE|climb in this way (vous)
+s'il vous plaît|seel voo PLEH|please (formal)
+parfait|par-FEH|perfect
+vous|VOO|you (formal or plural)
+tenez-vous aux poignées|tuh-nay-voo oh pwah-NYAY|hold on to the handles (vous)
+ne touchez pas le brûleur|nuh too-shay pah luh brew-LUHR|don't touch the burner (vous)
+très bien|treh BYAN|very good
+pour l'atterrissage|poor lah-teh-ree-SAHZH|for the landing
+pliez les genoux|plee-ay lay zhuh-NOO|bend your knees (vous)
+regardez|ruh-gar-DAY|look (vous)
+dans le sens du vol|dahn luh sahns dew VOL|in the direction of flight
+ne sortez pas|nuh sor-tay PAH|don't get out (vous)
+de la nacelle|duh lah nah-SEL|of the basket
+je te vois|zhuh tuh VWAH|I see you
+tu es à quelle altitude|tew eh ah kel ahl-tee-TEWD|what altitude are you at
+mille pieds|meel PYAY|a thousand feet
+le vent est calme|luh vahn eh KALM|the wind is calm
+où vas-tu atterrir|oo vah-tew ah-teh-REER|where are you going to land
+je vais atterrir|zhuh vay ah-teh-REER|I'm going to land
+dans le champ|dahn luh SHAHN|in the field
+derrière l'église|deh-ryair lay-GLEEZ|behind the church
+d'accord|dah-KOR|okay
+l'équipe arrive|lay-kee-pah-REEV|the crew is on its way
+on a atterri|oh-nah ah-teh-REE|we've landed
+tout le monde va bien|too luh mohnd vah BYAN|is everyone okay, everyone is okay
+et maintenant|ay mant-NAHN|and now
+le baptême de l'air|luh bah-tem duh LAIR|the first-flight ceremony|Baptême de l'air means someone's first flight
+avec du champagne|ah-vek dew shahm-PAHNY|with champagne
+bien sûr|byan SEWR|of course
+c'est la tradition|seh lah trah-dee-SYOHN|it's the tradition
+merci à l'équipe au sol|mair-see ah lay-kee-poh SOL|thanks to the ground crew
+de rien|duh RYAN|you're welcome
+pilote|pee-LOT|pilot
+à demain|ah duh-MAN|see you tomorrow
+qu'est-ce qui monte|kes-kee MOHNT|what rises
+l'air chaud|lair SHOH|the hot air
+non|NOHN|no`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
+
+const USE=[["Tell people not to walk on the envelope.","Ne marchez pas sur l'enveloppe !"],["Ask your passengers to hold on to the handles.","Tenez-vous aux poignées."],["Tell the crew you're going to land in the field.","Je vais atterrir dans le champ."]];
+const PAGES=[{"t":"The equipment","n":"The gear you unload from the trailer, one word at a time.","l":[["S","Calm morning, Camille. Finally we fly."],["L","First, the basket. In French it's {la nacelle}. And the burner is {le brûleur}."],["S","{La nacelle}, {le brûleur}. And the big fabric part?"],["L","{L'enveloppe}. The same word as in English, said the French way."],["S","{L'enveloppe}. And the fan?"],["L","{Le ventilateur}. And the people who do the real work: {l'équipe au sol}."],["S","The ground crew. {L'équipe au sol}. That's you."]]},{"t":"Inflation","n":"Short calls you say out loud as the balloon comes up.","q":[["Qu'est-ce qui monte ?","L'air chaud","La nacelle"]],"l":[["L","Cold inflation first. We say {on gonfle}: we inflate."],["S","{On gonfle}. And the fan pushes the air in?"],["L","{Oui}. {L'air entre}. Careful, somebody's walking on the fabric!"],["S","How do I tell them to stop?"],["L","{Attention} ! {Ne marchez pas sur l'enveloppe} !"],["S","{Ne marchez pas sur l'enveloppe} ! And when I light the burner?"],["L","Everyone back: {reculez} ! Then {l'air chaud monte} and {le ballon se lève}."]]},{"t":"The briefing","n":"Formal vous for passengers. These are the lines they hear.","l":[["S","{Bonjour}, {je suis votre pilote}. {Montez par ici}, {s'il vous plaît}."],["L","{Parfait}. With passengers, always {vous}."],["S","{Tenez-vous aux poignées}. {Ne touchez pas le brûleur}."],["L","{Très bien}. And for the landing?"],["S","{Pour l'atterrissage}, {pliez les genoux}, and face... how do I say the direction of flight?"],["L","{Regardez} {dans le sens du vol}."],["S","{Regardez} {dans le sens du vol}. {Ne sortez pas} {de la nacelle} until I tell you."]]},{"t":"On the radio","n":"Mostly French. Pilot and crew work out where to land.","l":[["L","{Je te vois}, I see you. {Tu es à quelle altitude} ?"],["S","{Mille pieds}. {Le vent est calme}."],["L","{Où vas-tu atterrir} ?"],["S","{Je vais atterrir} {dans le champ} {derrière l'église}."],["L","{D'accord}. {L'équipe arrive}: the crew is on the way."]]},{"t":"Landing","n":"All French, from the final approach to the toast.","q":[["Tout le monde va bien ?","Oui","Non"]],"l":[["S","{Attention}, {pour l'atterrissage}, {pliez les genoux} !"],["S","{On a atterri} ! {Tout le monde va bien} ?"],["L","{Oui}. {Et maintenant}, {le baptême de l'air}."],["S","{Avec du champagne} ?"],["L","{Bien sûr}. {C'est la tradition}."],["S","{Merci à l'équipe au sol}."],["L","{De rien}, {pilote}. {À demain}."]]}];
+
+const SOUND=[["on, om","nasal oh","bon: hum through your nose; don't finish the n"],["an, en, am, em","nasal ah","vent, temps"],["in, ain, un","nasal a","vin, pain; most speakers say un the same way"],["u","ew","tu: say ee with rounded lips"],["eu, œu","uh","deux, cœur: like fur without the r"],["ou","oo","vous, tout"],["oi","wah","moi, froid"],["eau, au","oh","manteau, chaud"],["é, -er, -ez","ay","café, enlever, parlez"],["è, ê, -et, -est","eh","très, peut-être, est"],["r","in the throat","a soft gargle, never the English r"],["j, soft g","zh","je, rouge: the s in measure"],["ch","sh","chaud, manteau"],["gn","ny","gagner: the ny in canyon"],["h","silent","homme is OM"],["final consonants","usually silent","but c, r, f, l often sound: avec, bonjour, neuf"],["liaison","linked","un homme sounds like uh-NOM: the n slides into the next word"]];
+
+const missing=[];
+function parse(s){
+  const out=[];
+  s.split(/(\{[^}]*\}|<<[^>]*>>)/).forEach(p=>{
+    if(!p)return;
+    if(p.startsWith("<<")){out.push({k:"bad",x:p.slice(2,-2)});return}
+    if(!p.startsWith("{")){out.push({k:"en",x:p});return}
+    const t=p.slice(1,-1).match(/\p{L}+(?:['’-]\p{L}+)*|[^\p{L}]+/gu);
+    for(let i=0;i<t.length;){
+      if(!/\p{L}/u.test(t[i])){out.push({k:"p",x:t[i]});i++;continue}
+      let done=false;
+      for(const n of[5,4,3,2]){
+        const end=i+2*(n-1);
+        if(end<t.length&&t.slice(i,end+1).every((v,j)=>j%2?/^ +$/.test(v):true)){
+          const x=t.slice(i,end+1).join(""),key=x.toLowerCase();
+          if(LEX[key]){out.push({k:"es",x,key});i=end+1;done=true;break}
+        }
+      }
+      if(done)continue;
+      const key=t[i].toLowerCase();
+      if(!LEX[key])missing.push(t[i]);
+      out.push({k:"es",x:t[i],key});i++;
+    }
+  });
+  return out;
+}
+const count=s=>(s.match(/\p{L}+/gu)||[]).length;
+const seen={},stg={},lastPg={};
+PAGES.forEach(p=>{
+  let es=0,all=0,newTok=0;p.fresh=[];
+  (p.q||[]).forEach(q=>q.forEach(x=>parse("{"+x+"}")));
+  p.parsed=p.l.map(([w,s])=>{
+    const toks=parse(s);
+    toks.forEach(t=>{
+      if(t.k==="es"){const n=count(t.x);es+=n;all+=n;
+        seen[t.key]=(seen[t.key]||0)+1;t.nth=seen[t.key];
+        t.firstHere=lastPg[t.key]!==p;lastPg[t.key]=p;if(t.firstHere)stg[t.key]=(stg[t.key]||0)+1;t.stg=stg[t.key];
+        if(t.nth===1){p.fresh.push(t.key);newTok+=n}}
+      else if(t.k==="en")all+=count(t.x);
+    });
+    return{w,toks};
+  });
+  p.pct=Math.round(100*es/all);
+  p.known=es?Math.round(100*(1-newTok/es)):100;
+});
+USE.forEach(u=>parse("{"+u[1]+"}"));
+window.weaveAudit={missing,pct:PAGES.map(p=>p.pct),known:PAGES.map(p=>p.known),unused:Object.keys(LEX).filter(k=>!seen[k])};
+
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let cur=Math.min(Math.max(+store.get("montgolfiere-stage")||0,0),PAGES.length-1),guide=store.get("guide")||"fade",rate=+(store.get("rate")||0.72),luciaEn=store.get("flow")||"es";
+const $=id=>document.getElementById(id);
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const DECK_LANG="fr";
+const DECK_KEY="dw-deck-v1";
+function deckLoad(){try{return JSON.parse(localStorage.getItem(DECK_KEY))||{}}catch(e){return {}}}
+function deckSave(d){try{localStorage.setItem(DECK_KEY,JSON.stringify(d))}catch(e){}}
+function deckDue(){const el=document.getElementById("due");if(!el)return;const now=Date.now();el.textContent=Object.values(deckLoad()).filter(c=>c.lang===DECK_LANG&&c.due<=now).length}
+function deckAdd(k,p,m,how){if(!k||!m)return;const d=deckLoad(),id=DECK_LANG+":"+k,now=Date.now();
+  let c=d[id];if(!c)c=d[id]={k,lang:DECK_LANG,p,m,box:0,due:now,src:document.title};
+  if(how==="wrong"){c.box=0;c.due=now}
+  deckSave(d);deckDue()}
+let ears=!!store.get("ears");
+let shadowing=0;
+const calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function shadow(btn){
+  if(shadowing){shadowing=0;if(hasTTS)speechSynthesis.cancel();document.querySelectorAll(".line.now").forEach(e=>e.classList.remove("now"));btn.setAttribute("aria-pressed","false");return}
+  const run=shadowing=Date.now();btn.setAttribute("aria-pressed","true");
+  const p=PAGES[cur],rows=[...document.querySelectorAll(".line")];let i=0;
+  const next=()=>{
+    if(shadowing!==run)return;
+    rows.forEach(r=>r.classList.remove("now"));
+    if(i>=p.parsed.length){shadowing=0;btn.setAttribute("aria-pressed","false");return}
+    const l=p.parsed[i],row=rows[i];i++;
+    row.classList.add("now");row.scrollIntoView({block:"center",behavior:calm?"auto":"smooth"});
+    const segs=segments(l.toks,l.w),u=say(segs);
+    const words=segs.map(s=>s.x).join(" ").trim().split(/\s+/).length;
+    const pause=Math.max(1800,words*650/rate);
+    if(!u){setTimeout(next,pause);return}
+    let done=false;const fin=()=>{if(done)return;done=true;setTimeout(next,pause)};
+    u.onend=fin;u.onerror=fin;
+  };
+  next();
+}
+const ICON='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2l11 6-11 6z"/></svg>';
+
+const hasTTS="speechSynthesis" in window;
+let esVoice=null,samEs=null,enVoice=null;
+function pickVoices(){
+  if(!hasTTS)return;
+  const v=speechSynthesis.getVoices();
+  const by=t=>v.find(x=>x.lang.replace("_","-").toLowerCase().startsWith(t));
+  esVoice=by("fr-fr")||by("fr-ca")||by("fr");
+  samEs=v.find(x=>/^fr[-_](fr|ca|be|ch)/i.test(x.lang)&&x!==esVoice)||esVoice;
+  enVoice=by("en-us")||by("en");
+}
+if(hasTTS){pickVoices();speechSynthesis.addEventListener("voiceschanged",pickVoices)}
+function say(segs){
+  const st=$("status");
+  if(!hasTTS){st.textContent="This browser has no speech voices, so audio is unavailable. The written guides still work.";return}
+  pickVoices();
+  st.textContent=(!esVoice&&speechSynthesis.getVoices().length)?"No French voice found. Add one in your device's text-to-speech settings.":"";
+  speechSynthesis.cancel();
+  let last=null;
+  segs.forEach(s=>{
+    if(!/\p{L}/u.test(s.x))return;
+    const u=new SpeechSynthesisUtterance(s.x);
+    u.lang=s.es?(esVoice?esVoice.lang:"fr-FR"):"en-US";
+    const voice=s.es?(s.who==="S"?samEs:esVoice):enVoice;if(voice)u.voice=voice;
+    u.pitch=s.who==="S"?0.82:1.12;
+    u.rate=s.es?rate:1;
+    speechSynthesis.speak(u);last=u;
+  });
+  return last;
+}
+function segments(toks,who){
+  const out=[];
+  toks.forEach(t=>{
+    if(t.k==="bad")return;
+    const es=t.k==="es"||t.k==="p"||luciaEn==="es";
+    const last=out[out.length-1];
+    if(last&&last.es===es)last.x+=t.x;else out.push({es,x:t.x,who});
+  });
+  for(let i=1;i<out.length;i++){
+    const m=out[i].x.match(/^[\s.,;:!?…]+/);
+    if(m){out[i-1].x=out[i-1].x.trimEnd()+m[0];out[i].x=out[i].x.slice(m[0].length)}
+  }
+  return out;
+}
+function showWord(t,el){
+  if(LEX[t.key])deckAdd(t.key,LEX[t.key].p,LEX[t.key].m,"tap");
+  document.querySelectorAll(".w.on").forEach(e=>e.classList.remove("on"));
+  el.classList.add("on");
+  const e=LEX[t.key],box=$("sheet").firstElementChild;
+  box.textContent="";
+  const a=document.createElement("strong");a.textContent=t.x;
+  const b=document.createElement("span");b.textContent=e.p;
+  const c=document.createElement("em");c.textContent=e.m+(e.n?" · "+e.n:"");
+  box.append(a,b,c);
+  say([{es:true,x:t.x,who:"L"}]);
+}
+function render(){
+  const p=PAGES[cur];
+  $("ascent").textContent="";
+  PAGES.forEach((q,i)=>{
+    const b=document.createElement("button");b.className="bar";b.id="stage-"+i;
+    b.setAttribute("aria-label","Stage "+(i+1)+", "+q.t+", "+q.pct+" percent French");
+    b.setAttribute("aria-current",i===cur?"true":"false");
+    b.innerHTML='<i style="height:'+Math.max(q.pct*0.72,3)+'%"></i><span>'+(i+1)+'</span>';
+    b.onclick=()=>go(i);$("ascent").append(b);
+  });
+  const P=$("page");P.textContent="";
+  const head=document.createElement("div");head.className="head";
+  const h=document.createElement("h2");h.textContent="Stage "+(cur+1)+": "+p.t;
+  const s=document.createElement("span");s.className="share";s.textContent=p.pct+"% French";
+  head.append(h,s);
+  const n=document.createElement("p");n.className="note";n.textContent=p.n;
+  const pa=document.createElement("button");pa.className="play-all";pa.id="play-all";pa.innerHTML=ICON+"Play this stage";
+  pa.onclick=()=>say(p.parsed.flatMap(l=>segments(l.toks,l.w)));
+  const ls=document.createElement("div");ls.className="lines";
+  p.parsed.forEach((l,li)=>{
+    const row=document.createElement("div");row.className="line";
+    const who=document.createElement("div");who.className="who "+l.w;who.textContent=l.w==="S"?"Sam":"Camille";
+    const tx=document.createElement("p");tx.className="txt";
+    l.toks.forEach(t=>{
+      if(t.k==="es"){
+        const b=document.createElement("button");b.className="w";b.textContent=t.x;
+        b.onclick=()=>showWord(t,b);tx.append(b);
+        const show=guide==="all"||(guide==="fade"&&(t.nth<=2||(t.firstHere&&t.stg<=3)));
+        if(show){const g=document.createElement("span");g.className="g";g.textContent=" ("+LEX[t.key].p+")";tx.append(g)}
+      }else if(t.k==="bad"){
+        const b=document.createElement("span");b.className="bad";b.textContent=t.x;b.title="Incorrect French, corrected in the next line";tx.append(b);const xm=document.createElement("span");xm.className="g";xm.setAttribute("role","img");xm.setAttribute("aria-label","incorrect");xm.textContent=" ✗";tx.append(xm);
+      }else tx.append(document.createTextNode(t.x));
+    });
+    const sb=document.createElement("button");sb.className="say";sb.id="say-"+li;sb.setAttribute("aria-label","Play this line");sb.innerHTML=ICON;
+    sb.onclick=()=>say(segments(l.toks,l.w));
+    row.append(who,tx,sb);ls.append(row);
+  });
+  const lf=document.createElement("button");lf.className="play-all";lf.id="listen-first";lf.setAttribute("aria-pressed",ears);lf.textContent="Listen first";
+  lf.onclick=()=>{ears=!ears;store.set("ears",ears?"1":"");render()};
+  const sh=document.createElement("button");sh.className="play-all";sh.id="shadow";sh.setAttribute("aria-pressed","false");sh.textContent="Repeat after me";
+  sh.onclick=()=>shadow(sh);
+  const acts=document.createElement("div");acts.className="acts";acts.append(pa,sh,lf);
+  if(ears)ls.classList.add("ears");
+  const prev=PAGES[cur-1];
+  const ahead=p.fresh.filter(k=>LEX[k]);
+  if(cur>0&&ahead.length>=4){
+    const wa=document.createElement("details");wa.id="ahead";wa.open=p.pct>=60||p.pct-prev.pct>=15;
+    const ws=document.createElement("summary");ws.textContent="Words ahead ("+ahead.length+"): meet them before you read";wa.append(ws);
+    const ch=document.createElement("div");ch.className="chips";
+    ahead.forEach(k=>{const c=document.createElement("button");c.className="chip";
+      const b=document.createElement("b");b.textContent=k;const sp=document.createElement("span");sp.textContent=LEX[k].p+" · "+LEX[k].m;
+      c.append(b,sp);c.onclick=()=>{say([{es:true,x:k,who:"L"}]);deckAdd(k,LEX[k].p,LEX[k].m,"tap")};ch.append(c)});
+    wa.append(ch);P.append(head,n,wa,acts,ls);
+  }else P.append(head,n,acts,ls);
+  (p.q||[]).forEach((q,qi)=>{
+    const box=document.createElement("div");box.className="cq";box.id="question-"+qi;
+    const pr=document.createElement("p");pr.className="cqp";
+    const say1=document.createElement("button");say1.className="say";say1.setAttribute("aria-label","Play the question");say1.innerHTML=ICON;say1.onclick=()=>say([{es:true,x:q[0],who:"S"}]);
+    const tq=document.createElement("span");tq.textContent=q[0];pr.append(say1,tq);
+    const ops=document.createElement("div");ops.className="opts";
+    shuffle(q.slice(1).map((o,i)=>[o,i===0])).forEach(([o,ok])=>{const b=document.createElement("button");b.className="opt";b.textContent=o;
+      b.onclick=()=>{b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+o);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===q[1])x.classList.add("right")});ls.classList.remove("ears")};ops.append(b)});
+    box.append(pr,ops);P.append(box);
+  });
+  if(cur===PAGES.length-1&&USE.length){
+    const u=document.createElement("section");u.id="use";
+    const uh=document.createElement("h3");uh.className="note";uh.style.margin="0";uh.textContent="Your turn: say it in French out loud, then check";u.append(uh);
+    USE.forEach(([pr,ans],ui)=>{const r=document.createElement("div");r.className="urow";
+      const pp=document.createElement("p");pp.className="uprompt";pp.textContent=pr;
+      const btn=document.createElement("button");btn.className="opt";btn.id="show-"+ui;btn.textContent="Show answer";
+      const a=document.createElement("p");a.className="ans";a.hidden=true;
+      const sy=document.createElement("button");sy.className="say";sy.setAttribute("aria-label","Play the answer");sy.innerHTML=ICON;sy.onclick=()=>say([{es:true,x:ans,who:"L"}]);
+      const at=document.createElement("span");at.textContent=ans;a.append(sy,at);
+      btn.onclick=()=>{a.hidden=false;btn.hidden=true;say([{es:true,x:ans,who:"L"}])};
+      r.append(pp,btn,a);u.append(r)});
+    P.append(u);
+  }
+  const items=p.fresh.filter(k=>k.split(" ").length<=2&&LEX[k]).slice(0,4);
+  if(items.length>=2){
+    const d=document.createElement("details");d.id="check";
+    const sm=document.createElement("summary");sm.textContent="Check yourself ("+items.length+")";d.append(sm);
+    const pool=[...new Set(PAGES.flatMap(q=>q.fresh).filter(k=>LEX[k]).map(k=>LEX[k].m))];
+    items.forEach(k=>{
+      const right=LEX[k].m,opts=[right];
+      for(const m of shuffle(pool.slice()))if(opts.length<3&&m!==right)opts.push(m);
+      const row=document.createElement("div");row.className="qrow";
+      const w=document.createElement("button");w.className="w";w.textContent=k;w.onclick=()=>say([{es:true,x:k,who:"L"}]);
+      const ops=document.createElement("div");ops.className="opts";
+      shuffle(opts).forEach(m=>{const b=document.createElement("button");b.className="opt";b.textContent=m;
+        b.onclick=()=>{const ok=m===right;deckAdd(k,LEX[k].p,LEX[k].m,ok?"right":"wrong");b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+m);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===right)x.classList.add("right")});say([{es:true,x:k,who:"L"}])};ops.append(b)});
+      row.append(w,ops);d.append(row);
+    });
+    P.append(d);
+  }
+  if(p.fresh.length){
+    const d=document.createElement("details");d.id="new-words";d.open=false;
+    d.innerHTML='<summary>New words on this page ('+p.fresh.length+')</summary><div class="table"><table><thead><tr><th>French</th><th>Say it</th><th>Meaning</th></tr></thead><tbody></tbody></table></div>';
+    p.fresh.forEach(k=>{const r=d.querySelector("tbody").insertRow();[k,LEX[k].p,LEX[k].m].forEach(x=>{r.insertCell().textContent=x})});
+    P.append(d);
+  }
+  const k=document.createElement("details");k.id="sound-key";k.open=cur===0;
+  k.innerHTML='<summary>How French sounds</summary><div class="table"><table><thead><tr><th>Letter</th><th>Sound</th><th>Like</th></tr></thead><tbody></tbody></table></div><p class="keynote">French stresses the last syllable of a phrase lightly; capitals mark it. Respellings can only approximate nasal vowels and the French r, so listen as well.</p>';
+  SOUND.forEach(rw=>{const r=k.querySelector("tbody").insertRow();rw.forEach(x=>{r.insertCell().textContent=x})});
+  P.append(k);
+  $("prev").disabled=cur===0;$("next").disabled=cur===PAGES.length-1;
+  document.querySelectorAll("[data-g]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.g===guide));
+  document.querySelectorAll("[data-r]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.r===rate));
+  document.querySelectorAll("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===luciaEn));
+}
+function go(i){shadowing=0;cur=i;store.set("montgolfiere-stage",i);if(hasTTS)speechSynthesis.cancel();render();window.scrollTo(0,0)}
+$("prev").onclick=()=>go(cur-1);$("next").onclick=()=>go(cur+1);
+document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{guide=b.dataset.g;store.set("guide",guide);render()});
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{rate=+b.dataset.r;store.set("rate",rate);render()});
+document.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{luciaEn=b.dataset.l;store.set("flow",luciaEn);render()});
+deckDue();
+$("b").textContent=BUILD;$("u").textContent=SHIPPED;
+render();
+</script>
+
+</html>
