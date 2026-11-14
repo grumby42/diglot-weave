@@ -80,8 +80,26 @@ all('(ok?"Correct: ":"Not quite: ")','(ok?"Correcto: ":"Casi: ")');
 swap('xm.setAttribute("aria-label","incorrect")','xm.setAttribute("aria-label","incorrecto")');
 swap('say1.setAttribute("aria-label","Play the question")','say1.setAttribute("aria-label","Reproducir la pregunta")');
 swap('store.set("flow",luciaEn)','store.set("rev-flow",luciaEn)');
+// New study features, in Spanish
+swap(/  <details class="how" id="how">[\s\S]*?<\/details>\n/.exec(s)[0],`  <details class="how" id="how"><summary>Cómo estudiar esta página</summary>
+    <ol>
+      <li>Toca <b>Reproducir esta etapa</b> antes de leer. <b>Primero escucha</b> oculta el texto hasta que lo oigas.</li>
+      <li>Lee al mismo tiempo. Toca cualquier palabra que no conozcas para oírla y ver qué significa.</li>
+      <li>Cuando una etapa empieza con <b>Palabras que vienen</b>, repásalas primero. Son nuevas en esa etapa.</li>
+      <li>Repite cada línea en voz alta después de la voz.</li>
+      <li>Responde la pregunta de la etapa y luego usa <b>Ponte a prueba</b>.</li>
+      <li>En la última etapa, haz <b>Tu turno</b>: di la frase en inglés antes de ver la respuesta.</li>
+      <li>Al día siguiente, vuelve a escuchar la última etapa sin guías.</li>
+    </ol>
+  </details>
+`);
+swap('ws.textContent="Words ahead ("+ahead.length+"): meet them before you read"','ws.textContent="Palabras que vienen ("+ahead.length+"): repásalas antes de leer"');
+swap('uh.textContent="Your turn: say it in Spanish out loud, then check"','uh.textContent="Tu turno: dilo en inglés en voz alta y luego revisa"');
+swap('btn.textContent="Show answer"','btn.textContent="Ver respuesta"');
+swap('sy.setAttribute("aria-label","Play the answer")','sy.setAttribute("aria-label","Reproducir la respuesta")');
 // Pack content
 swap('`.split("\\n").forEach',"\n"+pack.lex+'`.split("\\n").forEach');
+s=s.replace(/const USE=.*\n/,()=>'const USE='+JSON.stringify(pack.use||[])+';\n');
 s=s.replace(/const PAGES=\[[\s\S]*?\n\];\n\nconst SOUND/,()=>'const PAGES='+JSON.stringify(pack.pages)+';\n\nconst SOUND');
 all('store.get("stage")',`store.get("${pack.key}-stage")`);
 all('store.set("stage"',`store.set("${pack.key}-stage"`);

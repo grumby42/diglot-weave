@@ -1,4 +1,4 @@
-module.exports={key:"comida",file:"a-la-mesa",title:"A la mesa",
+module.exports={key:"comida",use:[["Order two egg tacos politely.", "Quisiera dos tacos de huevo, por favor."], ["Ask if the green salsa is spicy.", "¿La salsa verde pica?"], ["Say you're allergic to peanuts (said by a man).", "Soy alérgico a los cacahuates."]],file:"a-la-mesa",title:"A la mesa",
 sub:"Breakfast tacos after a flight. Ordering, tasting, spice and allergies, ending in Spanish.",
 footer:"Original dialogue written for this pack. Food names vary a lot from country to country.",
 lex:`tengo hambre|TEHN-goh AHM-breh|I'm hungry (literally "I have hunger")
@@ -77,7 +77,7 @@ pages:[
 ["S","{Prefiero de maíz}."],
 ["L","{¿Algo más?}"],
 ["S","Anything else? {Nada más, gracias}."]]},
-{t:"The salsa question",n:"Spice level and allergies. The second one is not optional.",l:[
+{t:"The salsa question",q:[["¿Qué salsa pica mucho?", "La roja", "La verde"]],n:"Spice level and allergies. The second one is not optional.",l:[
 ["S","{¿La salsa verde pica?}"],
 ["L","{Un poquito}. {La roja} {pica mucho}."],
 ["S","{¿Pica?} Spicy?"],
@@ -93,7 +93,7 @@ pages:[
 ["S","{¡Qué rico! La salsa sabe a humo}."],
 ["L","{Exacto}. Smoked chiles. {¿Otro taco?}"],
 ["S","{Ya no, gracias. Estoy lleno}."]]},
-{t:"Paying",n:"All Spanish.",l:[
+{t:"Paying",q:[["¿Para quién son los tacos para llevar?", "Para el equipo de tierra", "Para los pasajeros"]],n:"All Spanish.",l:[
 ["S","{¿Cuánto es?}"],
 ["L","{Son veinte dólares}."],
 ["S","{¿Me da dos tacos más para llevar?}"],

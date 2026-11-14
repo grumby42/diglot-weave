@@ -1,4 +1,4 @@
-module.exports={key:"flamencos",file:"flamencos-y-medias",title:"Los flamencos y las medias",
+module.exports={key:"flamencos",use:[["Say that the flamingos want stockings.", "Los flamencos quieren medias."], ["Say that the snakes bite their legs.", "Las víboras muerden las patas."], ["Say that the flamingos run to the water.", "Los flamencos corren al agua."]],file:"flamencos-y-medias",title:"Los flamencos y las medias",
 sub:"Lucía tells Sam why flamingos have red legs. The telling starts in English and ends in Spanish.",
 footer:"An original retelling of the plot of Horacio Quiroga's 1918 story \"Las medias de los flamencos.\" The wording is not Quiroga's.",
 lex:`víboras|BEE-boh-rahs|snakes, vipers
@@ -79,7 +79,7 @@ pages:[
 ["S","And the shopkeeper says {no}."],
 ["L","He says {no hay}, there are none. He asks if they are {locos}, crazy. {Todos se ríen}."],
 ["S","{Todos se ríen}. Poor {flamencos}."]]},
-{t:"The trick",n:"A prankster sends them somewhere terrible.",l:[
+{t:"The trick",q:[["¿Qué les da la lechuza?", "Pieles de víbora de coral", "Medias rojas", "Agua"]],n:"A prankster sends them somewhere terrible.",l:[
 ["L","{Entonces un tatú} says, {la lechuza} has stockings. {Tatú} is an armadillo. {La lechuza} is an owl."],
 ["S","And {el tatú} is telling the truth?"],
 ["L","{No. El tatú quiere reír}. He wants to laugh."],
@@ -108,7 +108,7 @@ pages:[
 ["L","{Sí, muerden. Las patas están rojas por el veneno}."],
 ["S","{¿Mueren los flamencos?}"],
 ["L","{No. Corren al agua}."]]},
-{t:"Por eso",n:"The ending, and the reason the story exists.",l:[
+{t:"Por eso",q:[["¿Por qué los flamencos tienen las patas rojas?", "Por el veneno", "Por las medias", "Por el agua"]],n:"The ending, and the reason the story exists.",l:[
 ["L","{Por eso los flamencos tienen las patas rojas}."],
 ["L","{Por eso están casi siempre en el agua}."],
 ["L","{Los peces se ríen de ellos}."],

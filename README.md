@@ -20,8 +20,11 @@ Every page is a single self-contained HTML file. Pages work offline once loaded,
 
 - **Stages:** each dialogue has 5 to 8 stages. A bar chart at the top shows the share of target-language words in each stage, so the ramp is visible.
 - **Pronunciation guides:** shown for a word's first two uses, then at the start of each of the next stages where it appears. Readers can switch them to always on or off.
-- **Check yourself:** a short quiz at the end of each stage, built from that stage's new words. The fable also has comprehension questions.
+- **Check yourself:** a short quiz at the end of each stage, built from that stage's new words. Every dialogue also has comprehension questions.
 - **Listen first:** blurs the text until you've heard it.
+- **Words ahead:** any stage that brings in four or more new words opens with a preview of them, with sound and meaning. It opens automatically at the bigger steps up in the target language.
+- **Your turn:** the last stage ends with English prompts. Say the line in the target language out loud, then reveal and hear the model answer.
+- **How to study this page:** a short method at the top of every dialogue.
 - **Audio:** tap a word, a line, or a whole stage. **Smooth** (the default) reads each line in one target-language voice, so mixed sentences flow like real code-switching: the target words are exact and the reader's language has an accent. **Exact** switches voices at every language change, which gives native sound for both languages but short pauses. Speakers are told apart by pitch and, where available, a second voice. The audio uses the device's built-in text-to-speech, so quality depends on the voices installed.
 - **New words:** each stage lists the words it introduces, with the guide and meaning.
 - **Learner errors:** occasionally a speaker makes a typical mistake, shown struck through and corrected in the next line.
@@ -35,7 +38,7 @@ Glosses reliably help people learn words while reading (Yanagisawa, Webb & Uchih
 What the pages do with this:
 - Guides show on a word's first two uses, then once at the start of each of the next stages where it appears, so they fade across stages rather than within one.
 - Every stage has a short "Check yourself" quiz built from its new words.
-- The fable has comprehension questions.
+- Every dialogue has comprehension questions, and the last stage ends with "Your turn" speaking prompts.
 - "Listen first" blurs the text until you've heard it.
 - Learner errors are clearly marked, including for screen readers.
 
@@ -90,7 +93,6 @@ Content fact checks
 2. Rewrite the all-target-language final stages so most of their words have already appeared earlier on the page.
 3. A core list of about 150 high-frequency words recycled across at least three packs each, checked at build time.
 4. Spaced review across packs (needs a single shared page or an export/import progress code).
-5. Comprehension questions for every pack, not only the fable.
 6. A shadowing mode that pauses after each line for you to repeat it.
 7. French dialogues, then more English-for-Spanish-speakers packs (incident calls first).
 

@@ -1,4 +1,4 @@
-module.exports={key:"piloto",file:"historias-de-cabina",title:"Historias de cabina",
+module.exports={key:"piloto",use:[["Say the checklist is complete.", "Lista de verificación completa."], ["Report a crosswind from the right at fifteen knots.", "Viento cruzado de la derecha, quince nudos."], ["Call a go-around.", "Motor y al aire."]],file:"historias-de-cabina",title:"Historias de cabina",
 sub:"A preflight briefing, a gusty crosswind, and the go-around story Lucía tells afterward.",
 footer:"Original dialogue written for this pack. Radio lines are simplified for language practice and are not official phraseology.",
 lex:`cabina|kah-BEE-nah|cockpit
@@ -83,7 +83,7 @@ pages:[
 ["S","Fuel is {suficiente}. Enough, with reserve."],
 ["L","Good. Now the weather. {Visibilidad buena}. {Techo alto}."],
 ["S","And the wind? That's what I'm worried about."]]},
-{t:"The wind",n:"Numbers and directions, the crosswind talk.",l:[
+{t:"The wind",q:[["¿De dónde es el viento cruzado?", "De la derecha", "De la izquierda"]],n:"Numbers and directions, the crosswind talk.",l:[
 ["L","{Viento cruzado de la derecha}. {Quince nudos}."],
 ["S","{¿Con ráfagas?} Gusts?"],
 ["L","{Sí. Ráfagas de veinticinco}."],
@@ -100,7 +100,7 @@ pages:[
 ["L","{Sí, tenía miedo. Mi instructor no dijo nada}."],
 ["S","He let you decide."],
 ["L","{Exacto. Decidí: motor y al aire}."]]},
-{t:"The second time",n:"Mostly Spanish. How the story ends.",l:[
+{t:"The second time",q:[["La segunda vez, ¿la aproximación fue estable?", "Sí", "No"]],n:"Mostly Spanish. How the story ends.",l:[
 ["S","{¿Y después?}"],
 ["L","{Di otra vuelta}. Around the pattern again. {La segunda vez, la aproximación fue estable}."],
 ["S","{¿Y aterrizaste bien?}"],

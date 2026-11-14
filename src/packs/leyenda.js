@@ -1,4 +1,4 @@
-module.exports={key:"leyenda",file:"los-dos-volcanes",title:"Los dos volcanes",
+module.exports={key:"leyenda",use:[["Say that Popo goes to war.", "Popo va a la guerra."], ["Say that Izta dies of sadness.", "Izta muere de tristeza."], ["Say you can see them together from Mexico City.", "Se ven juntos desde la Ciudad de México."]],file:"los-dos-volcanes",title:"Los dos volcanes",
 sub:"Lucía tells the Mexican legend of Popocatépetl and Iztaccíhuatl, starting in English and ending in Spanish.",
 footer:"An original retelling of one popular version of a Nahua legend from central Mexico. Many versions exist; in some, Popocatépetl fights the Nevado de Toluca for Iztaccíhuatl. Communities near the volcano keep their own living traditions and call it Don Goyo. The names are Nahuatl: popōca \"it smokes\" + tepētl \"mountain\"; iztāc \"white\" + cihuātl \"woman\". Device voices may mispronounce the final tl.",
 lex:`leyenda|leh-YEHN-dah|legend
@@ -76,7 +76,7 @@ pages:[
 ["S","Let me guess. Her {padre} has a condition."],
 ["L","{Exacto}. There is a {guerra}. He tells {Popo}, {si vuelves, te casas con ella}."],
 ["S","If you come back, you marry her. So {Popo va a la guerra}."]]},
-{t:"The lie",n:"The turn in the story, about half in Spanish.",l:[
+{t:"The lie",q:[["¿Qué dice el hombre celoso?", "Que Popo murió", "Que Popo vuelve"]],n:"The turn in the story, about half in Spanish.",l:[
 ["L","{Pero hay otro hombre}. He is {celoso}."],
 ["S","Jealous. Of course."],
 ["L","{El hombre celoso} tells {Izta} a {mentira}. {Dice que Popo murió}."],
@@ -90,7 +90,7 @@ pages:[
 ["S","{¿Y Popo?}"],
 ["L","{Se arrodilla con una antorcha}. He kneels beside her."],
 ["S","{Y la nieve los cubre}."]]},
-{t:"Today",n:"All Spanish.",l:[
+{t:"Today",q:[["¿Qué hace Popo todavía?", "Humea", "Muere"]],n:"All Spanish.",l:[
 ["L","{Se convierten en volcanes}."],
 ["S","{Izta es la mujer dormida}."],
 ["L","{Y Popo todavía humea. La cuida con su antorcha}."],

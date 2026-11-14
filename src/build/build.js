@@ -15,6 +15,7 @@ swap('<h1>El viento y el sol</h1>',`<h1>${pack.title}</h1>`);
 swap("Two friends grounded by wind retell Aesop's fable. The page starts in English and ends in Spanish.",pack.sub);
 swap("Fable retold for this page from Aesop (public domain). Spanish follows",pack.footer+" Spanish follows");
 swap('`.split("\\n").forEach',"\n"+require(path.join(SRC,'packs','globos.js')).lex+"\n"+require(path.join(SRC,'packs','common.js'))+"\n"+pack.lex+'`.split("\\n").forEach');
+s=s.replace(/const USE=.*\n/,()=>'const USE='+JSON.stringify(pack.use||[])+';\n');
 s=s.replace(/const PAGES=\[[\s\S]*?\n\];\n\nconst SOUND/,()=>'const PAGES='+JSON.stringify(pack.pages)+';\n\nconst SOUND');
 swap('store.get("stage")',`store.get("${pack.key}-stage")`);
 swap('store.set("stage"',`store.set("${pack.key}-stage"`);

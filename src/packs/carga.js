@@ -1,4 +1,4 @@
-module.exports={key:"carga",file:"turno-de-noche",title:"Turno de noche",
+module.exports={key:"carga",use:[["Call out that the chocks are in.", "¡Calzos puestos!"], ["Say the brakes don't work.", "Los frenos no funcionan."], ["Ask how many containers are left.", "¿Cuántos contenedores faltan?"]],file:"turno-de-noche",title:"Turno de noche",
 sub:"A night shift on a cargo ramp. Lucía leads the crew and Sam learns the calls, ending in Spanish.",
 footer:"Original dialogue written for this pack. Ramp procedures differ by company. Follow your own station's training.",
 lex:`turno|TOOR-noh|shift
@@ -86,7 +86,7 @@ pages:[
 ["S","And the machine that lifts them to the door?"],
 ["L","{El cargador}. And at the wheels, {los calzos}."],
 ["S","{Calzos}. Chocks. Got it."]]},
-{t:"The arrival",n:"Safety calls that nobody gets to miss.",l:[
+{t:"The arrival",q:[["¿Qué dice Lucía cuando la luz anticolisión está apagada?", "¡Calzos puestos!", "¡Alto!"]],n:"Safety calls that nobody gets to miss.",l:[
 ["L","{El avión llega}. Watch {el señalero}. The marshaller."],
 ["S","It's parked. Can we go?"],
 ["L","No. {La luz anticolisión está encendida}. The beacon is on."],
@@ -103,7 +103,7 @@ pages:[
 ["L","{Es de mercancías peligrosas}. Is it on {el manifiesto} and the NOTOC?"],
 ["S","{Sí, está en el manifiesto. Coincide}."],
 ["L","{Muy bien}. If it doesn't match, {llama al supervisor}."]]},
-{t:"A problem",n:"Mostly Spanish. A tug fails and the crew adjusts.",l:[
+{t:"A problem",q:[["¿Qué no funciona?", "Los frenos del tractor", "El cargador", "La puerta de carga"]],n:"Mostly Spanish. A tug fails and the crew adjusts.",l:[
 ["S","{Lucía, los frenos del tractor no funcionan}."],
 ["L","{¡Alto!} Don't drive it. {Fuera de servicio}."],
 ["S","{Entendido. ¿Hay otro tractor?}"],

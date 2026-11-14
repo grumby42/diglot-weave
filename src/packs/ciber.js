@@ -1,4 +1,4 @@
-module.exports={key:"ciber",file:"respuesta-a-incidentes",title:"Respuesta a incidentes",
+module.exports={key:"ciber",use:[["Ask the user what happened.", "¿Qué pasó?"], ["Say you're going to isolate the computer from the network.", "Voy a aislar el equipo de la red."], ["Tell the client you don't know yet and will give an update at three.", "Todavía no lo sabemos. Les doy otra actualización a las tres."]],file:"respuesta-a-incidentes",title:"Respuesta a incidentes",
 sub:"A phishing click becomes a ransomware call. Sam ends by briefing the client in Spanish.",
 footer:"Original dialogue written for this pack. Security terms vary by country, and English loanwords are common.",
 lex:`un ataque|oon ah-TAH-keh|an attack
@@ -79,7 +79,7 @@ pages:[
 ["L","{La red}. The same word as a fishing net."],
 ["S","{La red}. Server must be easy."],
 ["L","{El servidor}. And the person who clicked is {el usuario}."]]},
-{t:"The first questions",n:"Past tense, kept short and kind. Tú suits a coworker. With a client's employee you don't know, start with usted: ¿Hizo clic? No se preocupe.",l:[
+{t:"The first questions",q:[["¿El usuario escribió su contraseña?", "Sí", "No"]],n:"Past tense, kept short and kind. Tú suits a coworker. With a client's employee you don't know, start with usted: ¿Hizo clic? No se preocupe.",l:[
 ["S","How do I ask what happened?"],
 ["L","{¿Qué pasó?}"],
 ["S","{¿Qué pasó?}"],
@@ -107,7 +107,7 @@ pages:[
 ["S","{Sí. Las copias están fuera de la red}."],
 ["L","{¿Pagamos?}"],
 ["S","{No recomiendo pagar. Primero llamamos al equipo legal}."]]},
-{t:"The briefing",n:"All Spanish. Facts, actions, next update.",l:[
+{t:"The briefing",q:[["¿Con qué empezó el ataque?", "Con un correo", "Con un archivo", "Con un servidor"]],n:"All Spanish. Facts, actions, next update.",l:[
 ["S","{Buenos días. Les doy un resumen del incidente}."],
 ["S","{El ataque empezó con un correo. Un usuario escribió su contraseña}."],
 ["S","{Bloqueamos la cuenta y aislamos tres equipos}."],

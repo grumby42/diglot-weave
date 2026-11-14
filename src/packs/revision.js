@@ -1,4 +1,4 @@
-module.exports={key:"revision",file:"la-revision-mensual",title:"La revisión mensual",
+module.exports={key:"revision",use:[["Thank the client for their time.", "Gracias por su tiempo."], ["Acknowledge the client's concern.", "Entiendo su preocupación."], ["Say a request is outside the contract's scope.", "Eso está fuera del alcance del contrato."]],file:"la-revision-mensual",title:"La revisión mensual",
 sub:"Sam runs a monthly service review with a client: metrics, a missed SLA, a scope question and the action items.",
 footer:"Original dialogue written for this pack. Client meetings use formal Spanish (usted and ustedes).",
 lex:`revisión|rreh-bee-SYOHN|review
@@ -104,7 +104,7 @@ pages:[
 ["L","Twelve hundred, {mil doscientas}. And {el SLA}?"],
 ["S","{Cumplimos el SLA en el noventa y ocho por ciento de los casos}. We met it in 98 percent of cases."],
 ["L","{Muy bien}. But I have a complaint."]]},
-{t:"The complaint",n:"The client pushes back. Sam stays calm in Spanish.",l:[
+{t:"The complaint",q:[["¿Hay demasiados falsos positivos?", "Sí. Su equipo pierde tiempo", "No"]],n:"The client pushes back. Sam stays calm in Spanish.",l:[
 ["L","{Hay demasiados falsos positivos}. Too many false positives."],
 ["S","{¿Demasiados?}"],
 ["L","{Sí. Mi equipo pierde tiempo}."],
@@ -119,7 +119,7 @@ pages:[
 ["L","{¿Fuera del alcance?}"],
 ["S","{Sí. Pero puedo preparar una propuesta}. A proposal."],
 ["L","{Perfecto}."]]},
-{t:"Action items",n:"All Spanish. Closing the meeting.",l:[
+{t:"Action items",q:[["¿La actualización es el viernes o el martes?", "El viernes", "El martes"]],n:"All Spanish. Closing the meeting.",l:[
 ["S","{Estos son los pendientes}."],
 ["S","{Primero, ajustar las reglas}."],
 ["S","{Segundo, escalar el caso del martes}."],

@@ -1,4 +1,4 @@
-module.exports={key:"desde",file:"desde-el-globo",title:"Desde el globo",
+module.exports={key:"desde",use:[["Say the sky is blue.", "El cielo es azul."], ["Ask what that is.", "¿Qué es eso?"], ["Say there are many ducks on the lake.", "Hay muchos patos en el lago."]],file:"desde-el-globo",title:"Desde el globo",
 sub:"Sam and Lucía count, name colors and spot animals and landscapes from the basket. Pairs with Lo básico.",
 footer:"Original dialogue written for this pack.",
 lex:`azul|ah-SOOL|blue
@@ -101,7 +101,7 @@ pages:[
 ["S","Our balloon is red and yellow. {Rojo y amarillo}."],
 ["L","And everything below is {verde}. Green."],
 ["S","{Verde}. Indiana in June."]]},
-{t:"Counting",n:"Numbers one to ten, with a question that uses them.",l:[
+{t:"Counting",q:[["¿Cuántas vacas hay?", "Diez", "Ocho", "Cinco"]],n:"Numbers one to ten, with a question that uses them.",l:[
 ["L","How many balloons can you see? {¿Cuántos globos?}"],
 ["S","{Uno, dos, tres, cuatro, cinco}. Five."],
 ["L","Keep going. There are more behind us."],
@@ -128,7 +128,7 @@ pages:[
 ["L","{Patos}. Ducks. {Muchos patos}."],
 ["S","{¿Y eso? ¿Es un águila?}"],
 ["L","{Creo que sí. ¡Qué bonito!}"]]},
-{t:"Altitude",n:"All Spanish. Big numbers and a joke about Indiana.",l:[
+{t:"Altitude",q:[["¿Dónde aterrizamos?", "En el campo verde", "En el lago", "En el bosque"]],n:"All Spanish. Big numbers and a joke about Indiana.",l:[
 ["S","{Estamos a quinientos pies}."],
 ["L","{Subimos a mil pies}."],
 ["S","{¿Hay montañas aquí?}"],

@@ -1,4 +1,4 @@
-module.exports={key:"aeropuerto",file:"en-la-rampa",title:"En la rampa",
+module.exports={key:"aeropuerto",use:[["Shout a warning about the engine.", "¡Cuidado con el motor!"], ["Tell a passenger her flight is delayed.", "Su vuelo tiene retraso."], ["Tell the tower you're ready for departure.", "Torre, listo para salir."]],file:"en-la-rampa",title:"En la rampa",
 sub:"Ramp work, lost bags and a simplified tower call, in Spanish by the final stage.",
 footer:"Original dialogue written for this pack. Radio lines are simplified for language practice and are not operational phraseology.",
 lex:`avión|ah-BYOHN|airplane
@@ -76,7 +76,7 @@ pages:[
 ["L","{Ponte los protectores de oídos}."],
 ["S","{¿La bodega está lista?}"],
 ["L","{Sí, lista}."]]},
-{t:"Helping a passenger",n:"Polite directions and bad news.",l:[
+{t:"Helping a passenger",q:[["¿A qué hora sale el vuelo?", "A las ocho", "A las doce", "Ahora"]],n:"Polite directions and bad news.",l:[
 ["L","I am a passenger now. {¿Dónde está la puerta doce?}"],
 ["S","Straight ahead. How do I say that?"],
 ["L","{Siga derecho y dé vuelta a la izquierda}."],
@@ -91,7 +91,7 @@ pages:[
 ["L","{¿Y mi maleta?}"],
 ["S","{Primero, el formulario}. Is that too cold?"],
 ["L","{Un poco}. Give her a reason: {el formulario es para encontrar su maleta}. {Ya dijiste por favor. Muy bien}."]]},
-{t:"The tower",n:"All Spanish. Simplified for language practice.",l:[
+{t:"The tower",q:[["¿Qué pista usa el avión?", "Pista dos siete", "Pista doce"]],n:"All Spanish. Simplified for language practice.",l:[
 ["S","{Torre, buenos días. Listo para salir, pista dos siete}."],
 ["L","{Buenos días. Viento en calma. Pista dos siete, autorizado a despegar}."],
 ["S","{Autorizado a despegar, pista dos siete}."],

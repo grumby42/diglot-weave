@@ -3,8 +3,8 @@
 <title>Historias de cabina</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261114-0152Z">
-<meta name="shipped-utc" content="2026-11-14T01:52:06Z">
+<meta name="build-id" content="WEAV-20261114-0550Z">
+<meta name="shipped-utc" content="2026-11-14T05:50:47Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of Spanish on that page. */
 :root{
@@ -65,6 +65,18 @@ h2{font-family:var(--read);font-size:1.4rem;line-height:1.2;margin:0;text-wrap:b
 .opt.wrong{border-color:var(--strike);color:var(--strike);text-decoration:line-through}
 #check .qrow:first-of-type{margin-top:8px}
 details{border-top:1px solid var(--line);padding-top:12px}
+.how{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.how ol{margin:8px 0 0;padding-left:1.25rem;display:grid;gap:4px;font-size:.9375rem}
+#ahead{background:var(--es-soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+#ahead .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 10px;display:grid;gap:1px;min-width:0}
+.chip:focus-visible{outline:2px solid var(--es)}
+.chip b{font-family:var(--read);font-weight:400;font-size:1.0625rem;color:var(--es)}
+.chip span{font-size:.75rem;color:var(--muted)}
+#use{display:grid;gap:10px}
+.urow{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.urow p{margin:0}.uprompt{font-size:.9375rem}
+.ans{display:flex;gap:6px;align-items:center;font-family:var(--read);font-size:1.125rem;color:var(--es)}
 summary{cursor:pointer;font-weight:600;font-size:.9375rem}
 .table{overflow-x:auto;margin-top:10px}
 table{border-collapse:collapse;width:100%;font-size:.9375rem}
@@ -92,6 +104,17 @@ footer p{margin:0}
     <h1>Historias de cabina</h1>
     <p class="sub">A preflight briefing, a gusty crosswind, and the go-around story Lucía tells afterward.</p>
   </header>
+  <details class="how" id="how"><summary>How to study this page</summary>
+    <ol>
+      <li>Press <b>Play this stage</b> before you read. <b>Listen first</b> hides the text until you've heard it.</li>
+      <li>Read along. Tap any word you don't know to hear it and see what it means.</li>
+      <li>When a stage opens with <b>Words ahead</b>, go through those words first. They are new in that stage.</li>
+      <li>Say each line out loud after the voice.</li>
+      <li>Answer the question under the stage, then try <b>Check yourself</b>.</li>
+      <li>On the last stage, do <b>Your turn</b>: say the line in Spanish before you reveal the answer.</li>
+      <li>The next day, replay the last stage with guides off.</li>
+    </ol>
+  </details>
   <nav class="ascent" id="ascent" aria-label="Stages, by share of Spanish"></nav>
   <div class="controls">
     <span class="seg" role="group" aria-label="Pronunciation guides"><b>Guides</b>
@@ -113,7 +136,7 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261114-0152Z",SHIPPED="2026-11-14T01:52:06Z";
+const BUILD="WEAV-20261114-0550Z",SHIPPED="2026-11-14T05:50:47Z";
 const LEX={};
 `viento|BYEHN-toh|wind
 hoy|OY|today
@@ -125,6 +148,7 @@ tengo frío|TEHN-goh FREE-oh|I'm cold (literally "I have cold")
 tengo calor|TEHN-goh kah-LOHR|I'm hot (literally "I have heat")
 el|ehl|the (masculine)
 y|ee|and
+o|oh|or
 fuerte|FWEHR-teh|strong
 un|oon|a, one (masculine)
 hombre|OHM-breh|man
@@ -375,6 +399,15 @@ caso|KAH-soh|case
 hasta|AHS-tah|until
 próximo|PROHK-see-moh|next
 le|leh|to you, to him, to her
+agua|AH-gwah|water
+cuánto|KWAHN-toh|how much
+usa|OO-sah|uses
+comer|koh-MEHR|to eat
+tienen|TYEH-nehn|they have
+cuando|KWAHN-doh|when (not a question)
+funciona|foon-SYOH-nah|works
+actualización|ahk-twah-lee-sah-SYOHN|update
+les|lehs|to them, to you (plural)
 cabina|kah-BEE-nah|cockpit
 lista de verificación|LEES-tah deh beh-ree-fee-kah-SYOHN|checklist
 completa|kohm-PLEH-tah|complete
@@ -450,7 +483,8 @@ di|DEE|I gave (from dar); di otra vuelta, I went around again
 hacer|ah-SEHR|to do, to make
 una|OO-nah|a`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
-const PAGES=[{"t":"Preflight","n":"Paperwork and fuel, in short pieces.","l":[["L","Before we fly, {la lista de verificación}. The checklist."],["S","{La lista de verificación}. And {el plan de vuelo}?"],["L","Filed. {¿Combustible?}"],["S","Fuel is {suficiente}. Enough, with reserve."],["L","Good. Now the weather. {Visibilidad buena}. {Techo alto}."],["S","And the wind? That's what I'm worried about."]]},{"t":"The wind","n":"Numbers and directions, the crosswind talk.","l":[["L","{Viento cruzado de la derecha}. {Quince nudos}."],["S","{¿Con ráfagas?} Gusts?"],["L","{Sí. Ráfagas de veinticinco}."],["S","Fifteen gusting twenty-five. That's sporty."],["L","If {la aproximación} is {inestable}, what do you do?"],["S","{Motor y al aire}. Go around."],["L","{Exacto}. No shame in it."]]},{"t":"Lucía's story","n":"She tells a story in the past tense. Listen for -é, -ó and -ía.","l":[["S","Did you ever do one for real? {Cuéntame}."],["L","{Una vez, cuando era alumna}. When I was a student."],["S","{¿Y qué pasó?}"],["L","{Viento cruzado, con ráfagas. El avión se movía mucho}."],["S","{¿Tenías miedo?}"],["L","{Sí, tenía miedo. Mi instructor no dijo nada}."],["S","He let you decide."],["L","{Exacto. Decidí: motor y al aire}."]]},{"t":"The second time","n":"Mostly Spanish. How the story ends.","l":[["S","{¿Y después?}"],["L","{Di otra vuelta}. Around the pattern again. {La segunda vez, la aproximación fue estable}."],["S","{¿Y aterrizaste bien?}"],["L","{Sí. Aterricé bien}."],["S","{¿Y tu instructor?}"],["L","{Dijo: el mejor aterrizaje es el que decides no hacer}. The best landing is the one you decide not to make."]]},{"t":"Today","n":"All Spanish.","l":[["S","{Qué buena lección}."],["L","{Hacer motor y al aire nunca es una vergüenza}."],["S","{Lista de verificación completa}."],["L","{Autorizado a despegar, pista dos siete}."],["S","{Salimos}."]]}];
+const USE=[["Say the checklist is complete.","Lista de verificación completa."],["Report a crosswind from the right at fifteen knots.","Viento cruzado de la derecha, quince nudos."],["Call a go-around.","Motor y al aire."]];
+const PAGES=[{"t":"Preflight","n":"Paperwork and fuel, in short pieces.","l":[["L","Before we fly, {la lista de verificación}. The checklist."],["S","{La lista de verificación}. And {el plan de vuelo}?"],["L","Filed. {¿Combustible?}"],["S","Fuel is {suficiente}. Enough, with reserve."],["L","Good. Now the weather. {Visibilidad buena}. {Techo alto}."],["S","And the wind? That's what I'm worried about."]]},{"t":"The wind","q":[["¿De dónde es el viento cruzado?","De la derecha","De la izquierda"]],"n":"Numbers and directions, the crosswind talk.","l":[["L","{Viento cruzado de la derecha}. {Quince nudos}."],["S","{¿Con ráfagas?} Gusts?"],["L","{Sí. Ráfagas de veinticinco}."],["S","Fifteen gusting twenty-five. That's sporty."],["L","If {la aproximación} is {inestable}, what do you do?"],["S","{Motor y al aire}. Go around."],["L","{Exacto}. No shame in it."]]},{"t":"Lucía's story","n":"She tells a story in the past tense. Listen for -é, -ó and -ía.","l":[["S","Did you ever do one for real? {Cuéntame}."],["L","{Una vez, cuando era alumna}. When I was a student."],["S","{¿Y qué pasó?}"],["L","{Viento cruzado, con ráfagas. El avión se movía mucho}."],["S","{¿Tenías miedo?}"],["L","{Sí, tenía miedo. Mi instructor no dijo nada}."],["S","He let you decide."],["L","{Exacto. Decidí: motor y al aire}."]]},{"t":"The second time","q":[["La segunda vez, ¿la aproximación fue estable?","Sí","No"]],"n":"Mostly Spanish. How the story ends.","l":[["S","{¿Y después?}"],["L","{Di otra vuelta}. Around the pattern again. {La segunda vez, la aproximación fue estable}."],["S","{¿Y aterrizaste bien?}"],["L","{Sí. Aterricé bien}."],["S","{¿Y tu instructor?}"],["L","{Dijo: el mejor aterrizaje es el que decides no hacer}. The best landing is the one you decide not to make."]]},{"t":"Today","n":"All Spanish.","l":[["S","{Qué buena lección}."],["L","{Hacer motor y al aire nunca es una vergüenza}."],["S","{Lista de verificación completa}."],["L","{Autorizado a despegar, pista dos siete}."],["S","{Salimos}."]]}];
 
 const SOUND=[["a","ah","father"],["e","eh","bed"],["i","ee","see"],["o","oh","go, kept short"],["u","oo","food"],
 ["b, v","b","Both make the same sound: a full b after a pause or m/n, softer with the lips barely touching between vowels. Vino sounds like BEE-noh."],["d","d, or soft th","Hard after n or l (donde). Between vowels and at the end of a word it is soft, like th in this: nada, usted, verdad."],["c before e/i, z","s","sun, in Latin America"],["h","silent","hombre is OHM-breh"],
@@ -501,6 +535,7 @@ PAGES.forEach(p=>{
   p.pct=Math.round(100*es/all);
   p.known=es?Math.round(100*(1-newTok/es)):100;
 });
+USE.forEach(u=>parse("{"+u[1]+"}"));
 window.weaveAudit={missing,pct:PAGES.map(p=>p.pct),known:PAGES.map(p=>p.known),unused:Object.keys(LEX).filter(k=>!seen[k])};
 
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
@@ -603,7 +638,17 @@ function render(){
   lf.onclick=()=>{ears=!ears;store.set("ears",ears?"1":"");render()};
   const acts=document.createElement("div");acts.className="acts";acts.append(pa,lf);
   if(ears)ls.classList.add("ears");
-  P.append(head,n,acts,ls);
+  const prev=PAGES[cur-1];
+  const ahead=p.fresh.filter(k=>LEX[k]);
+  if(cur>0&&ahead.length>=4){
+    const wa=document.createElement("details");wa.id="ahead";wa.open=p.pct>=60||p.pct-prev.pct>=15;
+    const ws=document.createElement("summary");ws.textContent="Words ahead ("+ahead.length+"): meet them before you read";wa.append(ws);
+    const ch=document.createElement("div");ch.className="chips";
+    ahead.forEach(k=>{const c=document.createElement("button");c.className="chip";
+      const b=document.createElement("b");b.textContent=k;const sp=document.createElement("span");sp.textContent=LEX[k].p+" · "+LEX[k].m;
+      c.append(b,sp);c.onclick=()=>say([{es:true,x:k,who:"L"}]);ch.append(c)});
+    wa.append(ch);P.append(head,n,wa,acts,ls);
+  }else P.append(head,n,acts,ls);
   (p.q||[]).forEach((q,qi)=>{
     const box=document.createElement("div");box.className="cq";box.id="question-"+qi;
     const pr=document.createElement("p");pr.className="cqp";
@@ -614,6 +659,19 @@ function render(){
       b.onclick=()=>{b.classList.add(ok?"right":"wrong");b.setAttribute("aria-label",(ok?"Correct: ":"Not quite: ")+o);if(!ok)ops.querySelectorAll(".opt").forEach(x=>{if(x.textContent===q[1])x.classList.add("right")});ls.classList.remove("ears")};ops.append(b)});
     box.append(pr,ops);P.append(box);
   });
+  if(cur===PAGES.length-1&&USE.length){
+    const u=document.createElement("section");u.id="use";
+    const uh=document.createElement("h3");uh.className="note";uh.style.margin="0";uh.textContent="Your turn: say it in Spanish out loud, then check";u.append(uh);
+    USE.forEach(([pr,ans],ui)=>{const r=document.createElement("div");r.className="urow";
+      const pp=document.createElement("p");pp.className="uprompt";pp.textContent=pr;
+      const btn=document.createElement("button");btn.className="opt";btn.id="show-"+ui;btn.textContent="Show answer";
+      const a=document.createElement("p");a.className="ans";a.hidden=true;
+      const sy=document.createElement("button");sy.className="say";sy.setAttribute("aria-label","Play the answer");sy.innerHTML=ICON;sy.onclick=()=>say([{es:true,x:ans,who:"L"}]);
+      const at=document.createElement("span");at.textContent=ans;a.append(sy,at);
+      btn.onclick=()=>{a.hidden=false;btn.hidden=true;say([{es:true,x:ans,who:"L"}])};
+      r.append(pp,btn,a);u.append(r)});
+    P.append(u);
+  }
   const items=p.fresh.filter(k=>k.split(" ").length<=2&&LEX[k]).slice(0,4);
   if(items.length>=2){
     const d=document.createElement("details");d.id="check";

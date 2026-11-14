@@ -1,7 +1,7 @@
 // Conversation pack format: metadata, extra lexicon rows (word|SAY-it|meaning), and stages.
 // {braces} mark Spanish. <<double angle brackets>> mark an error that is corrected on the next line.
 module.exports={
-key:"globos",
+key:"globos",use:[["Ask where the fan is.", "¿Dónde está el ventilador?"], ["Tell your passengers to hold on to the handles.", "Agárrense de las asas."], ["Warn someone not to step on the envelope.", "¡Cuidado! No pises la vela."]],
 file:"hablemos-de-globos",
 title:"Hablemos de globos",
 sub:"Sam and Lucía crew a real flight morning. Start in English and finish running the flight in Spanish.",
@@ -119,7 +119,7 @@ pages:[
 ["S","{¡Cuidado!} I'll use that one every morning."],
 ["L","{Jala la cuerda, por favor}. Pull the rope."],
 ["S","{Yo jalo}, and {tú abres}. I like this arrangement."]]},
-{t:"Inflation",n:"The sequence you say out loud as the balloon comes up.",l:[
+{t:"Inflation",q:[["¿Qué entra primero en la vela?", "El aire", "El propano", "El equipo"]],n:"The sequence you say out loud as the balloon comes up.",l:[
 ["S","{Enciende el ventilador}."],
 ["L","{Ya está}. {Ya} means already. {El aire entra}."],
 ["S","{La vela se llena de aire}. Is that right?"],
@@ -150,7 +150,7 @@ pages:[
 ["L","{Hay un campo grande detrás de la escuela}."],
 ["S","{Perfecto. Voy al campo}."],
 ["L","{El equipo va en camino}."]]},
-{t:"Landing",n:"All Spanish, from the final descent to the toast.",l:[
+{t:"Landing",q:[["¿Qué hay para los pasajeros?", "Champaña", "Café", "Agua"]],n:"All Spanish, from the final descent to the toast.",l:[
 ["S","{Atención, por favor. Vamos a aterrizar}."],
 ["S","{Agárrense de las asas. Doblen las rodillas y miren hacia donde vamos}."],
 ["S","{¡Ya llegamos! ¿Todos bien?}"],

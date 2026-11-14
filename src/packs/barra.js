@@ -1,4 +1,4 @@
-module.exports={key:"barra",file:"en-la-barra",title:"En la barra",
+module.exports={key:"barra",use:[["Greet a customer in the evening and ask what you can serve them.", "Buenas noches. ¿Qué le sirvo?"], ["Ask if they want it with or without ice.", "¿Con hielo o sin hielo?"], ["Politely tell a guest you can't serve them any more.", "Lo siento, no le puedo servir más."]],file:"en-la-barra",title:"En la barra",
 sub:"Sam learns to run a bar shift in Spanish, from the first beer to the last check.",
 footer:"Original dialogue written for this pack. Drink names and bar slang vary by country.",
 lex:`cerveza|sehr-BEH-sah|beer
@@ -84,7 +84,7 @@ pages:[
 ["S","And with or without ice?"],
 ["L","{¿Con hielo o sin hielo?} {Sin} means without."],
 ["S","{¿Con hielo o sin hielo?}"]]},
-{t:"The margarita",n:"Commands for her, I-forms for him, one recipe.",l:[
+{t:"The margarita",q:[["¿Qué va primero en la coctelera?", "Hielo", "Sal", "Limón"]],n:"Commands for her, I-forms for him, one recipe.",l:[
 ["L","{Pon hielo en la coctelera}. Put ice in the shaker."],
 ["S","{Pongo hielo en la coctelera}."],
 ["L","{Agrega el tequila y el jugo de limón}."],
@@ -109,7 +109,7 @@ pages:[
 ["L","{Soy de León. ¿Y usted?}"],
 ["S","{Soy de Indiana. Soy piloto de globos}."],
 ["L","{¡Qué interesante!}"]]},
-{t:"Closing out",n:"All Spanish. The check, the tip and the door.",l:[
+{t:"Closing out",q:[["¿De cuánto es la cuenta?", "Veinte dólares", "Mil dólares"]],n:"All Spanish. The check, the tip and the door.",l:[
 ["L","{La cuenta, por favor}."],
 ["S","{Son veinte dólares}."],
 ["L","{¿Aceptan tarjeta?}"],

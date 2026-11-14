@@ -1,4 +1,4 @@
-module.exports={key:"evolucion",file:"los-picos-de-los-pinzones",title:"Los picos de los pinzones",
+module.exports={key:"evolucion",use:[["Say the finches have different beaks.", "Los pinzones tienen picos diferentes."], ["Say there's a drought and it doesn't rain.", "Hay una sequía. No llueve."], ["Say species change little by little.", "Las especies cambian poco a poco."]],file:"los-picos-de-los-pinzones",title:"Los picos de los pinzones",
 sub:"Darwin's finches, a drought and natural selection, explained between friends and ending in Spanish.",
 footer:"Original dialogue. Darwin visited the Galápagos in 1835 and published On the Origin of Species in 1859. Peter and Rosemary Grant measured finch beaks on Daphne Major, including after the 1977 drought.",
 lex:`islas|EES-lahs|islands
@@ -75,7 +75,7 @@ pages:[
 ["S","And {Darwin} went there."],
 ["L","In 1835. But the famous birds are small. {Pinzones}. Finches."],
 ["S","{Pinzones}. Darwin's finches."]]},
-{t:"Different beaks",n:"Describing shapes and what they are for.",l:[
+{t:"Different beaks",q:[["¿Para qué es un pico grueso?", "Para romper semillas duras", "Para comer insectos"]],n:"Describing shapes and what they are for.",l:[
 ["L","The finches have {picos diferentes}. Different beaks on {cada isla}."],
 ["S","{Picos}. Why different?"],
 ["L","Food. A {pico grueso}, thick, is {para romper semillas duras}."],
@@ -91,7 +91,7 @@ pages:[
 ["L","{Y las semillas blandas} run out. Only {semillas duras} are left."],
 ["S","So the birds with {picos gruesos} eat. {Sobreviven}."],
 ["L","{Y muchos pinzones con picos pequeños mueren}."]]},
-{t:"Natural selection",n:"Mostly Spanish. The idea that ties it together.",l:[
+{t:"Natural selection",q:[["¿Quién decide?", "El ambiente", "Los pinzones", "Darwin"]],n:"Mostly Spanish. The idea that ties it together.",l:[
 ["S","{¿Y los hijos?}"],
 ["L","{Los hijos heredan los picos de los padres}."],
 ["S","{Entonces, en la nueva generación, los picos son más grandes}."],

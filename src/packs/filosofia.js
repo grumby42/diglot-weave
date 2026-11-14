@@ -1,4 +1,4 @@
-module.exports={key:"filosofia",file:"el-globo-de-teseo",title:"El globo de Teseo",
+module.exports={key:"filosofia",use:[["Say it's a difficult question.", "Es una pregunta difícil."], ["Say you're the same, but different.", "Soy el mismo, pero diferente."], ["Quote Ortega y Gasset.", "Yo soy yo y mi circunstancia."]],file:"el-globo-de-teseo",title:"El globo de Teseo",
 sub:"An old puzzle about identity, retold with a balloon, and a famous line from Ortega y Gasset.",
 footer:"Original dialogue. The Ship of Theseus puzzle comes from Plutarch's Life of Theseus; the twist of rebuilding a second ship from the old planks was added by Thomas Hobbes. \"Yo soy yo y mi circunstancia\" is from José Ortega y Gasset's Meditaciones del Quijote (1914). The full sentence continues: \"y si no la salvo a ella no me salvo yo.\"",
 lex:`pregunta|preh-GOON-tah|question
@@ -67,7 +67,7 @@ pages:[
 ["L","Next year another {panel}. Then another. {Uno por uno}."],
 ["S","Until every {panel} is new."],
 ["L","{¿El mismo globo, o otro globo?} The same balloon, or another one?"]]},
-{t:"The old version",n:"Where the puzzle comes from.",l:[
+{t:"The old version",q:[["¿De quién es el barco?", "De Teseo", "De Sam", "De los griegos"]],n:"Where the puzzle comes from.",l:[
 ["S","I know this. It's a ship, isn't it?"],
 ["L","{El barco de Teseo}. The {griegos} asked it about Theseus's ship."],
 ["S","{Los griegos preguntaron}. And the twist?"],
@@ -92,7 +92,7 @@ pages:[
 ["S","{¿Circunstancia?} Circumstance?"],
 ["L","{Sí. El lugar, el tiempo, la gente}."],
 ["S","{Entonces el globo es el globo y su circunstancia}."]]},
-{t:"No easy answer",n:"All Spanish.",l:[
+{t:"No easy answer",q:[["¿Hay una respuesta fácil?", "No", "Sí"]],n:"All Spanish.",l:[
 ["L","{¿Y la respuesta?}"],
 ["S","{No hay respuesta fácil}."],
 ["L","{Quizás no hay respuesta}."],

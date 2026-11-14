@@ -51,4 +51,13 @@ estos|EHS-tohs|these
 caso|KAH-soh|case
 hasta|AHS-tah|until
 próximo|PROHK-see-moh|next
-le|leh|to you, to him, to her`;
+le|leh|to you, to him, to her
+agua|AH-gwah|water
+cuánto|KWAHN-toh|how much
+usa|OO-sah|uses
+comer|koh-MEHR|to eat
+tienen|TYEH-nehn|they have
+cuando|KWAHN-doh|when (not a question)
+funciona|foon-SYOH-nah|works
+actualización|ahk-twah-lee-sah-SYOHN|update
+les|lehs|to them, to you (plural)`;

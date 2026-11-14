@@ -1,5 +1,5 @@
 // Reverse pack. "S" = Lucía (Spanish speaker learning English). "L" = Sam (American colleague, the coach).
-module.exports={key:"review-en",file:"the-monthly-review",title:"The Monthly Review",
+module.exports={key:"review-en",use:[["Agradece al cliente su tiempo.", "Thank you for your time."], ["Di que entiendes su preocupación.", "I understand your concern."], ["Di que eso está fuera del alcance del contrato.", "That's outside the scope of the contract."]],file:"the-monthly-review",title:"The Monthly Review",
 sub:"Lucía prepara su primera reunión con un cliente en inglés. Sam la ayuda. La página empieza en español y termina en inglés.",
 footer:"Diálogo original escrito para esta página. Con clientes, el inglés profesional es cortés pero directo.",
 lex:`the|dhe|el, la, los, las
@@ -170,7 +170,11 @@ i'm|aim|yo soy, yo estoy
 high-priority|jai prai-O-ri-ti|de alta prioridad
 wasting|WEIS-ting|perdiendo
 them|dhem|ellos, los
-is wasting|iz WEIS-ting|está perdiendo`,
+is wasting|iz WEIS-ting|está perdiendo
+what|wot|qué
+client's|KLAI-ents|del cliente
+when|wen|cuándo
+next|nekst|próximo`,
 pages:[
 {t:"Las palabras",n:"Sam enseña los sustantivos de la reunión antes de empezar.",l:[
 ["S","Sam, mañana tengo mi primera reunión con un cliente en inglés. Estoy nerviosa."],
@@ -191,7 +195,7 @@ pages:[
 ["L","{We received}. Sin vocal extra al final: {received}."],
 ["S","{This month we received twelve hundred alerts}. Y solo doce incidentes reales."],
 ["L","{Twelve real incidents}. Perfecto."]]},
-{t:"El SLA",n:"Los números y el primer problema.",l:[
+{t:"El SLA",q:[["What is the client's concern?", "Too many false positives", "The report"]],n:"Los números y el primer problema.",l:[
 ["S","{We met the SLA in ninety-eight percent of cases}."],
 ["L","{Very good}. Pero ahora el cliente tiene una queja. {I have a concern}."],
 ["S","¿{Concern}? ¿Preocupación?"],
@@ -213,7 +217,7 @@ pages:[
 ["L","{Outside the scope?}"],
 ["S","{Yes. But I can prepare a proposal}."],
 ["L","{Great}. Muy natural, Lucía."]]},
-{t:"Los pendientes",n:"Todo en inglés. Cerrar la reunión.",l:[
+{t:"Los pendientes",q:[["When is the next update?", "On Friday", "On Tuesday"]],n:"Todo en inglés. Cerrar la reunión.",l:[
 ["S","{Here are the action items}."],
 ["S","{First, tune the rules}."],
 ["S","{Second, escalate Tuesday's case}."],

@@ -1,4 +1,4 @@
-module.exports={key:"bomberos",file:"la-llamada",title:"La llamada",
+module.exports={key:"bomberos",use:[["Tell someone you're firefighters and you're going to help.", "Somos bomberos. Vamos a ayudarle."], ["Ask if anyone is inside.", "¿Hay alguien adentro?"], ["Warn that a grease fire never gets water.", "¡Nunca con agua!"]],file:"la-llamada",title:"La llamada",
 sub:"A kitchen fire call, a family to account for, and the story told back at the station.",
 footer:"Original dialogue written for this pack. It teaches language, not tactics. Follow your department's procedures.",
 lex:`llamada|yah-MAH-dah|call
@@ -80,7 +80,7 @@ pages:[
 ["L","Hydrant. And {el extintor}, extinguisher."],
 ["S","One more. Fire itself is {fuego}, but a house fire?"],
 ["L","{Un incendio}. {Fuego} is the flames. {Incendio} is the event."]]},
-{t:"The call",n:"Arrival, and the first question that matters.",l:[
+{t:"The call",q:[["¿Cuántas personas viven aquí?", "Cuatro", "Tres"]],n:"Arrival, and the first question that matters.",l:[
 ["L","The tones drop. {La llamada}: {incendio en la cocina}."],
 ["S","A kitchen fire. On scene, a woman is outside in {el humo}."],
 ["L","First words: {somos bomberos, vamos a ayudarle}."],
@@ -95,7 +95,7 @@ pages:[
 ["L","{No. Es aceite. Una sartén}."],
 ["S","A grease fire. {¿Con agua?}"],
 ["L","{¡Nunca con agua!} Her husband {puso la tapa}. Smart."]]},
-{t:"Found",n:"Mostly Spanish, in the past tense.",l:[
+{t:"Found",q:[["¿El hijo estaba dormido?", "No. Estaba con audífonos", "Sí"]],n:"Mostly Spanish, in the past tense.",l:[
 ["S","{¿Y el hijo?}"],
 ["L","{Encontramos al hijo en su cuarto}. We found him in his room."],
 ["S","{¿Estaba dormido?}"],
