@@ -3,8 +3,8 @@
 <title>Au café</title>
 <meta charset="utf-8">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="build-id" content="WEAV-20261115-0550Z">
-<meta name="shipped-utc" content="2026-11-15T05:50:52Z">
+<meta name="build-id" content="WEAV-20261115-0551Z">
+<meta name="shipped-utc" content="2026-11-15T05:51:55Z">
 <style>
 /* Layout: one reading column under an ascent profile; each bar is a stage, its height the real share of French on that page. */
 :root{
@@ -137,12 +137,12 @@ footer p{margin:0}
 <div id="sheet" aria-live="polite"><div><span>Tap any colored word to hear it and see what it means.</span></div></div>
 
 <script>
-const BUILD="WEAV-20261115-0550Z",SHIPPED="2026-11-15T05:50:52Z";
+const BUILD="WEAV-20261115-0551Z",SHIPPED="2026-11-15T05:51:55Z";
 const LEX={};
 `j'ai faim|zhay FAN|I'm hungry (literally "I have hunger")
 j'ai froid|zhay FRWAH|I'm cold
 un café|uhn kah-FAY|a coffee|In a French café this means an espresso
-un crème|uhn KREM|a coffee with steamed milk
+un crème|uhn KREHM|a coffee with steamed milk
 un croissant|uhn krwah-SAHN|a croissant
 un pain au chocolat|uhn pan oh shoh-koh-LAH|a chocolate pastry
 bonjour|bohn-ZHOOR|hello, good morning
@@ -161,7 +161,7 @@ une carafe d'eau|ewn kah-rahf DOH|a jug of tap water|Free in French restaurants 
 sur place ou à emporter|sewr plah-soo ah ahn-por-TAY|for here or to go
 c'est délicieux|seh day-lee-SYUH|it's delicious
 bien sûr|byan SEWR|of course
-après le vol|ah-preh luh VOL|after the flight
+après le vol|ah-preh luh VOHL|after the flight
 tout est délicieux|too-teh day-lee-SYUH|everything is delicious
 l'addition|lah-dee-SYOHN|the check
 voilà|vwah-LAH|here you go
@@ -176,12 +176,12 @@ au revoir|oh ruh-VWAHR|goodbye
 qu'est-ce que sam prend|kes-kuh sahm PRAHN|what is Sam having
 oui|WEE|yes
 non|NOHN|no
-un crème et un croissant|uhn krem ay uhn krwah-SAHN|a coffee with milk and a croissant
+un crème et un croissant|uhn krehm ay uhn krwah-SAHN|a coffee with milk and a croissant
 un café et un pain au chocolat|uhn kah-fay ay uhn pan oh shoh-koh-LAH|an espresso and a chocolate pastry
 madame|mah-DAHM|ma'am`.split("\n").forEach(r=>{const[w,p,m,n]=r.split("|");LEX[w]={p,m,n}});
 
 const USE=[["Order a coffee with milk, politely.","Je voudrais un crème, s'il vous plaît."],["Ask for the check.","L'addition, s'il vous plaît."],["Ask if you can pay by card.","Je peux payer par carte ?"]];
-const PAGES=[{"t":"The food","n":"What a French café serves, one word at a time.","l":[["S","After that flight, I'm starving. Where do we eat?"],["L","A café, of course. And I'm hungry too: {j'ai faim}. Same pattern as {j'ai froid}."],["S","{J'ai faim}. What do they have?"],["L","{Un café}, which here means an espresso. If you want milk, it's {un crème}."],["S","{Un crème}. And to eat?"],["L","{Un croissant}, of course. Or {un pain au chocolat}. Trust me on that one."],["S","{Un pain au chocolat}. Sold."]]},{"t":"Walking in","n":"The first rule of any French café: say hello.","l":[["L","First rule: always say {bonjour} when you walk in. To the woman at the counter: {bonjour, madame}."],["S","{Bonjour, madame}. {Une table pour deux}, {s'il vous plaît} ?"],["L","{Parfait}. She says {installez-vous}: have a seat."],["S","{Installez-vous}. And how do I call the server? Not garçon, right?"],["L","Never garçon. It sounds rude now. Catch her eye and say {s'il vous plaît}."]]},{"t":"Ordering","n":"Polite ordering with je voudrais.","q":[["Qu'est-ce que Sam prend ?","Un crème et un croissant","Un café et un pain au chocolat"]],"l":[["L","She comes over: {qu'est-ce que vous prenez ?}"],["S","{Je voudrais} {un crème} {et} {un croissant}, {s'il vous plaît}."],["L","Good: {je voudrais}, not {je veux}. {Et moi}, {un café} {et} {un pain au chocolat}. {C'est tout}."],["S","And water? Do we have to buy it?"],["L","No. Ask for {une carafe d'eau}. Tap water is free."],["S","And at a bakery, they asked me {sur place ou à emporter}. What was that?"],["L","For here or to go. {Sur place ou à emporter} ?"]]},{"t":"Eating","n":"Mostly French. Compliments and small talk.","l":[["S","{C'est délicieux} ! Is that how you say delicious?"],["L","{Bien sûr}. And pilots have a saying: {après le vol}, {tout est délicieux}."],["S","After the flight, everything is delicious. True. {Un café} ?"],["L","{Oui}, {un café}, {s'il vous plaît}. {J'ai froid}."]]},{"t":"Paying","n":"All French. The check, the card and the tip.","q":[["Le service est compris ?","Oui","Non"]],"l":[["S","{L'addition}, {s'il vous plaît}."],["L","{Voilà}."],["S","{Je peux payer par carte} ?"],["L","{Bien sûr}."],["S","{Et le pourboire} ?"],["L","{Le service est compris}: service is included in the price. {Un petit pourboire}, {si tu veux}."],["S","{Merci}. {Bonne journée} !"],["L","{Au revoir} !"]]}];
+const PAGES=[{"t":"The food","n":"What a French café serves, one word at a time.","l":[["S","After that flight, I'm starving. Where do we eat?"],["L","A café, of course. And I'm hungry too: {j'ai faim}. Same pattern as {j'ai froid}."],["S","{J'ai faim}. What do they have?"],["L","{Un café}, which here means an espresso. If you want milk, it's {un crème}."],["S","{Un crème}. And to eat?"],["L","{Un croissant}, of course. Or {un pain au chocolat}. Trust me on that one."],["S","{Un pain au chocolat}. Sold."]]},{"t":"Walking in","n":"The first rule of any French café: say hello.","l":[["L","First rule: always say {bonjour} when you walk in. To the woman at the counter: {bonjour, madame}."],["S","{Bonjour, madame}. {Une table pour deux}, {s'il vous plaît} ?"],["L","{Parfait}. She says {installez-vous}: have a seat."],["S","{Installez-vous}. And how do I call the server? Not garçon, right?"],["L","Never garçon. It sounds rude now. Catch her eye and say {s'il vous plaît}."]]},{"t":"Ordering","n":"Polite ordering with je voudrais.","q":[["Qu'est-ce que Sam prend ?","Un crème et un croissant","Un café et un pain au chocolat"]],"l":[["L","She comes over: {qu'est-ce que vous prenez} ?"],["S","{Je voudrais} {un crème} {et} {un croissant}, {s'il vous plaît}."],["L","Good: {je voudrais}, not {je veux}. {Et moi}, {un café} {et} {un pain au chocolat}. {C'est tout}."],["S","And water? Do we have to buy it?"],["L","No. Ask for {une carafe d'eau}. Tap water is free."],["S","And at a bakery, they asked me {sur place ou à emporter}. What was that?"],["L","For here or to go. {Sur place ou à emporter} ?"]]},{"t":"Eating","n":"Mostly French. Compliments and small talk.","l":[["S","{C'est délicieux} ! Is that how you say delicious?"],["L","{Bien sûr}. And I have a saying: {après le vol}, {tout est délicieux}."],["S","After the flight, everything is delicious. True. {Un café} ?"],["L","{Oui}. {Madame}, {un café}, {s'il vous plaît}. {J'ai froid}."]]},{"t":"Paying","n":"Mostly French. The check, the card and the tip.","q":[["Le service est compris ?","Oui","Non"]],"l":[["S","{L'addition}, {s'il vous plaît}."],["L","{Voilà}."],["S","{Je peux payer par carte} ?"],["L","{Bien sûr}."],["S","{Et le pourboire} ?"],["L","{Le service est compris}: service is included in the price. {Un petit pourboire}, {si tu veux}."],["S","{Merci}. {Bonne journée} !"],["L","{Au revoir} !"]]}];
 
 const SOUND=[["on, om","nasal oh","bon: hum through your nose; don't finish the n"],["an, en, am, em","nasal ah","vent, temps"],["in, ain, un","nasal a","vin, pain; most speakers say un the same way"],["u","ew","tu: say ee with rounded lips"],["eu, œu","uh","deux, cœur: like fur without the r"],["ou","oo","vous, tout"],["oi","wah","moi, froid"],["eau, au","oh","manteau, chaud"],["é, -er, -ez","ay","café, enlever, parlez"],["è, ê, -et, -est","eh","très, peut-être, est"],["r","in the throat","a soft gargle, never the English r"],["j, soft g","zh","je, rouge: the s in measure"],["ch","sh","chaud, manteau"],["gn","ny","gagner: the ny in canyon"],["h","silent","homme is OM"],["final consonants","usually silent","but c, r, f, l often sound: avec, bonjour, neuf"],["liaison","linked","un homme sounds like uh-NOM: the n slides into the next word"]];
 

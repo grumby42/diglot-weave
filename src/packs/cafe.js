@@ -6,7 +6,7 @@ footer:"Original dialogue written for this page. In France, menu prices include 
 lex:`j'ai faim|zhay FAN|I'm hungry (literally "I have hunger")
 j'ai froid|zhay FRWAH|I'm cold
 un café|uhn kah-FAY|a coffee|In a French café this means an espresso
-un crème|uhn KREM|a coffee with steamed milk
+un crème|uhn KREHM|a coffee with steamed milk
 un croissant|uhn krwah-SAHN|a croissant
 un pain au chocolat|uhn pan oh shoh-koh-LAH|a chocolate pastry
 bonjour|bohn-ZHOOR|hello, good morning
@@ -25,7 +25,7 @@ une carafe d'eau|ewn kah-rahf DOH|a jug of tap water|Free in French restaurants 
 sur place ou à emporter|sewr plah-soo ah ahn-por-TAY|for here or to go
 c'est délicieux|seh day-lee-SYUH|it's delicious
 bien sûr|byan SEWR|of course
-après le vol|ah-preh luh VOL|after the flight
+après le vol|ah-preh luh VOHL|after the flight
 tout est délicieux|too-teh day-lee-SYUH|everything is delicious
 l'addition|lah-dee-SYOHN|the check
 voilà|vwah-LAH|here you go
@@ -40,7 +40,7 @@ au revoir|oh ruh-VWAHR|goodbye
 qu'est-ce que sam prend|kes-kuh sahm PRAHN|what is Sam having
 oui|WEE|yes
 non|NOHN|no
-un crème et un croissant|uhn krem ay uhn krwah-SAHN|a coffee with milk and a croissant
+un crème et un croissant|uhn krehm ay uhn krwah-SAHN|a coffee with milk and a croissant
 un café et un pain au chocolat|uhn kah-fay ay uhn pan oh shoh-koh-LAH|an espresso and a chocolate pastry
 madame|mah-DAHM|ma'am`,
 pages:[
@@ -59,7 +59,7 @@ pages:[
 ["S","{Installez-vous}. And how do I call the server? Not garçon, right?"],
 ["L","Never garçon. It sounds rude now. Catch her eye and say {s'il vous plaît}."]]},
 {t:"Ordering",n:"Polite ordering with je voudrais.",q:[["Qu'est-ce que Sam prend ?","Un crème et un croissant","Un café et un pain au chocolat"]],l:[
-["L","She comes over: {qu'est-ce que vous prenez ?}"],
+["L","She comes over: {qu'est-ce que vous prenez} ?"],
 ["S","{Je voudrais} {un crème} {et} {un croissant}, {s'il vous plaît}."],
 ["L","Good: {je voudrais}, not {je veux}. {Et moi}, {un café} {et} {un pain au chocolat}. {C'est tout}."],
 ["S","And water? Do we have to buy it?"],
@@ -68,10 +68,10 @@ pages:[
 ["L","For here or to go. {Sur place ou à emporter} ?"]]},
 {t:"Eating",n:"Mostly French. Compliments and small talk.",l:[
 ["S","{C'est délicieux} ! Is that how you say delicious?"],
-["L","{Bien sûr}. And pilots have a saying: {après le vol}, {tout est délicieux}."],
+["L","{Bien sûr}. And I have a saying: {après le vol}, {tout est délicieux}."],
 ["S","After the flight, everything is delicious. True. {Un café} ?"],
-["L","{Oui}, {un café}, {s'il vous plaît}. {J'ai froid}."]]},
-{t:"Paying",n:"All French. The check, the card and the tip.",q:[["Le service est compris ?","Oui","Non"]],l:[
+["L","{Oui}. {Madame}, {un café}, {s'il vous plaît}. {J'ai froid}."]]},
+{t:"Paying",n:"Mostly French. The check, the card and the tip.",q:[["Le service est compris ?","Oui","Non"]],l:[
 ["S","{L'addition}, {s'il vous plaît}."],
 ["L","{Voilà}."],
 ["S","{Je peux payer par carte} ?"],

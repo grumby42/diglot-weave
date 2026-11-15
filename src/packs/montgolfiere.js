@@ -29,7 +29,7 @@ très bien|treh BYAN|very good
 pour l'atterrissage|poor lah-teh-ree-SAHZH|for the landing
 pliez les genoux|plee-ay lay zhuh-NOO|bend your knees (vous)
 regardez|ruh-gar-DAY|look (vous)
-dans le sens du vol|dahn luh sahns dew VOL|in the direction of flight
+dans le sens du vol|dahn luh sahns dew VOHL|in the direction of flight
 ne sortez pas|nuh sor-tay PAH|don't get out (vous)
 de la nacelle|duh lah nah-SEL|of the basket
 je te vois|zhuh tuh VWAH|I see you
