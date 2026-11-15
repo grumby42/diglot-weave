@@ -12,3 +12,5 @@ run('reverse.js','incident-en.js');
 run('french.js','bise.js');
 run('french.js','montgolfiere.js');
 run('reverse.js','change-en.js');
+run('french.js','cafe.js');
+run('reverse.js','handoff-en.js');

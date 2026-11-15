@@ -11,8 +11,8 @@ Two friends, Sam (a US balloon pilot who also works in aviation and cybersecurit
 | Path | Folder | What's there |
 |---|---|---|
 | English → Spanish | [`es/`](es/index.html) | 17 pages: a fable, a story and legend retelling, science, philosophy, everyday topics, and work Spanish for ballooning, cargo ramps, cockpits, firefighting, bars and cybersecurity. Two phrasebooks (essentials and work). |
-| English → French | [`fr/`](fr/index.html) | A phrasebook with a French sound guide, grammar, verbs and everyday vocabulary, and two dialogues: *La bise et le soleil* and *Une montgolfière*. |
-| Español → English | [`en/`](en/index.html) | For Spanish-speaking cybersecurity professionals who work with clients in English: a phrasebook (with false-friends and softeners sections), and three dialogues: a client meeting, an incident call and a change review. The interface is in Spanish, and English is respelled with Spanish letter values. |
+| English → French | [`fr/`](fr/index.html) | A phrasebook with a French sound guide, grammar, verbs and everyday vocabulary, and three dialogues: *La bise et le soleil*, *Une montgolfière* and *Au café*. |
+| Español → English | [`en/`](en/index.html) | For Spanish-speaking cybersecurity professionals who work with clients in English: a phrasebook (with false-friends and softeners sections), and four dialogues: a client meeting, an incident call, a change review and a SOC shift handoff. The interface is in Spanish, and English is respelled with Spanish letter values. |
 
 Every page is a single self-contained HTML file. Pages work offline once loaded, and progress settings are stored only in your browser.
 
